@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>B7.OBSidian与HEXO的博客搭建方案 | wumo学习分享仓库</title><meta name="author" content="wumo"><meta name="copyright" content="wumo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="准备所需东西搭建所需准备东西  Git的安装Node.js安装Hexo安装Obsidian安装 注意下面教程省略git和obsidian的安装  Node安装Node安装  点击网站 下载 | Node.js (nodejs.org)这里nodo有两种版本，一种是压缩包，一种是安装包，这里选择下载安装病进行安装。因为安装包自动配置环境文件。 点击下载好的安装包，选择合适的安装位置 这里不用动，默">
+<meta property="og:type" content="article">
+<meta property="og:title" content="B7.OBSidian与HEXO的博客搭建方案">
+<meta property="og:url" content="http://xingwumo.github.io/blog/2023/07/01/B7.OBSidian%E4%B8%8EHEXO%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="wumo学习分享仓库">
+<meta property="og:description" content="准备所需东西搭建所需准备东西  Git的安装Node.js安装Hexo安装Obsidian安装 注意下面教程省略git和obsidian的安装  Node安装Node安装  点击网站 下载 | Node.js (nodejs.org)这里nodo有两种版本，一种是压缩包，一种是安装包，这里选择下载安装病进行安装。因为安装包自动配置环境文件。 点击下载好的安装包，选择合适的安装位置 这里不用动，默">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://xingwumo.github.io/blog/fujian/f29e80ed140a6f314281b4f2556197f0.png">
+<meta property="article:published_time" content="2023-06-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-30T16:33:16.840Z">
+<meta property="article:author" content="wumo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xingwumo.github.io/blog/fujian/f29e80ed140a6f314281b4f2556197f0.png"><link rel="shortcut icon" href="/blog/img/favicon.png"><link rel="canonical" href="http://xingwumo.github.io/blog/2023/07/01/B7.OBSidian%E4%B8%8EHEXO%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'B7.OBSidian与HEXO的博客搭建方案',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-01 00:33:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/blog/fujian/f29e80ed140a6f314281b4f2556197f0.png')"><nav id="nav"><span id="blog-info"><a href="/blog/" title="wumo学习分享仓库"><span class="site-name">wumo学习分享仓库</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">B7.OBSidian与HEXO的博客搭建方案</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-30T16:33:16.840Z" title="更新于 2023-07-01 00:33:16">2023-07-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/Obsidian/">Obsidian</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="B7.OBSidian与HEXO的博客搭建方案"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="/blog/fujian/f29e80ed140a6f314281b4f2556197f0.png"></p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><h2 id="所需东西"><a href="#所需东西" class="headerlink" title="所需东西"></a>所需东西</h2><p>搭建所需准备东西</p>
+<blockquote>
+<p>Git的安装<br>Node.js安装<br>Hexo安装<br>Obsidian安装</p>
+<p>注意<br>下面教程省略git和obsidian的安装</p>
+</blockquote>
+<h2 id="Node安装"><a href="#Node安装" class="headerlink" title="Node安装"></a>Node安装</h2><p>Node安装</p>
+<blockquote>
+<p><img src="/blog/fujian/e8a66cd96da2a1f1344bf3d35d595e29.png"><br>点击网站 <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">下载 | Node.js (nodejs.org)</a><br>这里nodo有两种版本，一种是压缩包，一种是安装包，这里选择下载安装病进行安装。因为安装包自动配置环境文件。</p>
+<p><img src="/blog/fujian/e5df63cca50e2fbb19d1d1f0752a82db.png"><br>点击下载好的安装包，选择合适的安装位置</p>
+<p><img src="/blog/fujian/097c21a07ef0ccac3f87b3aaca155f71.png"><br>这里不用动，默认会自动配置好环境</p>
+<p><img src="/blog/fujian/992336bf6a4a32d93beffcd2f9372fcc.png"><br>点击next安装即可。</p>
+</blockquote>
+<p>git和node安装的验证</p>
+<blockquote>
+<p><img src="/blog/fujian/5c774d16af599610f7cf40f4791e09ae.png"><br>打开powershell</p>
+<p><img src="/blog/fujian/f4e87fe337187a77cc53c60ceaae4df4.png"><br>输入<code>git --version</code>,可以验证当前安装的git版本<br>输入<code>node--version</code>,可以验证当前安装的node版本</p>
+</blockquote>
+<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><p>hexo安装</p>
+<blockquote>
+<p><img src="/blog/fujian/5c774d16af599610f7cf40f4791e09ae.png"><br>打开powershell</p>
+<p><img src="/blog/fujian/52f234cc23f99ac57d74119c5777c9e1.png"><br>输入下面指令进行安装<br><code>npm install -g hexo-cli</code></p>
+</blockquote>
+<h2 id="远程仓库的创建"><a href="#远程仓库的创建" class="headerlink" title="远程仓库的创建"></a>远程仓库的创建</h2><p>远程仓库创建的原因</p>
+<blockquote>
+<p>如果我们要把我们写的文章发布到博客，其原理就是将我们写的文章先上传到远程仓库，然后hexo在根据我们上传到远程仓库的的笔记内容，生成对应的博客。因此需要创建远程仓库。<br>远程仓库可以选github，也可以选gitee。</p>
+<p>github优点是内容没有审核，你传什么文件，都不会有审核。缺点就是服务器在国外，国内的用户要访问我们的博客，就会有一点卡顿</p>
+<p>gitee优点就是服务器在国内，国内用户访问博客就不会那么卡顿，缺点是会审核上传的内容，如果内容不过关，他是不会同步到我们部署的博客。</p>
+<p>这里可以根据自己需求选择要创建什么远程仓库。也可以两个仓库一起创建，在配置好之后，每次写完笔记上传的时候，可以同时上传到两个仓库，这样就会有两个博客，可以根据需求选择访问哪个。</p>
+</blockquote>
+<p>Github远程仓库创建</p>
+<blockquote>
+<p>这里以github创建为例，gitee创建步骤也是如此。</p>
+<p><img src="/blog/fujian/fe5e2eee04ff10316ae65bbaa371fdfc.png"><br>登录Git，然后点击新建仓库</p>
+<p><img src="/blog/fujian/eb29c0fd5b9f0d7e0d70161cf1746d54.png"><br>创建远程仓库<br>注意，你的远程仓库名字是会影响后面的设置。<br>仓库名字有两种形式，<br>第一种：username.github.io，其中username是你的github账号的用户名<br>第二种: 直接命名</p>
+</blockquote>
+<h1 id="本地搭建"><a href="#本地搭建" class="headerlink" title="本地搭建"></a>本地搭建</h1><h2 id="博客目录初始化"><a href="#博客目录初始化" class="headerlink" title="博客目录初始化"></a>博客目录初始化</h2><p>博客目录初始化</p>
+<blockquote>
+<p><img src="/blog/fujian/9d9a8f8a689253b44713d9d8d9557197.png"><br>新建一个文件夹，专门用来存放博客文档，以及相关的附件</p>
+<p><img src="/blog/fujian/13445c79154d1a8f29613960d2531cbb.png"><br>在这个文件夹目录里，打开cmd</p>
+<p><img src="/blog/fujian/dfb03bada8a087db9632e66e2eda520a.png"><br>输入下面指令进行目录初始化<br><code>hexo init</code></p>
+</blockquote>
+<h2 id="博客配置文件的修改"><a href="#博客配置文件的修改" class="headerlink" title="博客配置文件的修改"></a>博客配置文件的修改</h2><p>配置文件的修改方式</p>
+<blockquote>
+<p><img src="/blog/fujian/4313c6b540a1a871cb18d64abfc333ca.png"><br>点击_config.yml这个配置文件，可以修改配置文件里的参数，从而修改博客的参数。</p>
+<p>具体的配置文件属性所对应的功能可以参考该下面的网址<br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">配置 | Hexo</a></p>
+</blockquote>
+<p>配置文件的常规属性修改</p>
+<blockquote>
+<p>配置文件里可以修改很多属性，这里只是修改常用的一些属性。</p>
+<p><img src="/blog/fujian/3fdf696786bff4ecca27a1074dbafa6a.png"><br>首先修改<br><code>author</code>、<code>language</code>、<code>timezone</code>这三个属性，分别是你的名字、网站使用语言、网站时区。<br>网站使用的语言,对于简体中文用户来说，常见有 <code>zh-Hans</code>和 <code>zh-CN</code>。<br>网站时区,对于中国大陆地区可以使用 <code>Asia/Shanghai</code></p>
+<p><img src="/blog/fujian/e0d167cb4abcf27031bd42344f329453.png"><br>这里的URL是你博客的网址，其形式是<code>http://username.github.io/project</code><br>其中username填写的是你git账号的用户名。<br>然后是中间的github.io，如果是使用github就是github.io，如果是使用gitee，就是gitee.io。<br>prject是你的远程仓库名字，即远程仓库里要作为博客的仓库名字。</p>
+<p>如果你的远程仓库名字是直接命名，比如blog，那么这里的url命名形式就为<code>http://username.github.io/blog</code>。<br>而如果你的远程仓库名字是<code>username.github.io</code>，那么你的url就得是<code>http://username.github.io</code></p>
+<p>注意，如果你想同时上传两个仓库，这里的url就以github为准。即<code>http://username.github.io/prject</code>或者<code>username.github.io</code></p>
+<p><img src="/blog/fujian/a24e8b8e21bae430639dc479094faac4.png"><br>这里repo就是你git仓库里的https网址或者ssh地址。<br>如果是https地址的话，在后面执行的hexo d指令的时候，会经常连不上github，因此这里建议用ssh地址。<br>https的地址形式是：<code> https://github.com/username/仓库名字.git</code><br>ssh地址形式是： <code>git@github.com :username/仓库名字.git</code><br>设置ssh地址之前得先配置ssh公钥。<br>branch是选择你git仓库的哪个分支，发布到博客。</p>
+<p><img src="/blog/fujian/7ed9f23a0c7d28f091dbea16c1c4dcf1.png"><br>如果想同时上传到两个仓库就以上面的形式去写。</p>
+</blockquote>
+<p>ssh公钥的设置</p>
+<blockquote>
+<p><img src="/blog/fujian/1fc08fc78ae0aa84fc1461b76aa72065.png"><br>首先在任意目录下打开git bash<br>然后输入ssh-keygen –t rsa 指令<br>其中ssh-keygen是生成公钥的指令，-t 是要指一种加密算法来生成， rsa是加密算法的一种，官方指定的算法，也有其他的加密算法<br>输入之后一直回车即可</p>
+<p><img src="/blog/fujian/0aaf590482ccb9054ed5a959ec621952.png"><br>生成完之后在这个地址里，<code>C:\Users\wumo\.ssh</code>（其中wumo是我的计算机名字），出现两个文件，上面是私钥，下面是公钥<br>用txt打开公钥，并且复制里面的信息</p>
+<p><img src="/blog/fujian/0a0997be6b2060c9fec70294c53b4ce4.png"><br>点击github设置</p>
+<p><img src="/blog/fujian/9bb11edc6d3d3a32934cf763ef2c4f60.png"></p>
+<p><img src="/blog/fujian/e1d374d07212941134ceca5ddc285c66.png"><br>输入复制的sshkey，然后点击添加</p>
+<p><img src="/blog/fujian/2657bd9f1baf6b9527d3021f5fd5d12a.png"><br>然后执行<code>ssh -T git@github.com</code>指令<br>当出现<code>Are you sure you want to continue connecting (yes/no/[fingerprint])? </code><br>输入<code>yes</code>等待，<code>输出Hi xxx! You&#39;ve successfully authenticated...</code>时<br>即连接成功。</p>
+<p>然后现在就可以在配置文件里的repo属性，填上仓库的ssh地址了。</p>
+<p><img src="/blog/fujian/c1b67f1cb7fad506c3aa41decb71f5a4.png"><br>如果是gitee就得点击账号设置</p>
+<p><img src="/blog/fujian/68952a6f5506817e97d669013184f848.png"><br>然后添加公钥<br>执行<code>ssh -T git@gitee.com</code>指令</p>
+</blockquote>
+<p>博客配置的验证</p>
+<blockquote>
+<p>可以先在本地验证博客是否正确配置。<br><img src="/blog/fujian/2e253b86c480025027cb3a5d300dd904.png"></p>
+<p>在这个文件夹目录里，打开cmd</p>
+<p><img src="/blog/fujian/417a6ce73fa121ded54bbaee3c07ac0f.png"><br>命令行窗口中输入hexo s ,然后复制这个链接在浏览器中打开</p>
+<p><img src="/blog/fujian/b9df0dc61c313bf8a0b2744721ac72de.png"><br>显示该网址，则配置成功。</p>
+</blockquote>
+<h2 id="hexo的部署"><a href="#hexo的部署" class="headerlink" title="hexo的部署"></a>hexo的部署</h2><p>git的配置和hexo部署</p>
+<blockquote>
+<p><img src="/blog/fujian/2e253b86c480025027cb3a5d300dd904.png"><br>在这个文件夹目录里，打开cmd</p>
+<p><img src="/blog/fujian/404ef9b296c8a16a49edb8fc07cff1a1.png"><br>然后在这个页面依次输入<br><code>npm install hexo-deployer-git --save</code> (安装插件)<br><code>git config --global user.name &quot;wumo&quot;    </code>（配置用户名，wumo是用户名）<br><code>git config --global user.email 1937901433@qq.com</code>（配置邮箱）<br><code>hexo cl</code> （ 清除缓存）<br><code>hexo g </code>      （生成静态网页）<br><code>hexo d  </code> （部署到Github)<br>（之后每次修改config配置文件，都得重新执行上面三句代码）</p>
+<p><img src="/blog/fujian/ac0f66d611590dc4a9ebcecff3186d68.png"><br>执行过程中，需要输入git账号密码进行登录验证。</p>
+<p>注意<br><img src="/blog/fujian/9db7b5157d1f377e52bf3fe06682e3dc.png"><br>如果执行过程中遇到这个错误。就是没有安装hexo-deployer-git插件</p>
+<p><img src="/blog/fujian/2e253b86c480025027cb3a5d300dd904.png"><br>在这个文件夹目录里，打开cmd</p>
+<p><img src="/blog/fujian/b068c808f450d9d292690680da8e298b.png"><br>输入下面指令进行安装<br><code>npm install hexo-deployer-git --save</code><br>然后重新执行<code>hexo cl</code>、 <code>hexo g </code>、<code>hexo d  </code>这三个指令。</p>
+</blockquote>
+<p>github仓库的设置</p>
+<blockquote>
+<p><img src="/blog/fujian/961bb002b57f07c53ee13bc3d4641b0c.png"><br>首先进入你github里博客的仓库</p>
+<p><img src="/blog/fujian/c77bfd169c5b54b782960995da82a478.png"><br>选择master进行保存</p>
+<p><img src="/blog/fujian/9e56838db2aefc3359908f0c4ac69332.png"><br>如果是gitee点击pages</p>
+<p><img src="/blog/fujian/bfd633bb13a43f2a440b52ce149eea26.png"><br>实名认证后点击更新即可。</p>
+<p><img src="/blog/fujian/623b44dc5b3da28ea74433b6f07908f3.png"><br>然后就配置完毕。等待几分钟，输入你博客的url就可以进入博客，刚刚开始输入可能会出现404，等待几分钟后输入就没问题了 。</p>
+</blockquote>
+<h2 id="Ob仓库的配置"><a href="#Ob仓库的配置" class="headerlink" title="Ob仓库的配置"></a>Ob仓库的配置</h2><p>ob的配置</p>
+<blockquote>
+<p><img src="/blog/fujian/2ae6efe4f14bc55e2b18cd314a2e60bb.png"><br>当你的远程仓库名字是随便命名的，那你的obsidian的仓库就只能设置在source文件夹里，即<code>.obsidian</code>配置文件夹路径必须是<code>source/.obsidian</code>。</p>
+<p>当你的远程仓库名字是username.github.io，那么你的obsidian仓库在哪个文件夹都可以。</p>
+<p><img src="/blog/fujian/e5b8df50d82b5c2ddba9990b06e37059.png"><br>打开 设置&gt;文件与链接&gt;Exclude Files</p>
+<p><img src="/blog/fujian/167fd95eb60a69e4b8ac7026f2b0f1ff.png"><br>文章都在source下，所以只保留source，其它的忽略掉,忽略之后这些文件夹里的文件将不会被搜索到。也就不会干扰你的博客文档。</p>
+<p><img src="/blog/fujian/5402aa43f4b38bb228e06eae4573e02a.png"><br>点击始终更新内部链接<br>关闭wiki链接，这样使用的图片链接就是传统图片链接，hexo只支持这种图片链接形式。<br>如果你的远程仓库名字是随便命名的，那么obsidian仓库就只能在<code>source</code>文件夹里，即<code>.obsidian</code>配置文件夹路径是<code>source/.obsidian</code>。那么你的内部链接类型就得设置绝对路径。</p>
+<p>如果远程仓库名字是xingwumo.github.io。那么ob仓库设置在哪个文件夹里都可以。如果ob仓库设置在<code>source</code>文件夹里，内部链接类型是相对路径还是绝对路径都可以。如果ob仓库设置在其他文件夹，比如source的上一层文件夹里，那么路径就只能设置相对路径。<br>（路径设置错误，博客里的图片链接就会有问题。）</p>
+<p><img src="/blog/fujian/764614955a0a744da934d581c82f1745.png"></p>
+<p>博客里的文章都在<code>source/_posts</code>这个文件夹里面<br>我们修改新建笔记的存放位置，让其是在默认在<code>source/_posts</code>文件夹里面。<br>后面我们在其他仓库里写的一些笔记，也可以直接放到这个文件夹同步到博客里。</p>
+<p><img src="/blog/fujian/8b5b1f02b20fc8c18e6d80762f6853f6.png"><br>在source里新建一个文件夹images，将其指定为默认附件。</p>
+</blockquote>
+<h2 id="Frontmatter模板"><a href="#Frontmatter模板" class="headerlink" title="Frontmatter模板"></a>Frontmatter模板</h2><p>设置Frontmatter元素的模板</p>
+<blockquote>
+<p><img src="/blog/fujian/0eaaf16e1cd6b38209c130aa575a37e8.png"><br>新建一个模板文件夹，专门存放博客的Frontmatter元素模板</p>
+<p><img src="/blog/fujian/15c0a8f88e01f4a6236bfe613da13fb3.png"><br>打开模板插件</p>
+<p><img src="/blog/fujian/fdb821dc062932f64c759d27e31d62c6.png"><br>设置模板插件</p>
+<p><img src="/blog/fujian/b27a181f84fec5a2e7a7119aed52152c.png"><br>在模板文件夹里，创建博客的Frontmatter元素模板。<br>我们每写一篇博客的文章，文章的前面都要插入这些元数据。<br>这样在将文章部署到github，并且生成hexo博客的时候，他会根据你插入的元数据，来为生成的博客进行标注和说明。<br>比如title元数据就是博客的标题，（ B7.OBSidian与HEXO的博客搭建方案 会自动获取当前文章的标题）<br>date元数据就是生成的博客的日期</p>
+<p>具体其他元素的作用，参考文档<br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">Front-matter | Hexo</a></p>
+</blockquote>
+<h1 id="博客的发布"><a href="#博客的发布" class="headerlink" title="博客的发布"></a>博客的发布</h1><h2 id="普通发布博客"><a href="#普通发布博客" class="headerlink" title="普通发布博客"></a>普通发布博客</h2><p>发布一篇博客过程</p>
+<blockquote>
+<p><img src="/blog/fujian/095a99e925505351216a4cdbdce735a8.png"><br>在posts里，新建一篇文章，并且进行命名</p>
+<p><img src="/blog/fujian/54bfef746619d2631ec1dcbee464a364.png"><br>插入模板，并写一些内容</p>
+<p><img src="/blog/fujian/811f919a125ad4d0be2406cad2f846b1.png"><br>在博客目录里，打开cmd，依次输入<code>hexo cl</code>,<code>hexo g</code>,<code>hexo d</code>,这三个指令，将博客进行发布。</p>
+<p><img src="/blog/fujian/9d816ee10b943d4e6e0654d5e4f33bd8.png"><br>如果远程仓库是github，此时可以直接进入你博客的网页进行查看，不过由于同步需要一定时间，可能需等几分钟才会进行更新</p>
+<p><img src="/blog/fujian/dc774bf90121be9316a00f4dd42115d9.png"><br>而如果远程仓库是gitee，那么每次发布博客就得点进去giteepage那里</p>
+<p><img src="/blog/fujian/386b855369f6f0a48999d3e5c03b3bfa.png"><br>点击更新</p>
+</blockquote>
+<h2 id="一键发布博客"><a href="#一键发布博客" class="headerlink" title="一键发布博客"></a>一键发布博客</h2><p>一键发布</p>
+<blockquote>
+<p><img src="/blog/fujian/422e1762f69d7ae800fe165886c72fb2.png"><br>在博客目录里，新建文本，并改名为XXX.bat</p>
+<p><img src="/blog/fujian/a49c969d7db6470bac675668de04cf50.png"><br>右键进行编辑</p>
+<p><img src="/blog/fujian/2ba91b375fbdaa13cea20f7190a78234.png"><br>输入这段指令然后进行保存<br><code>E:</code>&#x2F;&#x2F;进入E盘<br><code>cd E:\gongzuoxuexi\xuexiziliao\A5.博客仓库</code>&#x2F;&#x2F;进入你的博客仓库<br><code>hexo cl &amp;&amp; hexo g &amp;&amp; hexo d</code>&#x2F;&#x2F;执行博客的上传指令<br>之后每次写完新的博客，双击该bat脚本，就自动执行这三条指令，上传到博客了。</p>
+<p><img src="/blog/fujian/8d3f04c16e64aaa27fe2907c673feb89.png"><br>右键新建快捷方式，在“请键入对象的位置”下，用下面其中一种格式输入。<br>cmd &#x2F;c “批处理文件路径”&#x2F;&#x2F;批处理文件执行完后窗口自动关闭；<br>cmd &#x2F;k “批处理文件路径”&#x2F;&#x2F;批处理文件执行完后窗口自动关闭； </p>
+<p><img src="/blog/fujian/1450331ca49766902d02cea81e336e76.png"><br>点击下一步</p>
+<p><img src="/blog/fujian/afa23eabb691cf276a092362d9baac6b.png"><br>点击完成</p>
+<p><img src="/blog/fujian/e748c64e0f130cfd02436c617bf70bac.png"><br>生成的这个就可以固定在开始，或者任务栏，只要在Ob写好文章，点击该文件，就自动上传到博客。</p>
+</blockquote>
+<h2 id="gitee-pages自动更新"><a href="#gitee-pages自动更新" class="headerlink" title="gitee pages自动更新"></a>gitee pages自动更新</h2><p>gitee pages自动更新的前提</p>
+<blockquote>
+<p>首先，教程前面创建远程仓库的时候，我们要创建github,gitee一共两个仓库，并且在配置文件_config那里，将远程仓库的配置，配置成我们创建的两个仓库。<br>这样每次写完笔记，执行指令，就可以同时上传到两个仓库。<br>GitHub是支持提交文件之后，会自动进行部署。<br>而gitee不支持提交后自动部署的。我们就github使用动作gitee-pages-action来让gitee去部署仓库里的内容。</p>
+</blockquote>
+<p>gitee pages自动更新的配置</p>
+<blockquote>
+<p><img src="/blog/fujian/26eca7a696747855aeafb734cd55289a.png"><br>进入我们创建的GitHub仓库，点击设置</p>
+<p><img src="/blog/fujian/53ebe70b8ab3f8a1936b6fed2be98cb3.png"><br>新建一个secret</p>
+<p><img src="/blog/fujian/d3130e3d855a1bec14b6d7ef826ef510.png"><br>在secret那里写入你的gitee账号的密码，然后点击add secret</p>
+<p><img src="/blog/fujian/4ef366e357bc4e90d5a5d57b3ae5c23d.png"><br>打开<code>_config.yml</code>文件，在include属性里，添加下面代码<br><code>  - &quot;.github/**/*&quot;</code></p>
+<p><img src="/blog/fujian/17c4da6e9ca8d8428565ad4f2595d07f.png"><br><code>skip_render</code>属性添加下面代码<br><code>  - &quot;.github/**/*&quot;</code></p>
+<p><img src="/blog/fujian/0b8b6cb79a2735a830e75de0409d9562.png"><br>在deploy属性里的github仓库配置里，添加让<code>ignore_hidden</code>为<code>false</code>。</p>
+<p><img src="/blog/fujian/72caf36709996ed7f178dc28bab91087.png"><br>在我们本地博客目录里的source文件夹，添加<code>.github\workflows\sync.yml</code>文件，并在这个文件里面进行配置.具体配置的代码在下面。<br>配置完，每次写完笔记，依次输入<code>hexo cl</code>,<code>hexo g</code>,<code>hexo d</code>,这三个指令，会自动将笔记上传到github和gitee。<br>github在接收到文件后，就会自动进行部署，并github会让还会gitee进行部署。就不需要我们手动进行部署。这样生成两个博客，我们就根据需求就相应的博客地址分享给别人。 </p>
+</blockquote>
+<p>配置的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">name: Sync</span><br><span class="line"></span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: ubuntu-latest </span><br><span class="line">    steps:</span><br><span class="line">    - name: Build Gitee Pages</span><br><span class="line">      uses: yanglbme/gitee-pages-action@main</span><br><span class="line">      with:</span><br><span class="line">        # 注意替换为你的 Gitee 用户名</span><br><span class="line">        gitee-username: xingwumo</span><br><span class="line">        # 注意在 Settings-&gt;Secrets 配置 GITEE_PASSWORD</span><br><span class="line">        gitee-password: $&#123;&#123; secrets.GITEE_PASSWORD &#125;&#125;</span><br><span class="line">        # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错。如果你的Gitee 的地址为 https://gitee.com/用户名/xxx ，那么 gitee-repo 就填写为 用户名/xxx。</span><br><span class="line">        gitee-repo: xingwumo/blog</span><br><span class="line">        # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）</span><br><span class="line">        branch: master</span><br></pre></td></tr></table></figure>
+
+
+<p>运行验证</p>
+<blockquote>
+<p><img src="/blog/fujian/9d010caa9d9fbe37fc326e026cd352f4.png"><br>写完笔记，依次输入<code>hexo cl</code>,<code>hexo g</code>,<code>hexo d</code>,这三个指令，会自动将笔记上传到github和gitee。<br>然后打开github里我们创建的仓库，点击Actions，查看action是否在让gitee进行部署。</p>
+<p><img src="/blog/fujian/828601266e15c2ad18e71151dc97f879.png"><br>这里Build Gitee Pages打勾了，说明已经让gitee部署成功。<br>同时关注微信也可以 Gitee 官方公众号，并绑定个人 Gitee 帐号，用于接收帐号登录通知，每次github 使用action 对gitee进行部署。 Gitee 官方公众号都会提示帐号进行登录，说明action正在运行。</p>
+</blockquote>
+<h1 id="主题的修改"><a href="#主题的修改" class="headerlink" title="主题的修改"></a>主题的修改</h1><p>主题网址</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">Themes | Hexo</a></p>
+</blockquote>
+<p>主题修改教程</p>
+<blockquote>
+<p>可以参考这个视频<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cW411A7Jx?p=9">https://www.bilibili.com/video/BV1cW411A7Jx?p=9</a></p>
+</blockquote>
+<h1 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h1><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a><br><a target="_blank" rel="noopener" href="https://kokutou.space/2023/06/26/Obisidian%E4%B8%8EHexo%E7%9A%84%E5%90%8C%E6%AD%A5%E7%BB%B4%E6%8A%A4%E6%96%B9%E6%A1%88/">OBSidian与HEXO的同步维护方案 | kokutou</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/552639819">2022【保姆级教程】含泪搭建hexo博客 - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/554333805">Obsidian+Git完美维护Hexo博客 - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ts4y1h7cZ/?spm_id_from=333.337.search-card.all.click&vd_source=5d8a7d8ddc04929556de27ab690f6d0a">【Hexo+Obsidian】Web博客搭建教程_哔哩哔哩_bilibili</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cW411A7Jx/?p=8&spm_id_from=333.880.my_history.page.click&vd_source=5d8a7d8ddc04929556de27ab690f6d0a">八、hexo主题预览_哔哩哔哩_bilibili</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/357493736/answer/1724839853">码云gitee搭建hexo博客，push上去之后，page为什么不能自动更新，得手动更新page？ - 知乎 (zhihu.com)</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ytikewk/p/16471634.html">hexo博客同时发布到github和gitee， 并使用gitee page action更新gitee page - 啦啦啦小石头 - 博客园 (cnblogs.com)</a><br><a target="_blank" rel="noopener" href="https://github.com/yanglbme/gitee-pages-action">yanglbme&#x2F;gitee-pages-action: 🤖 Auto Deploy Gitee Pages by GitHub Action | 无须人为干预，由 GitHub Action 自动部署 Gitee Pages</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://xingwumo.github.io/blog">wumo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://xingwumo.github.io/blog/2023/07/01/B7.OBSidian%E4%B8%8EHEXO%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88/">http://xingwumo.github.io/blog/2023/07/01/B7.OBSidian%E4%B8%8EHEXO%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://xingwumo.github.io/blog" target="_blank">wumo学习分享仓库</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/blog/fujian/f29e80ed140a6f314281b4f2556197f0.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wumo</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%80%E9%9C%80%E4%B8%9C%E8%A5%BF"><span class="toc-number">1.1.</span> <span class="toc-text">所需东西</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">Node安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">Hexo安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">1.4.</span> <span class="toc-text">远程仓库的创建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">本地搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%BD%95%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">博客目录初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">2.2.</span> <span class="toc-text">博客配置文件的修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-number">2.3.</span> <span class="toc-text">hexo的部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ob%E4%BB%93%E5%BA%93%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">2.4.</span> <span class="toc-text">Ob仓库的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Frontmatter%E6%A8%A1%E6%9D%BF"><span class="toc-number">2.5.</span> <span class="toc-text">Frontmatter模板</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%8F%91%E5%B8%83"><span class="toc-number">3.</span> <span class="toc-text">博客的发布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2"><span class="toc-number">3.1.</span> <span class="toc-text">普通发布博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%94%AE%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2"><span class="toc-number">3.2.</span> <span class="toc-text">一键发布博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitee-pages%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="toc-number">3.3.</span> <span class="toc-text">gitee pages自动更新</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">4.</span> <span class="toc-text">主题的修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%95%99%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">参考教程</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B7.OBSidian%E4%B8%8EHEXO%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88/" title="B7.OBSidian与HEXO的博客搭建方案"><img src="/blog/fujian/f29e80ed140a6f314281b4f2556197f0.png" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B7.OBSidian与HEXO的博客搭建方案"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B7.OBSidian%E4%B8%8EHEXO%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%96%B9%E6%A1%88/" title="B7.OBSidian与HEXO的博客搭建方案">B7.OBSidian与HEXO的博客搭建方案</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/blog/fujian/f29e80ed140a6f314281b4f2556197f0.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wumo</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
