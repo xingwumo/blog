@@ -1,0 +1,1806 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>B1.C++基础知识 | wumo学习分享仓库</title><meta name="author" content="wumo"><meta name="copyright" content="wumo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="C++编程基础C++的概述C++和C的区别  C++是面向对象的语言，C是面向过程。面向过程编程（Procedural Programming）是一种程序设计范式，其核心思想是将程序分解为一系列独立的函数，每个函数代表一个具体的操作，程序的执行过程是按照函数调用的顺序依次执行的。相比之下，面向对象编程（Object-Oriented Programming，OOP）则是一种更加高级的程序设计范式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="B1.C++基础知识">
+<meta property="og:url" content="http://xingwumo.github.io/blog/2023/07/01/B1.C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="wumo学习分享仓库">
+<meta property="og:description" content="C++编程基础C++的概述C++和C的区别  C++是面向对象的语言，C是面向过程。面向过程编程（Procedural Programming）是一种程序设计范式，其核心思想是将程序分解为一系列独立的函数，每个函数代表一个具体的操作，程序的执行过程是按照函数调用的顺序依次执行的。相比之下，面向对象编程（Object-Oriented Programming，OOP）则是一种更加高级的程序设计范式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://xingwumo.github.io/blog/fujian/7f6aba31b4c37b3ff37eeec6dea1eb08.jpg">
+<meta property="article:published_time" content="2023-06-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-30T18:03:11.284Z">
+<meta property="article:author" content="wumo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xingwumo.github.io/blog/fujian/7f6aba31b4c37b3ff37eeec6dea1eb08.jpg"><link rel="shortcut icon" href="/blog/img/favicon.png"><link rel="canonical" href="http://xingwumo.github.io/blog/2023/07/01/B1.C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'B1.C++基础知识',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-01 02:03:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/blog/fujian/7f6aba31b4c37b3ff37eeec6dea1eb08.jpg')"><nav id="nav"><span id="blog-info"><a href="/blog/" title="wumo学习分享仓库"><span class="site-name">wumo学习分享仓库</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">B1.C++基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-30T18:03:11.284Z" title="更新于 2023-07-01 02:03:11">2023-07-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/C/">C++</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="B1.C++基础知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="/blog/fujian/7f6aba31b4c37b3ff37eeec6dea1eb08.jpg"></p>
+<h1 id="C-编程基础"><a href="#C-编程基础" class="headerlink" title="C++编程基础"></a>C++编程基础</h1><h2 id="C-的概述"><a href="#C-的概述" class="headerlink" title="C++的概述"></a>C++的概述</h2><p>C++和C的区别</p>
+<blockquote>
+<p>C++是面向对象的语言，C是面向过程。<br>面向过程编程（Procedural Programming）是一种程序设计范式，其核心思想是将程序分解为一系列独立的函数，每个函数代表一个具体的操作，程序的执行过程是按照函数调用的顺序依次执行的。<br>相比之下，面向对象编程（Object-Oriented Programming，OOP）则是一种更加高级的程序设计范式，其核心思想是将程序看作是一组相互作用的对象，每个对象具有自己的数据和操作，对象之间通过消息传递进行交互。</p>
+</blockquote>
+<h2 id="C-基础的程序结构"><a href="#C-基础的程序结构" class="headerlink" title="C++基础的程序结构"></a>C++基础的程序结构</h2><p>基础的程序</p>
+<blockquote>
+<p><img src="/blog/fujian/88c6b01d0a9905021863f2a9425f7cdd.png"><br>程序的运行结果<br>Hello World!</p>
+</blockquote>
+<p>程序的结构说明</p>
+<blockquote>
+<p><code>#include&lt;iostream&gt;</code>语句说明<br>其中#include指令是文件包含指令，作用是去引入头文件进来。上述语句的作用就是引入iostream头文件进来。<br>为了方便程序员编程,C++提供了许多已经写好的函数、类等这些程序，程序员可以直接使用，而这些写好的类、函数会被写在头文件里，程序需要引入对应的头文件，才能使用头文件里已经写好的程序。<br>iostream是一个最基本的头文件，基本上C++程序都需要引入这个头文件。</p>
+<p>using namespace std；语句说明<br>主要作用就是释放std这个命名空间。iostream头文件里的许多声明定义都是在std命名空间里写的，释放std之后，我们就可以直接用iostream里声明定义的东西。（具体的解释说明，后面说讲到命名空间里会说。）</p>
+<p>int main() 语句说明<br>int main是main函数，是C++程序的入口，每个C++程序必须要有一个main函数。程序在执行时候，会去执行main函数里写的语句程序。</p>
+</blockquote>
+<h2 id="C-的编译执行"><a href="#C-的编译执行" class="headerlink" title="C++的编译执行"></a>C++的编译执行</h2><p>C++程序的执行原理</p>
+<blockquote>
+<p>高级语言程序(称为源程序)虽然编写方便,但计算机不能直接执行,必须经过一定的软件(例如解释程序、编译和连接程序等)对其进行加工,生成由机器指令表示的程序(称为目标程序),然后才能由计算机来执行。这种加工过程可以分为编译和解释两种方式。</p>
+</blockquote>
+<p>C++编译执行的过程</p>
+<blockquote>
+<p>整个编译的过程可以大致的分为编译和连接两个步骤，编译阶段将源程序转换成目标文件,连接阶段将目标文件连接成可执行文件。</p>
+<p>也可将整个编译执行过程可以细致的划分为，预处理（预编译阶段）、编译、汇编、链接四个阶段。</p>
+</blockquote>
+<p>预处理阶段</p>
+<blockquote>
+<p>该阶段主要处理源程序中的预处理指令。<br>具体就是处理宏定义指令<code> #define</code> 、头文件包含指令 <code>#include </code>、条件编译指令 <code>#ifdef </code>等 ，在这个阶段，预处理器会读入源程序并执行预处理指令，然后将预处理后的源程序生成一个新的中间文件。</p>
+</blockquote>
+<p>编译阶段</p>
+<blockquote>
+<p>该阶段主要是进行语法检查，将预处理阶段生成的中间文件，转换为汇编语言。<br>编译器会将源程序中的代码转换成汇编语言，并生成一个目标文件。</p>
+</blockquote>
+<p>汇编阶段</p>
+<blockquote>
+<p>该阶段将编译阶段生成的目标文件，从汇编语言转换为机器语言。<br>汇编器会将编译器生成的目标文件里面的汇编语言转换为机器语言，并生成一个可重定位目标文件（obj文件）。</p>
+</blockquote>
+<p>链接阶段</p>
+<blockquote>
+<p>该阶段主要将可重定位目标文件和库文件链接成一个可执行文件。<br>链接器会将编译器和汇编器生成的目标文件（obj文件），和库文件（调用的库函数代码或自定义文件代码）链接起来，生成一个可执行文（exe文件）。</p>
+</blockquote>
+<p>静态链接和动态链接的区别</p>
+<blockquote>
+<p>静态链接（static linking）是指在编译链接阶段，将所需要的库文件的代码全部复制到目标文件中，生成一个独立的可执行文件，这个可执行文件就包含了所有需要的函数和库文件代码。<br>目标文件中使用的所有函数和库函数的代码都被复制并包含在最终的可执行文件中，所以在运行这个可执行文件时不需要再加载任何库文件。<br>这样做的好处是，可以直接在目标机器上运行，不需要依赖外部的库文件。<br>缺点是这种方式会造成可执行文件的体积较大。</p>
+<p>动态链接（dynamic linking）是指在编译链接阶段只把库文件相关信息记录在可执行文件中，而不是把库文件的代码全部复制到可执行文件中。<br>在运行时，当需要调用库函数时，操作系统会自动从磁盘上加载相应的库文件，将库文件中的代码加载到内存中，然后进行链接。<br>因此，这种方式可以减小可执行文件的体积，减少磁盘空间的占用。<br>缺点是需要保证在运行时可执行文件所依赖的库文件必须存在，否则程序就无法运行。</p>
+<p>总的来说，静态链接生成的可执行文件比较大，但是独立性强，不需要依赖库文件；动态链接生成的可执行文件比较小，但是依赖于系统的共享库文件，如果这些库文件不存在或者版本不兼容，就会导致程序无法运行。</p>
+</blockquote>
+<p>源程序（源文件）的理解</p>
+<blockquote>
+<p>C++中源程序指的是由C++语言编写的文本文件，其中包含程序的源代码，即一系列的指令和语句。通常以<code>.cpp</code>等扩展名结尾。</p>
+</blockquote>
+<p>目标文件</p>
+<blockquote>
+<p>目标文件是编译器将源文件编译成机器代码后生成的文件，这些文件以二进制形式存储着机器码、符号表以及其他与目标文件有关的信息。</p>
+</blockquote>
+<p>可执行文件的理解</p>
+<blockquote>
+<p>最终生成的可执行文件就是可以运行的程序，它包含了所有的代码和数据。当我们运行程序时，操作系统会将可执行文件加载到内存中，并执行其中的代码。</p>
+</blockquote>
+<p>注意</p>
+<blockquote>
+<ol>
+<li>现阶段，许多C++编辑器在写好C++程序后，点击编译按钮，则会完成整个编译过程生成一个可执行文件</li>
+<li>编译器会将一个工程里的所有.cpp文件以分离的方式编译完毕后，再由链接器进行链接成为一个可执行文件。</li>
+<li>编译器会将一个工程里的所有.cpp文件以分离的方式编译完毕后，再由链接器进行链接成为一个可执行文件。</li>
+<li>头文件本身不参与编译过程。</li>
+</ol>
+</blockquote>
+<h2 id="C-输入与输出"><a href="#C-输入与输出" class="headerlink" title="C++输入与输出"></a>C++输入与输出</h2><p>cin的理解</p>
+<blockquote>
+<p>cin表示输入流对象,它是输入&#x2F;输出流库的一部分。与cin相关联的设备是键盘，用法如下<br>cin&gt;&gt;V1&gt;&gt;V2&gt;&gt;… &gt;&gt;Vn;<br>其中,“&gt;&gt;”称做提取运算符, V1、V2,、.. . ,Vn都是事先定义好的变量。此语句的执行功能是,程序暂时中止执行,等待用户从键盘上输入数据。当用户输入了所有的数据后,应按回车键结束输人,程序会将用户输入的数据形成输入数据流,用提取运算符“&gt;&gt;”将该数据流存储到各个变量中,并继续执行后续的语句。</p>
+</blockquote>
+<p>举例</p>
+<blockquote>
+<p>cin&gt;&gt;p&gt;&gt;q;<br>就是要求用户分别为变量p和q各输人一个数据。在输入时,应注意用空格、Tab键或回车键将所输入的数据分隔开(注意不能使用逗号、分号或其他符号间隔)。</p>
+</blockquote>
+<p>cout的理解</p>
+<blockquote>
+<p>cout表示输出流对象,它也是输人&#x2F;输出流库的一部分,与cout相关联的设备是显示器,其基本用法如下:<br>cout&lt;&lt;E1&lt;&lt;E2&lt;&lt;… &lt;&lt;Em;<br>其中,“&lt;&lt;”称作插人运算符,E1、E2、… Em可以是常量、变量或表达式。<br>此语句的执行功能是,将各个常量、变量或表达式的值输出(显示)到显示设备上。</p>
+</blockquote>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>标识符的理解</p>
+<blockquote>
+<p>标识符是程序中变量、类型、函数和标号的名称,可以由程序设计者命名,也可以由系统指定。标识符由字母,数字和下画线”_“组成。</p>
+</blockquote>
+<p>标识符规则</p>
+<blockquote>
+<ol>
+<li>第一个字符不能是数字。与FORTRAN和 BASIC等程序设计语言不同</li>
+<li>C++的编译器把大写和小写字母当作不同的字符,即区分字母的大小写。</li>
+<li>不同的C+＋编译器对在标识符中最多可以使用多少个字符的规定各不相同,ANSI标准规定编译器应识别标识符的前6个字符。</li>
+</ol>
+</blockquote>
+<p>关键字</p>
+<blockquote>
+<p>在C++中,有些标识符具有专门的意义和用途,它们不能当做一般的标识符使用,这些标识符称为关键字。<br>主要有：<br><img src="/blog/fujian/0edd07d9774fd2b89070aaff5f147d57.png"></p>
+</blockquote>
+<p>编译预处理指令单词</p>
+<blockquote>
+<p>C++还使用了下列12个标识符作为编译预处理的命令单词<br>define、elif、else、endif、error、if、ifdef、ifndef、include、line、progma、undef<br>并赋予了特定的含义。程序员在命名变量﹑数组和函数时也不要使用它们。</p>
+</blockquote>
+<p>标点和特殊字符</p>
+<blockquote>
+<p>在C++字符集中,标点和特殊字符有各种用途,包括组织程序文本、定义编译器等。有些标点符号也是运算符,编译器可从上下文确定它们的用途。C++的标点和特殊字符如下:<br><img src="/blog/fujian/cb05555b5b7a9abc244d1c17772b4aab.png"><br>这些字符在C＋+中均具有特定的含义，程序员在命名时也是不能用他们的。</p>
+</blockquote>
+<h2 id="编程思路"><a href="#编程思路" class="headerlink" title="编程思路"></a>编程思路</h2><p>编程的步骤</p>
+<blockquote>
+<p><img src="/blog/fujian/1e952907b9bd1df3942c885ec2acc34e.png"><br><img src="/blog/fujian/5e61b48ba7a973f8b133cec8e7025bdf.png"></p>
+</blockquote>
+<h2 id="左值引用和右值引用"><a href="#左值引用和右值引用" class="headerlink" title="左值引用和右值引用"></a>左值引用和右值引用</h2><p>左值理解</p>
+<blockquote>
+<p>左值（lvalue）是指具有标识符的表达式，即可以在赋值操作符的左边出现的表达式。左值可以是变量、对象、函数等，它们具有持久性并且可以被取地址。</p>
+</blockquote>
+<p>右值理解</p>
+<blockquote>
+<p>右值（rvalue）是指临时的、无法被修改的表达式，它们不能出现在赋值操作符的左边。右值可以是字面常量、表达式的结果、临时对象等。</p>
+</blockquote>
+<p>左值和右值的区别</p>
+<blockquote>
+<p>简单来说，左值是可以被取地址并且具有持久性的表达式，而右值是临时的、无法被修改的表达式。</p>
+</blockquote>
+<p>左值引用的定义形式</p>
+<blockquote>
+<p>左值引用使用 <code>&amp;</code> 符号来声明，例如 <code>int&amp; ref = variable;</code><br>左值引用只能绑定到左值，即具有持久性的、具名的对象。</p>
+</blockquote>
+<p>右值引用的定义形式</p>
+<blockquote>
+<p>右值引用使用 <code>&amp;&amp;</code> 符号来声明，例如 <code>int&amp;&amp; rref = 42;</code><br>右值引用可以绑定到右值，即临时的、无法被修改的值，如字面常量、表达式结果和临时对象。</p>
+</blockquote>
+<p>右值引用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int&amp;&amp; rvalueRef = 42;  // 绑定到右值</span><br><span class="line">int x = std::move(rvalueRef);  // 移动 rvalueRef 中的值到 x</span><br><span class="line"></span><br><span class="line">在上述示例中，rvalueRef 是一个右值引用，可以绑定到右值 42，然后使用 std::move 将其值移动到变量 x 中。</span><br></pre></td></tr></table></figure>
+
+<p>右值引用的目的</p>
+<blockquote>
+<p>右值引用的引入主要是为了支持移动语义，即将资源从一个对象转移给另一个对象，而不是进行资源的拷贝操作，从而提高程序的性能和效率。<br>右值引用也支持完美转发</p>
+</blockquote>
+<h2 id="extern-“C”"><a href="#extern-“C”" class="headerlink" title="extern “C”"></a>extern “C”</h2><p>extern “C”的理解</p>
+<blockquote>
+<p>extern “C” 的作用，就是为了能够实现在C++代码里正确的调用C语言代码。也就是说，在C++代码里，编译器会让在extern “C” 里的代码按C语言的方式进行编译，而不是按照C++的方式进行编译。</p>
+</blockquote>
+<p>而C语言并不支持函数重载，因此编译C语言代码的函数时不会带上函数的参数类型，一般只包括函数名。</p>
+<p>extern “C”使用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// C++ 代码</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">extern &quot;C&quot; &#123;</span><br><span class="line">    void myCFunction(int num) &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;Calling C function with num = &quot; &lt;&lt; num &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    myCFunction(42); // 调用 C 函数</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">在上面的示例中，我们在 C++ 代码中定义了一个 extern &quot;C&quot; 块，在其中声明了一个名为 myCFunction 的函数。该函数是由 C 代码提供的，并在 C++ 代码中进行调用。使用 extern &quot;C&quot; 使得 C++ 编译器不会对函数名进行修饰，从而使其与 C 代码兼容。</span><br></pre></td></tr></table></figure>
+
+
+<p>C和C++ 编译器编译时对函数名的处理</p>
+<blockquote>
+<p>C++ 编译器在编译过程中，根据函数的参数类型、返回类型等信息，对函数名进行一定的改写或加上特定的标识，以区分不同的函数。<br>这个修饰过程称为名称修饰（Name Mangling）。这是为了支持C++的函数重载和命名空间等特性。<br>由于 C++ 支持函数重载，即可以有多个同名函数但参数类型或个数不同，为了能够区分这些函数，编译器需要在编译时对函数名进行改写，加上一些标识信息，使得这些函数的名称在目标文件中是唯一的，因此编译器编译函数的过程中会将函数名进行一定的改写。</p>
+<p>C语言并不支持函数重载，因此编译C语言代码的函数时，不会对函数名进行修饰。</p>
+</blockquote>
+<p>C++ 编译器对函数名进行修饰的举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">例如，对于下面的 C++ 函数声明：</span><br><span class="line">void myFunction(int a);</span><br><span class="line">void myFunction(float a);</span><br><span class="line"></span><br><span class="line">C++ 编译器会根据参数类型的不同，对函数名进行修饰，使其在目标文件中具有不同的名称，例如：</span><br><span class="line">_myFunction_i    // 对应 void myFunction(int a)</span><br><span class="line">_myFunction_f    // 对应 void myFunction(float a)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>extern &quot;C&quot;</code> 是为了确保 C++ 编译器将函数声明和定义按照 C 的方式进行处理，以兼容 C 语言的链接规则。它的作用主要有两个方面：</p>
+<blockquote>
+<ol>
+<li>去除 C++ 的名称修饰：C++ 编译器对函数名进行修饰，加上一些额外的标识，用于区分函数重载和命名空间等特性。但在与 C 代码进行链接时，C 编译器不会对函数名进行修饰，因此需要使用 <code>extern &quot;C&quot;</code> 告诉 C++ 编译器不要对函数名进行修饰，保持与 C 代码的函数名一致。</li>
+<li>保持链接规则一致：C 和 C++ 有不同的函数链接规则。C 函数使用的是 C 链接规则，即使用 C 语言的名字解析和链接方式；而 C++ 函数使用的是 C++ 链接规则，即使用 C++ 的名字解析和链接方式。通过使用 <code>extern &quot;C&quot;</code>，可以告诉 C++ 编译器使用 C 链接规则来处理函数链接，保持与 C 代码的链接规则一致。</li>
+</ol>
+</blockquote>
+<h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p>内存泄漏的理解</p>
+<blockquote>
+<p>内存泄漏指的是在程序运行过程中，分配的内存空间没有被正确释放或释放的时机不当，导致这部分内存无法再被程序访问和利用，从而造成内存资源的浪费。</p>
+</blockquote>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><h2 id="常量的基础知识"><a href="#常量的基础知识" class="headerlink" title="常量的基础知识"></a>常量的基础知识</h2><p>常量的理解</p>
+<blockquote>
+<p>C++的数据有两种基本形式，一是常量,一是变量。<br>在C++中，常量就是我们写的具体的数值，比如整数常量10、实数常量3.14和字符常量’A’。它是程序中的一种固定值。常量可以是整数、实数、字符或字符串等数据类型。<br>常量在程序运行期间不可更改。</p>
+</blockquote>
+<p>常量的类型</p>
+<blockquote>
+<p>常量有两种基本类型：字面常量和符号常量。字面常量是程序中直接出现的常量值，例如整数常量10、实数常量3.14和字符常量’A’。符号常量则是在程序中定义的常量，通过使用#define预处理器指令或const关键字来定义，它们在程序中被用于代替具体的数值，从而提高程序的可读性和可维护性。</p>
+</blockquote>
+<h2 id="常量的后缀"><a href="#常量的后缀" class="headerlink" title="常量的后缀"></a>常量的后缀</h2><p>常量的数据类型</p>
+<blockquote>
+<p>常量通过本身的书写格式就说明了该常量的类型。</p>
+</blockquote>
+<p>无后缀数值</p>
+<blockquote>
+<p>当什么后缀都没写时，则根据有无小数点及位数来决定其具体类型，如：123表示的是有符号整型数，而12341434则是有符号长整型数；而34.43表示双精度浮点数。</p>
+</blockquote>
+<p>有后缀数值</p>
+<blockquote>
+<p>在C++中，数字表达提供了一系列的后缀进行表示，如下：<br>u或U  表示数字是无符号整型数，如：123u，但并不说明是长整型还是短整型  </p>
+<p>l或L  表示数字是长整型数，如：123l；而123ul就是无符号长整型数；而34.4l就是长双精度浮点数，等效于双精度浮点数  </p>
+<p>i64或I64  表示数字是长长整型数，其是为64位操作系统定义的，长度比长整型数长。如：43i64  </p>
+<p>f或F  表示数字是单精度浮点数，如：12.3f   </p>
+<p>e或E  表示数字的次幂，如：34.4e-2就是0.344；0.2544e3f表示一个单精度浮点数，值为254.4  
+     </p>
+</blockquote>
+<h2 id="常量修饰符const"><a href="#常量修饰符const" class="headerlink" title="常量修饰符const"></a>常量修饰符const</h2><p>const的理解</p>
+<blockquote>
+<p>如果要表示某个变量的值不能修改,可使用常量修饰符const,通过const修饰的变量称为常量变量。<br>使用<code>const</code>修饰的变量在定义时必须进行初始化赋值，否则会导致编译错误。因为<code>const</code>变量的值在定义之后就不能再被修改，所以必须在定义时就赋一个初始值。</p>
+</blockquote>
+<p>语法格式</p>
+<blockquote>
+<p>const &lt;类型说明符&gt;&lt;常量名&gt; &#x3D; &lt;常量值&gt;;</p>
+</blockquote>
+<p>举例</p>
+<blockquote>
+<p><img src="/blog/fujian/ffdab64d2c721dd9dce41414a6146045.png"></p>
+</blockquote>
+<p>注意</p>
+<blockquote>
+<p>使用const修饰的变量实际上是常量,不能被程序改变,因此在声明时一定要进行初始化赋值。常量变量一经生成,其值再不能改变,如果在以后的执行语句对常量变量进行赋值就会导致编译错误。<br>例如:<br><img src="/blog/fujian/38b8ac6042171f2c78e9317c72e47579.png"></p>
+<p>除此之外,常量修饰符还可用于修饰函数的参数。<br>例如:<br><img src="/blog/fujian/6cad1a9ff1fb1a1a68867b892016e5cf.png"><br>表示在函数体内参数arr和 count的值不能改变,不允许出现对它们的赋值操作。</p>
+</blockquote>
+<h2 id="常量表达式的修饰符constexpr"><a href="#常量表达式的修饰符constexpr" class="headerlink" title="常量表达式的修饰符constexpr"></a>常量表达式的修饰符constexpr</h2><p>constexpr的理解</p>
+<blockquote>
+<p><code>constexpr</code> 是 C++11 引入的关键字，用于声明一个函数或变量为常量表达式。常量表达式是在编译时可以被计算出来的表达式，因此具有编译时计算的特性。被声明为 <code>constexpr</code> 的函数和变量可以用于需要编译时常量的场合，例如数组大小、模板参数等。<br>使用<code>constexpr</code>关键字修饰函数，可以指示编译器在编译期间就对函数进行求值，从而可以在编译期就得到结果，避免了运行时的开销。</p>
+</blockquote>
+<p> 函数用<code>constexpr</code>声明的条件</p>
+<blockquote>
+<p>对于函数而言，只有满足以下条件的函数才能被声明为 <code>constexpr</code>：</p>
+<ul>
+<li>函数的返回值和参数的类型必须都是字面值类型（literal type）。</li>
+<li>函数体必须只包含简单语句，不能有循环、分支等复杂的控制语句。</li>
+<li>函数体内只能调用其他的 <code>constexpr</code> 函数。</li>
+</ul>
+</blockquote>
+<p> <code>constexpr</code>使用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//例如，下面的代码定义了一个 `constexpr` 函数 `square`，用于计算一个整数的平方：</span><br><span class="line">constexpr int square(int x) &#123;</span><br><span class="line">    return x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//在编译时，如果使用了 `square` 函数，那么传入的参数必须是一个常量表达式，例如：</span><br><span class="line">constexpr int y = square(5); // 正确，编译时计算出 y 的值为 25</span><br><span class="line">int z = square(5); // 错误，z 不是常量表达式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//注意，即使声明了 `constexpr`，如果在使用过程中传入的不是常量表达式，仍然会在运行时进行计算，而不是在编译时进行计算。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="八进制常量"><a href="#八进制常量" class="headerlink" title="八进制常量"></a>八进制常量</h2><p>八进制常量书写格式</p>
+<blockquote>
+<p>八进制常量书写格式以0打头,后面是八进制数。例如:<br>072、066,0377,06660</p>
+</blockquote>
+<p>八进制的作用</p>
+<blockquote>
+<p>八进制数主要用于表示转义字符。用八进制常数构造转义字符时要使用3位八进制数,最前面用于表示八进制数的0可以省略,但不足3位时前面要补0。<br>用八进制数构造的转义字符不仅可以表示控制字符、ASCII 码,还可以表示代码值在128 ~255之间的扩展ASCII码。例如，如果用八进制常数表示一个值为157的扩展ASCII码(人民币元符号￥) ,因为十进制的157换算为八进制数就等于0235 ,所以其转义字符为’\235’。</p>
+</blockquote>
+<p>二进制转为八进制的方法</p>
+<blockquote>
+<p>如果要将二进制数换算为八进制数,首先将其由右向左每3位分成1组,然后分别将各组换算为1位八进制数,最后在结果的最前面加上一个表示八进制数的0即可。</p>
+<p>例如,要将二进制数10011101换算为八进制数,首先将其分为3组:<br>10,011,101,然后将各组直接用一位八进制数表示。<br>二进制的10,011和101换算为八进制数后分别等于2、3和5.因此二进制数10011101换算为八进制数为0235.</p>
+</blockquote>
+<p>八进制转换二进制的方法</p>
+<blockquote>
+<p>将八进制数转换为二进制数也同样简单,只要将八进制数中的各位数转换为3位二进制数即可。在转换时要注意,每个八进制数位一定要转换为3位二进制数,不足3位时要在前面补0。</p>
+</blockquote>
+<h2 id="十六进制常量"><a href="#十六进制常量" class="headerlink" title="十六进制常量"></a>十六进制常量</h2><p>十六进制书写格式</p>
+<blockquote>
+<p>十六进制常量书写格式以0x或0X开头,后面是十六进制数。例如:0X12A、0XFFFF、0x7106、0x89AB</p>
+</blockquote>
+<p>二进制转为十六进制的方法</p>
+<blockquote>
+<p>例如,二进制数11111111转换为十六进制数时,首先将二进制数由右向左每4位分为1组:1111,1111<br>然后将各组分别转换为十六进制数(均为F),并在结果FF的最前面加上表示十六进制数的“0X”,即可得出转换后的结果0XFF。</p>
+</blockquote>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="变量的基础知识"><a href="#变量的基础知识" class="headerlink" title="变量的基础知识"></a>变量的基础知识</h2><p>变量的理解</p>
+<blockquote>
+<p>C+＋的数据有两种基本形式,一是常量,一是变量。<br>在C++中，变量是程序中用于存储和操作数据的重要元素，它可以存储各种数据类型的值，然后我们可以使用变量的标识符来修改和访问变量存储的值。</p>
+<p>它提供了一种将数据与一个特定的标识符相关联的方法，使得我们可以在程序中使用这些数据。</p>
+<p>在C++中，我们可以通过赋值语句或其他方法来改变变量的值。变量的值也可以被读取。</p>
+<p>注意<br>变量有自己的数据类型，它定义了变量可以存储的数据的类型和范围。<br><strong>在使用变量前，得先说明其数据类型,否则程序无法为该变量分配对应的存储空间,即变量要遵循“先说明,后使用”的原则。</strong> 这条原则不仅适用于变量,同样适用于C+＋程序的其他成分,例如函数、类型和宏等。</p>
+</blockquote>
+<p>变量的使用举例</p>
+<blockquote>
+<p><code>int a =5;</code><br>&#x2F;&#x2F;定义了一个整形变量a，存储了值5。</p>
+</blockquote>
+<h2 id="变量的声明、定义和初始化"><a href="#变量的声明、定义和初始化" class="headerlink" title="变量的声明、定义和初始化"></a>变量的声明、定义和初始化</h2><p>变量的定义的理解</p>
+<blockquote>
+<p>为变量分配存储空间就为变量的定义。<br>注意，在为变量初始化，自然也就完成了变量的定义，因为为变量初始化，自然就给变量分配了存储空间。程序中，变量有且仅有一个定义。</p>
+</blockquote>
+<p>变量的定义举例</p>
+<blockquote>
+<p>int a;<br>&#x2F;&#x2F;定义里一个整形变量a</p>
+</blockquote>
+<p>变量初始化的理解</p>
+<blockquote>
+<p><strong>一般而言,使用变量前要对变量进行初始化操作</strong>。对变量初始化，就对变量赋值。<br>这可以通过在变量定义之后使用专门的赋值语句来完成<br>另一方面,C++也允许在定义变量的同时对变量赋一个初值。例如:<br>int a&#x3D;5;<br>&#x2F;&#x2F;定义了一个整形变量a，并赋值5。</p>
+<p>另外,还有一种初始化变量的方法,其格式如下:<br><code>&lt;类型&gt;&lt;变量&gt;(&lt;表达式&gt;)</code><br>例如int a(5);</p>
+<p>注意<br>如果仅仅定义了某个变量而没有给它赋一定的初值,则该变量的值是一个不确定的量(其具体数值可能和用户所使用的操作系统、运行时间状态等因素有关)。程序员一定要注意这一点,因为一旦疏忽,有时会造成程序逻辑错误。因此,在变量定义时就给它赋初值,是一个比较好的编程习惯。</p>
+</blockquote>
+<p>变量的声明的理解</p>
+<blockquote>
+<p>变量的声明，就是用于向程序表明变量的类型和名字。</p>
+</blockquote>
+<p>变量的声明和定义的关系</p>
+<blockquote>
+<p>1.在C++中定义了变量，也就声明了变量。当定义变量时我们声明了它的类型和名字。例如int i;</p>
+<p>2.在C++中声明了变量，不一定定义了变量。比如extern关键字声明变量名而不定义它，即不分配存储空间，此时变量就是只有声明而没有定义，举例， extern int i; 只是声明了却没有定义</p>
+<p>3.在声明中并且进行初始化，就被当作定义，即使前面加了extern。例如：extern double pi&#x3D;3.1416; （只有当extern声明位于函数外部时，才可以被初始化。 ）</p>
+<p>（总的来说就是 变量的定义&#x3D;声明+变量分配存储空间））</p>
+</blockquote>
+<h2 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h2><h3 id="作用域的基础知识"><a href="#作用域的基础知识" class="headerlink" title="作用域的基础知识"></a>作用域的基础知识</h3><p>变量作用域的理解</p>
+<blockquote>
+<p>每个变量都有一定的有效作用范围,称为作用域,变量只能在其作用域中是可见的,或者说在该区域内是可以使用的,而在作用域以外是不能访问的。</p>
+</blockquote>
+<p>变量根据作用域的划分</p>
+<blockquote>
+<p>根据作用域的不同,可以将C++程序中的变量分为局部变量和全局变量。</p>
+</blockquote>
+<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>局部变量的理解</p>
+<blockquote>
+<p>局部变量是在函数或分程序中声明的变量,只能在本函数或分程序的范围内使用。局部变量被分配在堆栈里。<br>局部变量一般都是自动变量，生存期为程序执行到变量定义域中的期间,局部变量分配存储空间,并设置初值，当程序离开变量定义域，会立即将自动变量占用的存储空间释放</p>
+</blockquote>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>全局变量的理解</p>
+<blockquote>
+<p>定义于所有函数之外的变量称为全局变量，可以由本源程序文件中位于该全局变量声明之后的所有函数共同使用。全局变量被分配在全局数据段<br>全局变量一般是静态变量，在程序运行之前就为变量分配存储空间并设置初值，,全局变量具有和程序执行期相同的生存期</p>
+<p>全局变量的用途是在各个函数之间建立某种数据传输通道。通常,在编程时人们大多使用返回值和参数表在函数之间传递数据,这样做的好处是数据流向清晰自然,易于控制,数据也比较安全。<br>但有时会遇到这种情况,某个数据被许多函数所共用,为了简化函数的参数表,可以将其说明为全局变量。</p>
+<p>初看起来全局变量可以被所有的函数所共用,使用简单方便,因此被一些初学者所喜爱,并在程序中大量使用。实际上,滥用全局变量会破坏程序的模块化结构,使程序难于理解和调试，因此要尽量少用或不用全局恋量。</p>
+</blockquote>
+<p>全局变量的扩展和限定</p>
+<blockquote>
+<p>一般来说,全局变量的作用域还可以扩充到其它源程序中,只要在相应的源程序文件中加入外部函数说明语句extern即可。<br>当然,也可以通过在说明语句之前加上static明确说明某全局变量的作用域仅限于说明该变量的源程序文件中。</p>
+</blockquote>
+<p>代码举例</p>
+<blockquote>
+<p>代码<br><img src="/blog/fujian/470d6cbd10825c999b6c00a60c9f122d.png"><br><img src="/blog/fujian/4034db97a68cd284d9fc7c2e31222f56.png"></p>
+<p>输出结果<br>The result in func1 : 100<br>The result in func2 : 49<br>x &#x3D; 0</p>
+</blockquote>
+<h2 id="变量的存储类别"><a href="#变量的存储类别" class="headerlink" title="变量的存储类别"></a>变量的存储类别</h2><h3 id="变量存储类别的基础知识"><a href="#变量存储类别的基础知识" class="headerlink" title="变量存储类别的基础知识"></a>变量存储类别的基础知识</h3><p>变量根据存储类别的划分</p>
+<blockquote>
+<p>在C++中,根据变量存在时间的不同,可以将存储类别分为4种,即自动(Auto)、静态( Static)、寄存器( Register)和外部(Extern)。</p>
+</blockquote>
+<h3 id="自动变量（auto修饰的变量）"><a href="#自动变量（auto修饰的变量）" class="headerlink" title="自动变量（auto修饰的变量）"></a>自动变量（auto修饰的变量）</h3><p>自动变量的理解</p>
+<blockquote>
+<p>自动变量的特点是在程序运行到自动变量的作用域(即声明了自动变量的函数或分程序)中时,才为自动变量分配相应的存储空间,此后才能向变量中存储数据或读取变量中的数据。<br>一旦退出声明了自动变量的函数或分程序之后,程序会立即将自动变量占用的存储空间释放,被释放的空间还可以重新分配给其它函数中声明的自动变量使用。</p>
+<p>因此,自动变量的生存期是从程序进入声明了该自动变量的函数或分程序开始,到程序退出该函数或分程序时结束。在此期间之外自动变量是不存在的。自动变量的初值在每次为自动变量分配存储空间后都要重新设置。</p>
+<p>自动变量对存储空间的利用是动态的,通过分配和回收,不同函数中定义的自动变量可以在不同的时间中共享同一块存储空间,从而提高了存储器的利用率。<br>显然,前面介绍的局部变量(也包括函数的参数)都是自动变量。同样,在整个程序运行过程中,一个自动变量可能经历若干个生存期。而在自动变量的各个不同生存期中程序为该变量分配的存储空间的具体地址可能并不相同,因此在编写程序时,不能期望在两次调用同一个函数时,其中定义的同一个局部变量的值之间会有什么联系</p>
+</blockquote>
+<p>自动变量的声明</p>
+<blockquote>
+<p>一般在函数体或程序块中声明的变量,其存储类别的默认形式是自动变量。当然,也可以使用关键字auto来进行显式声明,例如:<br>auto int x，y，z ;<br>auto double a &#x3D;98.0;</p>
+</blockquote>
+<h3 id="静态变量（static修饰的变量）"><a href="#静态变量（static修饰的变量）" class="headerlink" title="静态变量（static修饰的变量）"></a>静态变量（static修饰的变量）</h3><p>静态变量的理解</p>
+<blockquote>
+<p>由static修饰的变量都是静态变量<br>静态变量的特点是在程序开始运行前就为其分配了相应的存储空间,在程序的整个运行期间静态变量一直占用着这些存储空间,直到整个程序运行结束为止。因此,静态变量的生存期就是整个程序的运行期。</p>
+<p>总的来说静态变量就两个作用，一个作业是延长变量的生存期，静态变量的生存期就是整个程序的运行期。<br>其次是静态变量可以共享数据，比如类的静态成员数据，可以被所有对象共享。</p>
+<p>注意<br>在主函数的开始声明的局部变量也具有和整个程序运行期相同的生存期。</p>
+</blockquote>
+<p>static修饰局部变量的作用</p>
+<blockquote>
+<p>局部变量一般是动态变量，用static修饰之后就为静态局部变量。<br>静态局部变量的作用域仍为定义局部变量的函数或分程序,但其生存期扩大到整个程序的运行期。在声明静态变量的同时还声明了初值,则该初值也是在分配存储空间的同时设置的,以后在程序的运行期间不再重复设置。</p>
+<p>静态局部变量的主要用途是保存函数的执行信息，以便下次进入该函数以后仍然可以继续使用。</p>
+</blockquote>
+<p>static修饰全局变量的作用</p>
+<blockquote>
+<p>全局变量一般就是静态变量，但是如果用static修饰全局变量，就可以将它的作用域限定在当前文件内部。</p>
+</blockquote>
+<p>变量的存储类型与作用域的关系</p>
+<blockquote>
+<p>全局变量都是静态变量，局部变量一般是动态变量，但是可以将局部变量变为静态局部变量。</p>
+</blockquote>
+<h3 id="寄存器变量"><a href="#寄存器变量" class="headerlink" title="寄存器变量"></a>寄存器变量</h3><p>寄存器变量的理解</p>
+<blockquote>
+<p>所谓寄存器变量,即为该变量分配的存储空间并不在内存储器中,而是CPU的某个寄存器中。<br>如果将某寄存器分配给一个变量,则由于该变量中的数据无须再去内存中存取,因此速度很快。但由于通常计算机中寄存器的数目很少,使用又很频繁,因此只有那些使用最多的变量才应该声明为寄存器变量。<br>尽管如此,C++规定,程序中只能定义整型寄存器变量(包括char型, int型和指针变量),而且程序员定义的寄存器变量并不一定都能分配到寄存器。C++的编译程序有权在寄存器不够分配时将一些或全部寄存器变量自动转换为一般变量。</p>
+<p>注意:只有局部自动变量和形参可以作为寄存器变量,其它变量如全局变量、局部静态变量都不能作为寄存器变量出现。</p>
+</blockquote>
+<p>寄存器变量的声明形式</p>
+<blockquote>
+<p>寄存器变量的声明方法为在原来的变量声明语句之前加上 register,例如:<br><code>register int i,j;</code></p>
+</blockquote>
+<h3 id="外部变量"><a href="#外部变量" class="headerlink" title="外部变量"></a>外部变量</h3><p>外部变量的理解</p>
+<blockquote>
+<p>使用extern可以声明某一个变量为已定义外部变量,其格式如下:<br><code>extern &lt;类型说明符&gt;&lt;变量名表&gt;;</code><br>此时是指这些变量是外部变量，而非本函数的同名局部变量。</p>
+</blockquote>
+<p>外部变量的使用举例</p>
+<blockquote>
+<p><img src="/blog/fujian/d1a78e739c2065eb66597204f34aad09.png"><br>注意<br>只有已经被定义的全局变量，才能在其他文件中被声明为外部变量。</p>
+</blockquote>
+<h2 id="auto自动推导变量的类型"><a href="#auto自动推导变量的类型" class="headerlink" title="auto自动推导变量的类型"></a>auto自动推导变量的类型</h2><p>auto自动推导变量的类型的理解</p>
+<blockquote>
+<p>在C++11中，引入了auto关键字，可以用于自动推导变量的类型。</p>
+</blockquote>
+<p>使用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">vector&lt;int&gt; v = &#123;1, 2, 3, 4, 5&#125;;</span><br><span class="line">auto it = v.begin();</span><br><span class="line"></span><br><span class="line">//编译器会自动推导出it的类型为vector&lt;int&gt;::iterator。这样我们就不需要手动声明迭代器类型，简化了代码的书写。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用auto的注意事项</p>
+<blockquote>
+<p>使用<code>auto</code>自动推导变量类型的代价相对较小，但也有一些需要注意的问题：</p>
+<ol>
+<li>代码可读性降低：使用<code>auto</code>可以让代码更简洁，但是也可能让代码难以阅读，特别是在变量命名不明确或代码行数过多的情况下。</li>
+<li>类型错误难以发现：如果<code>auto</code>推导出的类型与预期类型不同，编译器可能会报错，但错误信息可能比较晦涩难懂，需要仔细分析才能找到问题。因此，建议在使用<code>auto</code>时仍然要给变量起一个明确的名称，并尽可能明确变量的类型。</li>
+<li>可能会影响代码性能：虽然使用<code>auto</code>推导变量类型通常不会影响代码性能，但在一些特殊情况下，比如在循环中使用<code>auto</code>，可能会导致代码性能下降，因为每次迭代都需要进行类型推导。</li>
+</ol>
+<p>总的来说，使用<code>auto</code>可以简化代码，减少类型错误，但需要注意代码可读性和性能问题。</p>
+</blockquote>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="数据类型的基础知识"><a href="#数据类型的基础知识" class="headerlink" title="数据类型的基础知识"></a>数据类型的基础知识</h2><p>基本数据类型的类型说明符</p>
+<blockquote>
+<p>类型说明符指出了变量的数据类型,该类型决定了变量的格式和行为。下面是一些基本数据类型的类型说明符:<br>char：字符类型<br>short：短整型<br>int：整型<br>long：长整型<br>float：浮点类型<br>double：双精度类型<br>bool：布尔类型</p>
+</blockquote>
+<h2 id="不同类型数据参与运算"><a href="#不同类型数据参与运算" class="headerlink" title="不同类型数据参与运算"></a>不同类型数据参与运算</h2><p>不同类型数据参与运算的规则</p>
+<blockquote>
+<p>C++规定,不同类型的数据在参加运算之前会自动转换成相同的类型,然后再进行运算。运算结果的类型也就是转换后的类型。转换的规则如下:<br>级别低的类型转换为级别高的类型。</p>
+<p>各类型按级别由低到高的顺序为char,int,unsigned(无符号整型),long , unsigned long(无符号长整型),float , double。</p>
+<p>例如,将一个char类型的数据和一个int类型的数据进行运算,其结果为int型;<br>一个int 型的数据和一个double型数据的运算,结果的类型为double型。</p>
+<p>另外,C++规定,有符号类型数据和无符号类型的数据进行混合运算,结果为无符号类型。例如, int型数据和unsigned类型数据的运算结果为unsigned型。</p>
+<p>对于赋值运算来说,如果赋值运算符右边的表达式的类型与赋值运算符左边的变量的类型不一致,则赋值时会首先将赋值运算符右边的表达式按赋值运算符左边的变量的类型进行转换，然后将转换后的表达式的值赋给赋值运算符左边的变量。整个赋值表达式的值及其类型也是这个经过转换后的值及其类型。</p>
+</blockquote>
+<p>举例说明</p>
+<blockquote>
+<p><code>int a;</code><br><code>a=1+0.5;</code><br>这时候1是整型数据，0.5是float型数据，两者之间，最高的数据类型是float，所以相加前，两者都会转为float数据类型，而且运算结果也是float数据类型。</p>
+<p>然后就是要把1.5赋值给a，而a是int数据类型，1.5是float数据类型，就会把1.5转为int数据类型（转换的过程会自动切除掉小数点后面的数字），最终a会等于1。</p>
+</blockquote>
+<h2 id="类型修饰符signed和unsigned"><a href="#类型修饰符signed和unsigned" class="headerlink" title="类型修饰符signed和unsigned"></a>类型修饰符signed和unsigned</h2><p>signed和unsigned的理解</p>
+<blockquote>
+<p>基本类型说明语句的前面还可以加上各种修饰符。修饰符用来改变基本类型的意义,以便更准确地适应各种情况的需求。C＋＋提供的修饰符如下:<br><code>signed</code>&#x2F;&#x2F;有符号<br><code>unsigned</code>&#x2F;&#x2F;无符号</p>
+<p>signed的意义为带符号。由于基本类型char，short ，int ，long 等均为带符号位的类型,因此signed修饰符的用途不大。<br>unsigned适用于char , short , int和 long四种整数类型,其意义为取消符号位,只表示正值。</p>
+</blockquote>
+<p>signed和unsigned修饰int</p>
+<blockquote>
+<p>当类型修饰符应用于int类型之前时,可以省略int不写(即int是隐含表示的)。例如:<br><code>signed int</code>等价于<code>signed</code><br><code>unsigned int </code>等价于<code>unsigned</code></p>
+<p>实际上,前面所讲的long和 short 也是类型修饰符,只不过是省略了后面的int。<br>如果将long用于double之前,会形成―种新的数据类型long double,在有些系统中它可以提供比double类型更多的存储空间。</p>
+</blockquote>
+<h2 id="C风格强制类型转换操作符"><a href="#C风格强制类型转换操作符" class="headerlink" title="C风格强制类型转换操作符"></a>C风格强制类型转换操作符</h2><p>强制类型转换操作符的理解</p>
+<blockquote>
+<p>在程序中使用强制类型转换操作符可以明确地控制数值的数据类型转换，使数值的数据类型，转换成其他的数据类型。</p>
+</blockquote>
+<p>强制类型转换操作符的形式</p>
+<blockquote>
+<p>两种形式形式,一种是C++保留的C语言形式,由一个放在括号中的类型名组成,置于表达式或变量之前,即<br><code>(类型名)表达式</code><br>其结果是表达式的类型被转换为由强制类型转换操作符所标明的类型。<br>例如,如果i的类型为int ,表达式（ double)i将i强制转换为double类型。</p>
+<p>另一种方式是C+＋新增加的形式,类型名不加括号,而将表达式或变量以括号括起来,即<br><code>类型名(表达式)</code><br>例如, double( i)也可以将i强制转换为double类型。</p>
+</blockquote>
+<h2 id="C-的四种强制类型转换"><a href="#C-的四种强制类型转换" class="headerlink" title="C++的四种强制类型转换"></a>C++的四种强制类型转换</h2><h3 id="静态转换"><a href="#静态转换" class="headerlink" title="静态转换"></a>静态转换</h3><p>静态转换（Static Cast）</p>
+<blockquote>
+<p>静态转换可以用于基本类型之间的转换，它可以将一个表达式的类型转换为另一种相关类型，例如将整数转换为浮点数。也可以用于具有继承关系的类之间的转换，它可以在派生类和基类之间进行转换。<br>它还可以用于其他类型的转换，例如将一个枚举类型转换为整数类型，或者将一个指针转换为void指针等。</p>
+<p>它在编译时转换，即不提供运行时的安全检查。如果进行的转换是不安全的，例如将一个指针转换为错误类型的指针，静态转换无法提供保证，可能导致程序出现未定义行为。</p>
+</blockquote>
+<p>静态转换基本类型转换举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int a = 10;</span><br><span class="line">double b = static_cast&lt;double&gt;(a);  // 将整数转换为浮点数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>静态转换具有继承关系的类之间的转换举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Base &#123;</span><br><span class="line">public:</span><br><span class="line">    void doSomething() &#123;</span><br><span class="line">        // 基类的成员函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Derived : public Base &#123;</span><br><span class="line">public:</span><br><span class="line">    void doSomethingExtra() &#123;</span><br><span class="line">        // 派生类的额外成员函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    Derived derivedObj;</span><br><span class="line">    </span><br><span class="line">    // 将派生类对象转换为基类指针</span><br><span class="line">    Base* basePtr = static_cast&lt;Base*&gt;(&amp;derivedObj);</span><br><span class="line">    </span><br><span class="line">    // 可以通过基类指针调用基类的成员函数</span><br><span class="line">    basePtr-&gt;doSomething();</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">需要注意的是，静态转换在进行类之间的转换时，没有运行时的类型检查。这意味着如果将基类指针或引用转换为错误的派生类指针或引用，静态转换也会成功，但可能导致程序出现未定义行为。因此，在进行类之间的转换时，需要确保转换是安全和合理的。</span><br></pre></td></tr></table></figure>
+
+<h3 id="动态转换"><a href="#动态转换" class="headerlink" title="动态转换"></a>动态转换</h3><p>动态转换（Dynamic Cast）的理解</p>
+<blockquote>
+<p>动态转换主要用于继承关系的类之间进行转换，且这些类的基类得具有是多态性。基类具有多态性即包含虚函数，那么就可以将基类指针或引用，动态转换为派生类指针或引用。<br>它在运行时转换，即在运行时进行类型检查，如果转换是合法的，则执行转换，否则返回空指针（对于指针转换）或引发<code>std::bad_cast</code>异常（对于引用转换）。</p>
+</blockquote>
+<p>动态转换举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">class Base &#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void doSomething() &#123;</span><br><span class="line">        // 基类的成员函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Derived : public Base &#123;</span><br><span class="line">public:</span><br><span class="line">    void doSomethingExtra() &#123;</span><br><span class="line">        // 派生类的额外成员函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    Base* basePtr = new Derived();</span><br><span class="line">    </span><br><span class="line">    // 使用动态转换将基类指针转换为派生类指针</span><br><span class="line">    Derived* derivedPtr = dynamic_cast&lt;Derived*&gt;(basePtr);</span><br><span class="line">    </span><br><span class="line">    // 检查转换结果是否为空</span><br><span class="line">    if (derivedPtr != nullptr) &#123;</span><br><span class="line">        // 可以通过派生类指针调用派生类特有的成员函数</span><br><span class="line">        derivedPtr-&gt;doSomethingExtra();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // 转换失败，对象实际上不是派生类的实例</span><br><span class="line">        // 进行相应的处理</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    delete basePtr;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">此示例中，`basePtr` 是基类指针，指向派生类对象。通过使用 `dynamic_cast` 进行动态转换，将 `basePtr` 转换为派生类指针 `derivedPtr`。由于对象实际上是派生类的实例，因此转换成功，`derivedPtr` 不为空。可以通过 `derivedPtr` 调用派生类特有的成员函数 `doSomethingExtra()`。</span><br><span class="line"></span><br><span class="line">对于没有多态性的基类指针，是无法使用动态转换的。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注意区分两种情况</span><br><span class="line">第一种：</span><br><span class="line">Base* basePtr = new Derived();</span><br><span class="line">表示创建了一个派生类对象，并用基类指针 basePtr 指向该对象。由于派生类是基类的一种特殊情况，因此这是有效的。</span><br><span class="line"></span><br><span class="line">然后使用 dynamic_cast 进行动态转换 </span><br><span class="line">Derived* derivedPtr = dynamic_cast&lt;Derived*&gt;(basePtr);</span><br><span class="line">这是将基类指针 basePtr 转换为派生类指针 Derived*。由于派生类指针可以指向基类对象，因此这个转换是有效的。</span><br><span class="line">在这个情况下如果转换成功，即 `derivedPtr` 不为空指针，则可以通过 `derivedPtr` 调用派生类 `Derived` 中的所有成员函数，包括基类继承的成员函数和派生类自己定义的成员函数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第二种：</span><br><span class="line">Base* basePtr = new Base(); </span><br><span class="line">表示创建了一个基类对象，并用基类指针 basePtr 指向该对象。</span><br><span class="line"></span><br><span class="line">然后使用 dynamic_cast 进行动态转换 </span><br><span class="line">Derived* derivedPtr = dynamic_cast&lt;Derived*&gt;(basePtr);</span><br><span class="line">这是将基类指针 basePtr 转换为派生类指针 Derived*。由于基类对象不是派生类的实例，这个转换将失败，返回一个空指针</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>不具有多态的转换举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">情况1：</span><br><span class="line">如果 Base 不是多态类，而 Derived 是其派生类</span><br><span class="line">Base* basePtr = new Derived();</span><br><span class="line">Derived* derivedPtr = static_cast&lt;Derived*&gt;(basePtr);</span><br><span class="line"></span><br><span class="line">尽管 basePtr 实际指向的是 Derived 类的对象，但是由于 Base 类不是多态类，没有虚函数的情况下，使用 static_cast 进行类型转换并不会检查实际运行时对象的类型。</span><br><span class="line"></span><br><span class="line">在这种情况下，编译器只会简单地将基类指针 basePtr 转换为派生类指针 Derived*，而不会检查转换的有效性。这意味着无论转换是否有效，都不会引发编译器错误或警告。</span><br><span class="line"></span><br><span class="line">因此，当 Base 不是多态类时，使用 static_cast 进行类型转换是合法的，但是需要注意确保转换的正确性，否则可能导致程序出现未定义的行为或错误的结果。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">情况2：</span><br><span class="line">如果 Base 不是多态类，而 Derived 是其派生类</span><br><span class="line">Base* basePtr = new Derived();</span><br><span class="line">Derived* derivedPtr = dynamic_cast&lt;Derived*&gt;(basePtr);</span><br><span class="line"></span><br><span class="line">由于 Base 不是多态类，没有虚函数，因此 dynamic_cast 无法在运行时执行类型检查，转换操作将会失败。</span><br><span class="line"></span><br><span class="line">在这种情况下，dynamic_cast 返回的指针将会是一个空指针，即 derivedPtr 将会是 nullptr。这是因为 dynamic_cast 在进行类型转换时会进行运行时的类型检查，如果发现转换是不安全的或不合法的，则返回空指针。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="常量转换"><a href="#常量转换" class="headerlink" title="常量转换"></a>常量转换</h3><p>常量转换（Const Cast）的理解</p>
+<blockquote>
+<p><code>const_cast</code>用于去除常量属性，允许对常量对象进行修改。<br>它主要用于将<code>const</code>限定符添加或移除，以便在某些情况下更方便地操作对象。<br>他是编译时转换，即不会在运行时检查类型</p>
+</blockquote>
+<p>引用的常量转换的举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void modifyValue(const int&amp; value) &#123;</span><br><span class="line">    int&amp; mutableRef = const_cast&lt;int&amp;&gt;(value);</span><br><span class="line">    mutableRef = 10; // 修改原本被声明为常量的值</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int a = 5;</span><br><span class="line">    const int&amp; ref = a;</span><br><span class="line">    modifyValue(ref);</span><br><span class="line">    // 现在 a 的值变为 10</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">在上述代码中，modifyValue 函数接受一个常量引用参数 value，然后使用 const_cast 将其转换为可修改的非常量引用 mutableRef。通过 mutableRef 修改了原本被声明为常量的值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>指针的常量转换的举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void printValue(int* value) &#123;</span><br><span class="line">    std::cout &lt;&lt; &quot;Non-const version: &quot; &lt;&lt; *value &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void printValue(const int* value) &#123;</span><br><span class="line">    std::cout &lt;&lt; &quot;Const version: &quot; &lt;&lt; *value &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int a = 5;</span><br><span class="line">    const int* constPtr = &amp;a;</span><br><span class="line">    printValue(const_cast&lt;int*&gt;(constPtr)); // 调用非常量版本的函数</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">在上述代码中，存在两个重载的函数 printValue，一个接受 int* 参数，另一个接受 const int* 参数。通过使用 const_cast 将 constPtr 转换为 int*，可以调用非常量版本的函数。</span><br><span class="line">需要注意的是，const_cast 应该谨慎使用，因为它可能导致未定义行为或破坏程序的常量性质。应该只在确保安全的情况下使用 const_cast 进行常量转换。</span><br></pre></td></tr></table></figure>
+
+<p>未定义行为的理解</p>
+<blockquote>
+<p>未定义行为（Undefined Behavior）是指在程序运行过程中，根据C++标准，无法确定程序的行为的情况。</p>
+</blockquote>
+<p>常见未定义行文</p>
+<blockquote>
+<p>在C++中，一些常见的引起未定义行为的情况包括：</p>
+<ol>
+<li>未初始化变量的使用：使用未初始化的变量的值会产生未定义行为。变量应该在使用之前进行初始化。</li>
+<li>数组越界访问：访问数组元素时超出了数组的范围也会导致未定义行为。应该确保数组索引在有效范围内。</li>
+<li>空指针解引用：解引用空指针会导致未定义行为。在使用指针之前应该进行有效性检查。 </li>
+<li>对已释放的内存进行访问：释放了内存后仍然使用指向该内存的指针也会产生未定义行为。应该注意正确管理内存的生命周期。</li>
+<li>整数溢出：当整数运算导致结果超出类型的表示范围时，会产生未定义行为。应该谨慎进行整数运算。</li>
+<li>多个修改同一变量而没有同步：当多个线程或并发操作同时修改同一变量而没有适当的同步机制时，会产生未定义行为。</li>
+</ol>
+</blockquote>
+<h3 id="重新解释转换"><a href="#重新解释转换" class="headerlink" title="重新解释转换"></a>重新解释转换</h3><p>重新解释转换（Reinterpret Cast）的理解</p>
+<blockquote>
+<p><code>reinterpret_cast</code>用于不相关类型之间的转换，例如将指针转换为整数类型或将整数类型转换为指针类型。它提供了一种低级别的转换，没有类型检查，很容易导致错误。<br>它在编译时转换，即不会在运行时检查类型。</p>
+</blockquote>
+<p>reinterpret_cast将指针转换为整数使用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int* ptr = new int(42);</span><br><span class="line">uintptr_t value = reinterpret_cast&lt;uintptr_t&gt;(ptr);  // 将指针转换为无符号整数</span><br><span class="line">在上述示例中，通过 reinterpret_cast 将 int 类型的指针 ptr 转换为 uintptr_t 类型的整数 value。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>将整数转换为指针的使用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uintptr_t value = 12345;</span><br><span class="line">int* ptr = reinterpret_cast&lt;int*&gt;(value);  // 将整数转换为指针</span><br><span class="line">在上述示例中，通过 reinterpret_cast 将 uintptr_t 类型的整数 value 转换为 int 类型的指针 ptr。</span><br></pre></td></tr></table></figure>
+
+<p>类型间的指针转换使用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class A &#123;</span><br><span class="line">public:</span><br><span class="line">    void foo() &#123;</span><br><span class="line">        // 类 A 的成员函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class B &#123;</span><br><span class="line">public:</span><br><span class="line">    void bar() &#123;</span><br><span class="line">        // 类 B 的成员函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">A* aPtr = new A();</span><br><span class="line">B* bPtr = reinterpret_cast&lt;B*&gt;(aPtr);  // 将指向 A 类的指针转换为指向 B 类的指针</span><br><span class="line">在上述示例中，通过 reinterpret_cast 将指向类 A 的指针 aPtr 转换为指向类 B 的指针 bPtr。需要注意的是，这种类型转换在语义上是不安全的，因为类 A 和类 B 之间可能具有不同的内存布局和成员函数，因此使用 reinterpret_cast 进行类指针的转换需要谨慎，确保转换的正确性。</span><br><span class="line"></span><br><span class="line">总之，reinterpret_cast 允许进行底层的重新解释转换，但需要注意潜在的安全问题和平台依赖性。</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="地址间的强制转换类型"><a href="#地址间的强制转换类型" class="headerlink" title="地址间的强制转换类型"></a>地址间的强制转换类型</h2><p>结构体的各个数据地址的理解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Struct T</span><br><span class="line">&#123;</span><br><span class="line">	A a;</span><br><span class="line">	B b;</span><br><span class="line">	C c;</span><br><span class="line">&#125;</span><br><span class="line">里面有三个数据类型ABC，每次创建一个结构体的对象，他就会再内存里连续的开辟一个空间，而这个对象的空间的大小=数据类型A的大小+B的大小+C的大小，那么在开辟的这个空间里，他会依次把空间大小分配a,b,c。</span><br><span class="line">假设创建一个结构体对象t，</span><br><span class="line">a的空间地址为d1d2，地址长度为2。</span><br><span class="line">b的空间地址为d3d4d5，地址长度为3。</span><br><span class="line">c的空间地址为d6d7d8d9，地址长度为4。</span><br><span class="line">t的地址就等于d1d2d3d4d5d6d7d8d9,地址长度为9。也就是&amp;t等于d1d2d3d4d5d6d7d8d9。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看数据的数据类型方式（地址的数据类型）</p>
+<blockquote>
+<p><code>T *s=&amp;t,</code>也就是说t地址能赋值给s，说明t的地址（即&amp;t）的类型为<code>T*</code>类型。通过这个例子，我们可以知道，某种类型数据的地址的数据类型，就是这个类型数据+<code>*</code>。比如int h，h为int数据类型，&amp;h的数据类型就是<code>int*</code>。</p>
+</blockquote>
+<p>不同类型的地址之间转换的效果</p>
+<blockquote>
+<p>不同数据类型地址间的强制转换，就是在首地址不变的情况下，地址长度的转换。<br>如<code>T*</code>类型的地址长度为9，<code>A*</code>类型的地址长度为2。<code>T*</code>转换成<code>A*</code>地址类型，则首地址不变，地址长度变为2。同理<code>A*</code>转成<code>T*</code>，其地址长度从2变为9，首地址不变。</p>
+</blockquote>
+<p>不同类型的地址之间转换举例</p>
+<blockquote>
+<p>地址数据转换类型<code>（A*）&amp;t</code>，这个意思就是说把<code>&amp;t</code>从<code>T*</code>数据类型，转换成<code>A*</code>数据类型。 <code>&amp;t</code>原本的数据类型是<code>T*</code>，首地址为的d1，其地址长度为9,那么&amp;t就等于d1d2d3d4d5d6d7d8d9。 转成<code>A*</code>数据类型后，首地址不变，长度变为2，则<code>（A*）&amp;t</code>就为d1d2.</p>
+<p>相反<code>（T*）&amp;a</code>,把<code>&amp;a</code>从<code>A*</code>数据类型转成<code>T*</code>数据类型。&amp;a原本数据类型为<code>A*</code>，首地址d1，地址长度为2，则<code>&amp;A</code>为d1d2。转成<code>T*</code>类，首地址不变，地址长度变为9，<code>（T*）&amp;a</code>就为d1d2d3d4d5d6d7d8d9</p>
+</blockquote>
+<p>C++的四种</p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><h2 id="自增运算符和自减运算符"><a href="#自增运算符和自减运算符" class="headerlink" title="自增运算符和自减运算符"></a>自增运算符和自减运算符</h2><p>自增运算符和自减运算符的用法</p>
+<blockquote>
+<p><img src="/blog/fujian/e2b9dd37298b51eb2850873b574e17bd.png"></p>
+</blockquote>
+<p>使自增运算符和自减运算符注意事项</p>
+<blockquote>
+<p>1.作为运算符来说,“++”和“–”的优先级较高,高于所有算术运算符和逻辑运算符。</p>
+<p>2.在使用这两个运算符时要注意它们的运算对象只能是变量,不能是其他表达式。例如, ( i +j)++就是一个错误的表达式。</p>
+</blockquote>
+<h2 id="x3D-相关的运算符"><a href="#x3D-相关的运算符" class="headerlink" title="&#x3D;相关的运算符"></a>&#x3D;相关的运算符</h2><p>跟&#x3D;相关的运算符的作用</p>
+<blockquote>
+<p><img src="/blog/fujian/b20b06ff2e40d48c01ddf1fc5e00d828.png"></p>
+</blockquote>
+<h2 id="Sizeof运算符"><a href="#Sizeof运算符" class="headerlink" title="Sizeof运算符"></a>Sizeof运算符</h2><p>Sizeof运算符的理解</p>
+<blockquote>
+<p><strong>sizeof</strong> 是一个关键字，它是一个编译时运算符，用于判断变量或数据类型的字节大小。<br>sizeof 运算符可用于获取常规数据类型、类、结构、共用体和其他用户自定义数据类型的大小。</p>
+</blockquote>
+<p>语法</p>
+<blockquote>
+<p><code>Sizeof（数据类型或变量）</code></p>
+</blockquote>
+<p>特性</p>
+<blockquote>
+<p>(0)sizeof是运算符，不是函数；</p>
+<p>(1)sizeof不能求得void类型的长度；</p>
+<p>(2)sizeof能求得void类型的指针的长度；</p>
+<p>(3)sizeof能求得静态分配内存的数组的长度!<br><code>int a[10];</code> <code>int n = sizeof(a);</code>假设<code>sizeof(int)</code>等于4，则<code>n= 10*4=40；</code><br><code>char ch[]=&quot;abc&quot;;</code> <code>sizeof(ch);</code>结果为4，注意字符串数组末尾有’\0’！</p>
+<p>通常我们可以利用sizeof来计算数组中包含的元素个数，其做法是：<br><code>int n = sizeof(a)/sizeof(a[0]);</code><br>非常需要注意的是对函数的形参数组使用sizeof的情况。举例来说，假设有如下的函数：<br><code>void fun(int array[10])</code><br><code>&#123;</code><br>         <code>int n = sizeof(array);</code><br><code>&#125;</code><br>你会觉得在fun内，n的值为多少呢？如果你回答40的话，那么我很遗憾的告诉你，你又错了。这里n等于4，事实上，不管形参是int的型数组，还是float型数组，或者其他任何用户自定义类型的数组，也不管数组包含多少个元素，这里的n都是4！为什么呢？原因是在函数参数传递时，数组被转化成指针了，或许你要问为什么要转化成指针，原因可以在很多书上找到，我简单说一下：假如直接传递整个数组的话，那么必然涉及到数组元素的拷贝(实参到形参的拷贝)，当数组非常大时，这会导致函数执行效率极低！而只传递数组的地址(即指针)那么只需要拷贝4byte。</p>
+<p>(5)sizeof不能对不完整的数组求长度；<br>file2.cpp包含如下几个语句：<br><code>int arrayA[];</code><br><code>int arrayB[10];</code><br><code>cout&lt;&lt;sizeof(arrayA)&lt;&lt;endl;    </code>        &#x2F;&#x2F;编译出错！！<br><code>cout&lt;&lt;sizeof(arrayB)&lt;&lt;endl;</code><br>在file2.cpp中第3条语句编译出错，而第4条语句正确，并且能输出40！为什么呢？原因就是sizeof(arrayA)试图求不完整数组的大小。这里的不完整的数组是指数组大小没有确定的数组！sizeof运算符的功能就是求某种对象的大小，然而声明： <code>int arrayA[]</code>只是告诉编译器arrayA是一个整型数组，但是并没告诉编译器它包含多少个元素，因此对file2.cpp中的sizeof来说它无法求出arrayA的大小，所以编译器干脆不让你通过编译。<br>那为什么sizeof(arrayB)又可以得到arraryB的大小呢?关键就在于在file2.cpp中其声明时使用<code>int arrayB[10]</code>明确地告诉编译器arrayB是一个包含10个元素的整型数组，因此大小是确定的。</p>
+<p>(6)当表达式作为sizeof的操作数时，它返回表达式的计算结果的类型大小，但是它不对表达式求值！</p>
+<p>(7)sizeof可以对函数调用求大小，并且求得的大小等于返回类型的大小，但是不执行函数体！</p>
+<p>(8)sizeof求得的结构体(及其对象)的大小并不等于各个数据成员对象的大小之和！</p>
+</blockquote>
+<h2 id="运算符的结合优先性"><a href="#运算符的结合优先性" class="headerlink" title="运算符的结合优先性"></a>运算符的结合优先性</h2><p>运算符优先级</p>
+<blockquote>
+<p>运算符具有优先级和结合方向。一个表达式有不同运算符。则首先执行优先级别较高的运算。</p>
+</blockquote>
+<p>运算符结合方向</p>
+<blockquote>
+<p>某个运算符的结合方向，就是指这个运算符在和相同优先级的运算符一起构成的表达式的运算方向，就是这个运算符的结合方向。<br>注意：相同优先级的运算符的结合方向是一样的</p>
+<p>例如表达式x* y&#x2F;3 ,表达式里的运算符号都是相同优先级的。运算次序就是先计算x* y ,然后将其结果除以3，也就是说这个表达式的运算方向是从左到右，那么这一等级的运算符的结合方向就是从左到右。</p>
+<p>也有些运算符的结合方向,是“自右至左”,例如赋值运算符,在表达式i&#x3D;j&#x3D;0中 ,表达式的计算顺序就是首先将0赋给变量j,然后再将表达式j&#x3D;0.的值(仍为0)赋给变量i。</p>
+<p>运算符的结合方向是限定在相同优先级的运算符之间，不同的优先级的运算符在一个表达式的时候则首先执行优先级别较高的运算。</p>
+</blockquote>
+<p>运算符优先级和结合方向表</p>
+<blockquote>
+<p><img src="/blog/fujian/5b5482e9e9ae9af22284691cc227fea8.png"><br><img src="/blog/fujian/8aad04d193494c6c7bc6f2dc6f7a3481.png"><br><img src="/blog/fujian/b9efd82f369982e30b7bca2ddc5f8ab6.png"></p>
+</blockquote>
+<h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><h2 id="表达式语句"><a href="#表达式语句" class="headerlink" title="表达式语句"></a>表达式语句</h2><p>表达式语句的理解</p>
+<blockquote>
+<p>在表达式后面加一个分号<code>;</code>就构成了表达式语句。</p>
+</blockquote>
+<h2 id="条件表达式语句"><a href="#条件表达式语句" class="headerlink" title="条件表达式语句"></a>条件表达式语句</h2><p>条件表达格式(问号表达式语句)</p>
+<blockquote>
+<p><code>&lt;表达式1&gt;？&lt;表达式2&gt;:&lt;表达式3&gt;</code><br>问号表达式的值的确定方法为:如果“表达式1”的值为非0值,则问号表达式的值就是“表达式2”的值;如果“表达式1”的值等于0,则问号表达式的值为“表达式3”的值。</p>
+</blockquote>
+<p>举例说明</p>
+<blockquote>
+<p>利用问号表达式可以简化某些选择结构的编程。<br>例如,分支语句:<br><img src="/blog/fujian/8acff290b1f3a2267bb2dfd349ee1864.png"></p>
+</blockquote>
+<h2 id="逗号表达式语句"><a href="#逗号表达式语句" class="headerlink" title="逗号表达式语句"></a>逗号表达式语句</h2><p>逗号表达格式</p>
+<blockquote>
+<p><code>&lt;表达式1&gt;,&lt;表达式2&gt;,……,&lt;表达式n&gt;</code><br>在C＋+中可以使用逗号<code>,</code>将几个表达式连接起来,构成逗号表达式。<br>在执行程序时,按从左到右的顺序执行组成逗号表达式的各表达式,而将最后一个表达式(即表达式n)的值作为整个逗号表达式的值。</p>
+</blockquote>
+<p>举例说明</p>
+<blockquote>
+<p><img src="/blog/fujian/47bf8cc61e6371abecdc5f3c4d55c389.png"></p>
+</blockquote>
+<h2 id="typedef语句"><a href="#typedef语句" class="headerlink" title="typedef语句"></a>typedef语句</h2><p>typedef 语句的理解</p>
+<blockquote>
+<p>typedef 语句(类型说明语句)的功能是为某个已有的数据类型定义一个新的同义字或别名。</p>
+</blockquote>
+<p>typedef语句的格式</p>
+<blockquote>
+<p>typedef &lt;数据类型或数据类型名&gt;&lt;新数据类型名&gt; ;</p>
+</blockquote>
+<p>举例说明</p>
+<blockquote>
+<p><img src="/blog/fujian/8f4a9329495b0ad1c5f57b1c1c7f97a8.png"></p>
+</blockquote>
+<h2 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h2><p>if语句的基本格式</p>
+<blockquote>
+<p><img src="/blog/fujian/d879aadbc473e905aeebd23056430de9.png"><br>在if 语句中用“表达式”的值来判断程序的流向,如果“表达式”的值不为0(即为true),表示条件成立,此时执行“语句1”;否则(即“表达式”的值等于0或false,表示条件不成立)，执行“语句2”。</p>
+<p>如果if和else下的实现，不能简单地用一条语句实现,可以使用由一对花括号<code>&#123;&#125;</code>括起来的程序段落代替“语句1”和“语句2”,即:<br><img src="/blog/fujian/ab58b9df1a602d60b37054de5ab0d956.png"><br>这种用花括号括起来的程序段落又称为分程序,它是C++中的一个重要概念。分程序是由花括号括起来的一组语句,其中也可以再嵌套新的分程序。<br>分程序是C++程序的基本单位之一,在分程序内部定义说明的数据变量的作用范围仅限于该分程序中,在分程序外面使用该变量是不合法的。</p>
+</blockquote>
+<p>只有一个分支的if语句格式</p>
+<blockquote>
+<p><img src="/blog/fujian/85563c2d8e44230cf1c2ceb0413beb0f.png"><br>只有一个分支的选择结构,可以使用不含else 部分的if语句表示。在这种情况下,如果&lt;表达式&gt;的值不为0,则执行“语句”或分程序,否则直接执行if 语句后面的语句。</p>
+</blockquote>
+<p>多分支的if语句格式</p>
+<blockquote>
+<p><code>if(表达式1)  语句1；</code><br><code>else if(表达式2)  语句2；</code><br><code>else if(表达式3)  语句3；</code><br><code>else if(表达式4)  语句4；</code><br><code>.</code><br><code>.</code><br><code>.</code><br><code>.</code><br><code>Else 语句n;</code><br>这里的语句都可以用花括号括起来的程序段落来代替。</p>
+</blockquote>
+<h2 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h2><p>switch语句格式</p>
+<blockquote>
+<p>switch语句用于实现多重分支,其格式如下:<br><img src="/blog/fujian/6b0457c326d9fc6c12b2710ee13a0475.png"><br>其中, default模块也可省略。switch语句的执行过程是:首先计算“整型表达式”的值,然后将其结果与每一个case后面的数值常量依次进行比较,如果相等则执行该case模块中的语句，然后依次执行其后每一个case模块中的语句,无论整型表达式的值与这些case模块的进入值是否相同。如果需要在执行完本case模块以后就跳出switch 语句,可以在 case模块的最后加上一个break 语句,这样才能实现真正的多路选择。如果整型表达式的值与所有case模块的进入值无一相同,则执行default模块中的语句。。</p>
+</blockquote>
+<h2 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h2><p>while语句的格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while(&lt;表达式&gt;)</span><br><span class="line">	&lt;循环体&gt;</span><br><span class="line">其中的“循环体”可以是一个语句,也可以是一个分程序,如下</span><br><span class="line">while(&lt;表达式&gt;)</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>do - while语句格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">do</span><br><span class="line">&lt;循环体&gt;</span><br><span class="line">while(&lt;表达式&gt;)</span><br><span class="line">其中的“循环体”可以是一个语句,也可以是一个分程序,如下</span><br><span class="line">do</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;while(&lt;表达式&gt;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h2><p>for语句的基础格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for( 表达式1;表达式2;表达式3)</span><br><span class="line">	&lt;循环体&gt;</span><br><span class="line"></span><br><span class="line">//与while语句的情况类似, for语句的循环体也可以是一条语句,或者一个分程序。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>C++11 中的 range-based for 循环语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(i:v)</span><br><span class="line">	&lt;循环体&gt;</span><br><span class="line">//for语句的循环体也可以是一条语句,或者一个分程序。该语法可以用于 STL 容器，也可以用于其他类似于容器的类型，例如数组，甚至是自定义类型，只要这些类型支持迭代器或使用 begin 和 end 函数返回其首尾迭代器即可。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>for语句的举例说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(i=0;i&lt;10;i++)</span><br><span class="line">&#123;</span><br><span class="line">	循环体;</span><br><span class="line">&#125;</span><br><span class="line">该for语句用于重复十次循环。</span><br><span class="line">第1次，i=0,然后判断i小于10为true，是则执行循环体，执行完循环体之后，执行i++操作。</span><br><span class="line">第10次，i=9，然后判断i小于10为true，是则执行循环体，执行完循环体之后，执行i++操作，i为11；</span><br><span class="line">第11次，i=11,然后判断i小于10为false,则循环结束。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>C++11中的for循环语句举例说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    vector&lt;int&gt; v = &#123;1, 2, 3, 4, 5&#125;;</span><br><span class="line"></span><br><span class="line">    // 使用范围 for 循环遍历容器 v 中的每一个元素</span><br><span class="line">    for (auto i : v) &#123;</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//输出结果1 2 3 4 5</span><br><span class="line">//在循环的每一次迭代中，变量 i 的值会被自动赋值为容器 v 中的下一个元素。在这个例子中，第一次迭代时，i 的值为 1，第二次迭代时，i 的值为 2，以此类推，直到遍历完容器 v 中的所有元素。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="break语句和continue语句"><a href="#break语句和continue语句" class="headerlink" title="break语句和continue语句"></a>break语句和continue语句</h2><p>break语句的格式</p>
+<blockquote>
+<p><code>break;</code></p>
+</blockquote>
+<p>break语句的理解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">将该语句用在switch语句中,可以使程序流程跳出switch结构。</span><br><span class="line">如果将break 用于循环语句,可以使流程立即跳出包含该break语句的各种循环语句,即提前结束循环,接着执行循环下面的语句。</span><br><span class="line"></span><br><span class="line">在循环语句中使用的 break 语句一般应和if 语句配合使用,例如:</span><br><span class="line">while(&lt;条件1&gt;)</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">	if(&lt;条件2&gt;)break ;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>continue语句格式</p>
+<blockquote>
+<p><code>continue;</code></p>
+</blockquote>
+<p>continue语句的理解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">continue语句用于提前结束本轮循环,即跳过循环体中下面尚未执行的语句,接着进行下一次是否执行循环的判断,可用于while , do-while和for语句中。</span><br><span class="line">continue语句的用法和break语句相似,均应和if语句配合使用,例如:</span><br><span class="line">while(&lt;条件1&gt;)</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">	if(&lt;条件2&gt;)break ;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>break语句和continue语句区别</p>
+<blockquote>
+<p>在循环中使用break语句和continue语句的区别是: break语句可提前结束整个循环的执行，不再进行条件判断,而 continue语句则只结束本次循环,而不终止整个循环过程。</p>
+</blockquote>
+<h2 id="goto语句"><a href="#goto语句" class="headerlink" title="goto语句"></a>goto语句</h2><p>标号的格式</p>
+<blockquote>
+<p>C++允许在语句前面放置一个标号,其一般格式如下:<br><code>&lt;标号&gt; :&lt;语句&gt; ;</code><br>标号的取名规则和变量名相同,即由下画线、字母和数字组成,第一个字符必须是字母或画线,例如:<br><code>ExitLoop : x = x + 1 ;</code><br><code>End: return x;</code></p>
+</blockquote>
+<p>goto语句格式</p>
+<blockquote>
+<p>goto语句的格式如下:<br><code>goto &lt;标号&gt;;</code><br>在语句前面加上标号主要是为了使用goto语句。<br>goto语句功能是改变语句执行顺序,转去执行前面有指定标号的语句,而不管其是否排在当前语句之后。C++的goto语句只能在本函数模块内部进行转移,不能从一个函数中转移到另一个函数中。</p>
+</blockquote>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="数组的基础知识"><a href="#数组的基础知识" class="headerlink" title="数组的基础知识"></a>数组的基础知识</h2><p>数组的理解</p>
+<blockquote>
+<p>在C++中，数组是一组具有相同数据类型的元素的集合。<br>他的作用就是可以用来存储同种类型的多个元素，并通过数组下标进行访问和操作。<br>通过使用数组，可以方便地管理和操作大量的数据，从而简化编程过程。<br>比如我们需要定义多个同种类型的元素时，一个个手动定义就很麻烦，这时候可以直接定义一个该类型的数组，通过这个数组，就可以存储管理该类型的多个元素</p>
+</blockquote>
+<p>一维数组的定义语句格式</p>
+<blockquote>
+<p><code>&lt;类型&gt;&lt;数组名&gt;[&lt;常量表达式&gt;];</code><br><code>类型</code>指出数组中元素的数据类型,可以是int , char , double等简单数据类型,也可以是结构体、类等复杂类型;<br><code>数组名</code>是数组的标识,其构成规则同变量名;<br><code>常量表达式</code>，它必须用方括号括起来,其值给出数组元素的个数,注意他必须是一个常量整型，而不能是变量。比如下面就是非法的<br><img src="/blog/fujian/9292805b8638fb9e9ad88411a459eeb8.png"></p>
+</blockquote>
+<p>数组在内存的形式</p>
+<blockquote>
+<p>数组在内存中是连续分配的一块区域，可以通过下标访问数组中的元素。以定义了个有10个元素的整型数组为例说明数组在内存的形式</p>
+<p><code>int array [10];</code>&#x2F;&#x2F;有10个元素的整型数组<br>各元素通过不同的下标来区分,分别为<code>array[ 0 ]</code> ,<code>array[ 1 ]</code>、<code>array[2]</code>、…、<code>array[9]</code>。同时,系统在内存中也为该数组分配了10个连续的存储空间,如下图</p>
+<p><img src="/blog/fujian/3351b95f8cd40c7365ef72b8570a5533.png"></p>
+</blockquote>
+<p>一维数组的定义时初始化</p>
+<blockquote>
+<p>形式如下<br><code>&lt;类型&gt;&lt;数组名&gt;[&lt;常量表达式&gt; ]= &#123;&lt;常量1 &gt;,&lt;常量2 &gt; ,…&#125; ;</code><br>在定义数组时给一维数组的每一个元素都提供初值,就可以不必指定数组大小。</p>
+<p>如<br><code>double x[5] = &#123;1.2, 3.2, - 3.5, 6.6, -4.1 &#125; ;</code><br>等价于<br><code>double x[ ] = &#123;1.2, 3.2, - 3.5, 6.6, -4.1 &#125; ;</code></p>
+</blockquote>
+<p>数组使用的注意事项</p>
+<blockquote>
+<p>数组的使用方法和一般变量有所不同,C++不允许对数组进行聚集操作,即不能将整个数组作为一个单元来操作。<br>例如,假设数组a和 b是相同类型和大小的数组,如果想将数组a的值赋给b,下面的语句是错误的:<br><code>b=a;</code>&#x2F;&#x2F;不合法语句<br>要想实现这个功能,就必须对两个数组的每一个元素进行赋值,比如<br><code>a[0]=b[0]、a[1]=b[1]、.....</code></p>
+<p>同样,为数组输入数据、输出数据、查找最大、最小元素等操作也都不能以数组整体为对象,而是需要对数组中每一个元素逐一进行处理,即要遍历整个数组。最常用的处理方法是通过循环处理数组中的元素。例如:<br><code>for( int i = 0; i &lt; 10; i++ )</code><br><code>array[i] = 0;</code><br>不过在C++里，可以用输入流对象cin,cout，直接对字符数组进行输入或者输出。</p>
+</blockquote>
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><p>二维数组的定义格式</p>
+<blockquote>
+<p><code>&lt;类型&gt;&lt;数组名&gt;[ &lt;常量表达式1&gt;][&lt;常量表达式2&gt;]</code></p>
+</blockquote>
+<p>二维数组的逻辑结构和存储结构</p>
+<blockquote>
+<p>以一个二维数组为例<br><code>int matrix[3][4]</code>;&#x2F;&#x2F;定义了一个3行4列的整型矩阵</p>
+<p>逻辑结构<br><img src="/blog/fujian/293dc5a57fb395839e470d6590ef03b8.png"><br>与一维数组相似,二维数组同样定义了类型相同的一组变量,这些变量也称为数组元素或下际变量。行，列下标值也是从0开始,依次加1。如上图所示, <code>matrix[0][0]</code>是矩阵matrix 中的第1行第1列元素。</p>
+<p>存储结构<br><img src="/blog/fujian/c3d229141a3edcf3c9c3858673648062.png"></p>
+</blockquote>
+<p>二维数组定义时初始化</p>
+<blockquote>
+<p><img src="/blog/fujian/de4f6d77dfd70bbe51f6c89170436cf5.png"></p>
+<p><img src="/blog/fujian/b23a14df3ab9d6c955359869eb05fab9.png"><br><img src="/blog/fujian/03ed56f48068c52b983f1bd9387eba6d.png"></p>
+<p>注意<br>只能在定义时才能用这种方式进行初始化</p>
+</blockquote>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><p>定义多维数组的一般形式</p>
+<blockquote>
+<p><code>&lt;类型&gt;&lt;数组名&gt;[&lt;常量表达式1&gt;][&lt;常量表达式2&gt;]…[&lt;常量表达式n &gt; ]</code><br>多维数组的用法和一维数组、二维数组一样。</p>
+</blockquote>
+<p>定义三维数组的举例</p>
+<blockquote>
+<p>例如:<br><code>float tri[2][3][3]</code>&#x2F;&#x2F;定义了一个2页3行3列的三维浮点型数组</p>
+<p>三维数组其物理存储结构按自然顺序(即从下标序列对应的值从小到大顺序)在一片连续的内存中分配存储单元,例如 tri 在内存中以如下顺序存在:<br><img src="/blog/fujian/8bd579d8db9d980688ee417e323bbbfa.png"></p>
+</blockquote>
+<h2 id="字符数组"><a href="#字符数组" class="headerlink" title="字符数组"></a>字符数组</h2><p>字符数组的作用</p>
+<blockquote>
+<p>C++使用字符型数组存放字符串数据,并实现有关字符串的操作。<br>字符串包括一个结束符<code>&#39;\0&#39;</code>(即以NULL.结束),所以在计算用于存放字符串的数组的大小时要考虑到这一点。例如,如果要设计一个能够满足存放最大长度为80个字符的字符串的数组,其长度最少应为81。</p>
+</blockquote>
+<p>字符数组的初始化</p>
+<blockquote>
+<p><img src="/blog/fujian/e624c7013f10a4134d07c9bfcac3ddec.png"></p>
+</blockquote>
+<h2 id="数组与指针"><a href="#数组与指针" class="headerlink" title="数组与指针"></a>数组与指针</h2><p>数组名的理解</p>
+<blockquote>
+<p>实际上数组名本身就是一个常量指针，他指向数组首元素。<br>例如,对于数组 <code>array[ 10 ]</code>，其数组名<code>array</code>就等效于地址<code>&amp;array [0]</code>。因此,数组名<code>array</code>是一个指针,它永远指向<code>array[0]</code>。</p>
+</blockquote>
+<p>数组名与数组地址的区别</p>
+<blockquote>
+<p>以<code>int a[10]</code>为例，<code>a</code>则是数组名，表示是一个指针，指向的是数组首元素。<code>&amp;a</code>则是数组的地址，他表示的是一个指针，指向整个数组，但是<code>&amp;a</code>与<code>a</code>的值是一样的，区别在于类型不一样，<code>&amp;a</code>类型是<code>int (*)[10]</code>，a的类型 <code>int (*)</code></p>
+<p>让a+1，则a+1指向数组第二个元素。而让&amp;a+1，则系统会认为是整个数组的首地址加上整个数组的偏移（10个int变量），最终&amp;a+1值就为指向数组尾元素的后一个元素的地址。</p>
+</blockquote>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="字符串的基础知识"><a href="#字符串的基础知识" class="headerlink" title="字符串的基础知识"></a>字符串的基础知识</h2><p>字符串的理解</p>
+<blockquote>
+<p>字符串就是一串由字符组成的连续序列。字符串在C++中，本质就是字符数组。</p>
+</blockquote>
+<p>C风格字符串</p>
+<blockquote>
+<p>C风格字符串，就是以空字符<code>&#39;\0&#39;（NULL）</code>结尾的字符数组，例如：<code>&quot;hello world&quot;</code>可以表示为字符数组<code>&#123;&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;w&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;\0&#39;&#125;</code>。</p>
+</blockquote>
+<p>string类字符串对象</p>
+<blockquote>
+<p>C++标准库提供的一种字符串类型string，string类定义的是字符串对象，可以用来代替C风格字符串，它未规定需要null (<code>&#39;\0&#39;)</code>字作为字符串结尾,这是因为 string内部已经有一个变量来存储字符串的长度信息，而不需要依靠 null 字符来表示字符串的结尾。<br>不过编译器在实现时可能会自动在string字符串对象结尾加null (<code>&#39;\0&#39;</code>)字符（根据编译器的不同，可能会加可能不会加）。</p>
+</blockquote>
+<h2 id="字符串的输入输出"><a href="#字符串的输入输出" class="headerlink" title="字符串的输入输出"></a>字符串的输入输出</h2><p>字符串的cin输入</p>
+<blockquote>
+<p>字符型数组的用法和普通数组基本相同;<br>而和普通数组不同的是,字符型数组允许聚集操作,而普通数组只能通过循环对逐个元素进行操作。例如:<br><code>char weekday[7];</code><br><code>cin &gt;&gt; weekday ;</code>&#x2F;&#x2F;将从键盘输入的字符串存入字符数组weekday中<br>注意:在上面的例子中,由于定义的字符数组维长为7,因此存储的字符不超过6个。如果用户输人的字符串长度大于6,系统会将输入的字符串顺序放在weekday后续的内存单元中,这会使后续的内存单元中的数据被破坏,造成严重错误。</p>
+<p>在输入字符数组时还要注意,由于提取运算符<code>&gt;&gt;</code>会忽略所有空白字符,因此一旦遇到空白字符它就会停止读入数据到当前变量中。例如:<br><code>char name[ 20];</code><br><code>cin &gt;&gt;name;</code><br>当输人姓名<code>Cong Zhen</code>时,变量name中的字符串只有<code>Cong</code>,空格后的<code>Zhen</code>并没有被输人到变量name中。<br>由此可见,包含空格的字符串无法使用提取运算符<code>&gt;&gt;</code>来输入,解决的办法是使用输入流对象的get()成员函数。</p>
+</blockquote>
+<h2 id="string类的基础使用"><a href="#string类的基础使用" class="headerlink" title="string类的基础使用"></a>string类的基础使用</h2><p>string类的理解</p>
+<blockquote>
+<p>string类属于标准库类。它是一个用来定义和处理字符串的类。通俗来讲，它所定义的对象就是字符串，而且string类里还定义了许多处理字符串的函数。<br>string本质封装了 <code>char *</code> ，管理这个字符串，是一个 char 型的容器。</p>
+</blockquote>
+<p>使用string类所需头文件</p>
+<blockquote>
+<p><code>#include &lt;string&gt;</code></p>
+</blockquote>
+<p>使用 string字符串注意事项</p>
+<blockquote>
+<p>需要注意的是，许多 C++ 标准库函数和 API 都假定字符串以 null 结尾，因此，当您将 sstring 对象传递给这些函数时，您需要确保在字符串末尾添加一个 null 字符，以免出现不可预料的错误。使用 std::string 类的成员函数 c_str() 来获取以 null 结尾的 C 风格字符串。例如：<br><code>std::string s = &quot;Hello&quot;; </code><br><code>const char* cstr = s.c_str(); </code>&#x2F;&#x2F; 获取以 null 结尾的 C 风格字符串<br>在此示例中，<code>cstr</code> 指向的字符数组以 null 结尾，并且其内容与 <code>s</code> 中的字符串相同。</p>
+</blockquote>
+<p>string类的定义</p>
+<blockquote>
+<p>string类的字符串对象的使用方法与普通变量一样,也必须先定义才可以使用。其定义格式如下:<br><code>string &lt;对象1 &gt;,&lt;对象2&gt;,…;</code></p>
+<p>例如:<br><code>string s1,s2;</code>&#x2F;定义对象s1和s2<br><code>string s3 (&quot;world&quot; );</code>&#x2F;&#x2F;定义s3同时初始化</p>
+</blockquote>
+<p>string类字符串运算符</p>
+<blockquote>
+<p><img src="/blog/fujian/849eb1a268d8a86a181326efd4ffa0d5.png"></p>
+<p>这些运算符允许在一般表达式中使用string对象,而不再需要调用诸如strepy( )或strcat( )之类的函数。同时,也可以在表达式中把string对象和一般以<code>&#39;\0&#39;</code>结束的字符串混在一起使用，例如可以把一个以<code>&#39;\0&#39;</code>结束的字符串赋给一个string 对象。</p>
+</blockquote>
+<p>string字符串的使用举例</p>
+<blockquote>
+<p><img src="/blog/fujian/8c0b6509a8c8f25ca0622587c5b463ec.png"><br><img src="/blog/fujian/571fb91a0367f7ef1730e405c6f2fdfb.png"><br><img src="/blog/fujian/a47f2ca68a40cbe1b6c52928a32d512c.png"></p>
+</blockquote>
+<h2 id="mystrcpy的使用"><a href="#mystrcpy的使用" class="headerlink" title="mystrcpy的使用"></a>mystrcpy的使用</h2><p>mystrcpy的使用</p>
+<blockquote>
+<p><img src="/blog/fujian/1dfc2923c7544110e7b827c9db0fd322.png"></p>
+</blockquote>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数的基础知识"><a href="#函数的基础知识" class="headerlink" title="函数的基础知识"></a>函数的基础知识</h2><p>函数的理解</p>
+<blockquote>
+<p>函数的主要作用，就是可以封装程序语句。把一些程序语句封装在一个函数里，那么执行这个函数，就会顺序执行这一组程序语句。<br>当这些程序语句被封装在一个函数里，那么你想执行这些程序语句的时候，直接调用函数即可，就不用在重新去写这些程序。</p>
+</blockquote>
+<h2 id="函数的声明"><a href="#函数的声明" class="headerlink" title="函数的声明"></a>函数的声明</h2><p>声明的理解</p>
+<blockquote>
+<p>C++规定,函数和变量一样,在使用之前，必须先进行说明。<br>函数声明没有函数体部分,且是用分号结束的,它向编译器提供了函数的名称、函数返回值类型和参数的个数’顺序及类型等信息,以便在对此函数的调用语句进行编译时据此进行检查而不会引起编译失败。</p>
+</blockquote>
+<p>声明的形式</p>
+<blockquote>
+<p><code>&lt;函数值类型标识符&gt; 函数名(&lt;形式参数表&gt;);</code><br>在函数声明中,参数的名字也可以省略,即可以不必指定参数列表的变量名,但必须指定每一个参数的数据类型。<br>比如原本函数的声明是<code>int max(int a,int b);</code><br>可以写成<code>int max ( int , int );</code></p>
+</blockquote>
+<p>声明与定义的关系</p>
+<blockquote>
+<p>函数声明没有函数体部分,且是用分号结束的,它向编译器提供了函数的名称、函数返回值类型和参数等信息。</p>
+<p>函数定义则是对函数功能的确立,包括指定函数名、函数返回值类型和形参个数、顺序及类型、函数体等信息。</p>
+<p>一般来说，函数的定义本身就可以当作声明。如果函数在使用的代码之前定义，那么就相对于已经声明了。如果想将函数定义放在调用它的main( )函数之后,或者将某函数的定义放在调用它的任意函数之后，就得在调用该函数的语句前对该函数进行声明。</p>
+</blockquote>
+<p>函数先声明后定义的举例</p>
+<blockquote>
+<p><img src="/blog/fujian/bc4f5b8cbae4cb7782b27acb1e89430d.png"><br>尽管函数max( )的定义出现在对它的调用之后,但由于使用了函数声明,因此程序能够成功地通过编译。<br>其声明形式也可以写成<code>int max ( int , int );</code></p>
+</blockquote>
+<h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><p>函数定义理解</p>
+<blockquote>
+<p>函数必须先定义后才能使用。所谓定义函数,就是编写完成函数功能的程序块。</p>
+</blockquote>
+<p>定义的形式</p>
+<blockquote>
+<p><img src="/blog/fujian/5e0d948a89c6fc83fafa1c463efe9d50.png"></p>
+</blockquote>
+<p>函数定义各参数说明</p>
+<blockquote>
+<p>函数名<br>要定义的函数名字,其命名应符合C++对标识符的规定。在函数名后面必须有一对圆括号。</p>
+<p>函数值类型<br>即调用该函数后所得到的函数值的类型。函数值是通过函数体内部的return 语句提供的。</p>
+<p>形式参数<br>形式参数放在函数名后面的一对圆括号内,其作用表示将从主调函数中接收哪些类型的数据。<br>C++函数的形式参数表格式如下:<br>&lt;类型&gt;&lt;参数1 &gt;,&lt;类型&gt;&lt;参数2 &gt;,…,&lt;类型&gt;&lt;参数n&gt;<br>如：<br>double grav( double m1 ,double m2 ，double distance)<br>将从主调函数中接收3个double类型的数据,分别赋给变量m1 ,m2和distance。<br>对于有些不带形式参数的函数,其函数名后面的括号为空,但一对圆括号不能省略。</p>
+<p>函数体<br>函数体是由一对花括号括起来的语句序列(包括变量声明),这些语句实现函数的功能。在函数体中定义的变量只有在执行函数时才存在。</p>
+</blockquote>
+<h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><h3 id="函数调用的基础知识"><a href="#函数调用的基础知识" class="headerlink" title="函数调用的基础知识"></a>函数调用的基础知识</h3><p>函数调用的理解</p>
+<blockquote>
+<p>函数调用的一般形式如下:<br>&lt;函数名&gt; (&lt;实参表&gt;)<br>其中，“实参表”是调用函数时所提供的实际参数值,这些参数值可以是常量、变量或者表达式。调用函数时提供给函数的实参应该与函数的形式参数表中参数的个数、位置和类型一一对应,称为“虚实结合”,此时形式参数从实参得到值。</p>
+</blockquote>
+<p>函数的调用方式</p>
+<blockquote>
+<p>在C+中,实参与形参有3种结合方式:值调用、引用调用和地址调用。</p>
+</blockquote>
+<h3 id="值调用"><a href="#值调用" class="headerlink" title="值调用"></a>值调用</h3><p>值调用的理解</p>
+<blockquote>
+<p>值调用的特点是调用时实参仅将其值赋给了形参,因此在函数中对形参值的任何修改都不会影响到实参的值。<br>值调用的好处是减少了调用函数与被调用函数之间的数据依赖,增强了函数自身的独立性。</p>
+</blockquote>
+<h3 id="引用调用"><a href="#引用调用" class="headerlink" title="引用调用"></a>引用调用</h3><p>引用的理解</p>
+<blockquote>
+<p>引用是一种特殊类型的变量,可以认为它是另一个变量的别名。通过引用名访问变量与通过原变量名对变量进行访问的效果是一样的。</p>
+</blockquote>
+<p>引用的声明形式</p>
+<blockquote>
+<p>数据类型 <code>&amp;引用名=目标名</code></p>
+</blockquote>
+<p>引用的定义举例</p>
+<blockquote>
+<p><img src="/blog/fujian/4dc6c09d480bb8ed6ca241c892658424.png"></p>
+</blockquote>
+<p>引用的作用</p>
+<blockquote>
+<p>在实际应用中主要是作为函数的形式参数出现, 即将形参说明为引用。要将形参声明为引用,只要在参数名前加上引用运算符&amp;即可。</p>
+</blockquote>
+<p>用引用做形参的原因</p>
+<blockquote>
+</blockquote>
+<p>如果进行普通的形参传值时，系统会<strong>给形参新分配一个内存空间</strong>，其中的内容和实参的内容一样，所以函数体内实质是对形参进行修改操作，对实参没有影响；如果形参是引用，这时的形参与实参所指向的内存是一样的，系统<strong>不会再重新分配空间</strong>，能保证参数传递中不产生副本，提高传递的效率，解决大块数据或对象的传递效率和空间不如意的问题</p>
+<p>常引用的格式</p>
+<blockquote>
+<p><code>const &lt;类型说明符&gt; &amp;&lt;引用名&gt;</code><br>如果在说明引用时用const进行修饰,就构成了常引用，这样引用就无法被修改。即以下语句是错误的:<br><code>int a=5;</code><br><code>const int &amp;b = a;</code><br><code>b = 12;</code>&#x2F;&#x2F;b是a的常引用，不能修改a中的内容</p>
+</blockquote>
+<p>常引用做形参作用</p>
+<blockquote>
+<p>用形参作为参数一个局限性，就是如果形参被修改了，实参也会被修改，如果想让引用不被修改，就在引用前加上const，变成常引用，常引用可以作为函数的形参（常参数），来实现函数体内只能进行对变量的读取而不能改写的操作。</p>
+</blockquote>
+<p>引用使用的注意事项</p>
+<blockquote>
+<p>1.创建引用的同时必须初始化引用。<br>2.一旦初始化引用,就不能再改变引用的关系。<br>3.不能有NULL引用(空引用),引用必须与合法的存储单元相关联。<br>4.引用的类型和变量的类型必须相同。</p>
+</blockquote>
+<p>引用调用的举例</p>
+<blockquote>
+<p>swap函数<br><img src="/blog/fujian/5c208624781bb1ab5808ff04e0b94f9c.png"><br>主函数<br><img src="/blog/fujian/edc260761cc6dfe626b3cba2ea3c42a6.png"></p>
+<p>结果<br><img src="/blog/fujian/0e76fcca24a8272c9bcf1c94dc051b76.png"></p>
+</blockquote>
+<h3 id="地址调用"><a href="#地址调用" class="headerlink" title="地址调用"></a>地址调用</h3><p>指针作为函数的参数理解</p>
+<blockquote>
+<p>当以指针作为参数时,在函数调用过程中实参将地址值传递给形参,即使实参和形参指针变量指向同一个内存地址。<br>这样,对形参指针所指变量值的改变也同样影响着实参指针所指向的变量的值,即通过使实参与形参指针指向共同的内存空间,达到了参数双向传递的目的。</p>
+</blockquote>
+<p>数组作为函数的参数的理解</p>
+<blockquote>
+<p>如果使用数组作为函数的参数,则实参和形参都应该是类型相同的数组名。与普通变量做参数不同的是,如果在函数中对形参数组的值进行改变,将会使对应的实参数组元素的值也发生改变。<br>这是因为使用数组名传递数据时,并不是简单的值调用方式,而是传递了数组所在的地址。这样,在子函数中对数组的操作,实际上就是对主调函数中的数组本身进行操作,这种实参与形参的结合方式就是地址调用。</p>
+</blockquote>
+<h3 id="带有默认参数的函数"><a href="#带有默认参数的函数" class="headerlink" title="带有默认参数的函数"></a>带有默认参数的函数</h3><p>带有默认参数的函数的理解</p>
+<blockquote>
+<p>C++允许在函数声明或函数定义中为参数预赋一个或多个默认值,这样的函数就叫做带有默认参数的函数。<br>在调用带有默认参数的函数时,如果为相应参数指定了参数值,则参数将使用该值;否则参数使用其默认值。</p>
+</blockquote>
+<p>带有默认参数的函数使用举例</p>
+<blockquote>
+<p>例如,<br>某函数的声明为:<code>double func( double x，double y, int n = 1000 );</code><br>则参数n带有默认参数值。</p>
+<p>如果以<code>a=func( b，c);</code><br>的方式调用该函数,则参数n取其默认值1000, </p>
+<p>而如果以<code>a = func( b，c，2000 ) ;</code><br>的方式调用该函数,则参数n的值为2000。</p>
+</blockquote>
+<p>使用带有默认参数的函数的注意事项</p>
+<blockquote>
+<p>1.所有的默认参数均需放在参数表的最后。</p>
+<p>2.如果一个函数有两个以上的默认参数,则在调用时可省略从后向前的若干个连续的参数值。例如,对于函数<br><code>void func( int x , int n1 = 1 , int n2 =2) ;</code><br>若使用func(5,4);的方式调用该函数,则x的值为5 ,n1 的值为4 , n2的值为2。</p>
+<p>3.默认参数的声明必须出现在函数调用之前,<br>即如果存在函数声明,则参数的默认值应在函数声明中指定,否则在函数定义中指定。</p>
+<p>4.如果函数声明中已给出了参数的默认值,则在函数定义中不得重复指定,即使所指定的默认值完全相同也不行。</p>
+</blockquote>
+<h3 id="无参函数"><a href="#无参函数" class="headerlink" title="无参函数"></a>无参函数</h3><p>无参函数的理解</p>
+<blockquote>
+<p>在C＋＋中,函数的参数表可以为空,例如下面函数的声明<br><code>void func();</code><br>说明函数func()既不需要参数,其调用方法如:<code>func();</code></p>
+</blockquote>
+<h2 id="函数返回值"><a href="#函数返回值" class="headerlink" title="函数返回值"></a>函数返回值</h2><p>返回值的理解</p>
+<blockquote>
+<p>函数是什么类型，调用该函数后就会返回这个类型的数值。函数值是通过函数体内部的return 语句提供的。</p>
+</blockquote>
+<p>return的理解</p>
+<blockquote>
+<p>一是使流程返回调用它的函数(即主调函数),说明该函数一次执行终结,同时释放掉在调用期间所分配的变量单元;<br>二是把函数值送到调用表达式中。<br>在编写函数时要注意保持return语句提供的函数值的类型与函数说明中的函数值类型一致,否则会出现错误。</p>
+</blockquote>
+<p>return的形式</p>
+<blockquote>
+<p><code>return &lt;表达式&gt;;</code></p>
+</blockquote>
+<p>void函数的返回值</p>
+<blockquote>
+<p>如果要定义的函数确实没有返回值,可以使用说明符void。<br>此时函数类型是void类型，可以不用有返回值，因此也可以省略return语句。<br>不过void也是可以使用加return的，但是其后面不能加任何数值 表示函数到此为止</p>
+</blockquote>
+<p>注意</p>
+<blockquote>
+<p>有些函数可能没有函数值,或者其函数值对调用者来说是不重要的,调用该函数实际上是为了得到运行该函数内部程序段的其它效果。</p>
+</blockquote>
+<h2 id="库函数和标准库函数"><a href="#库函数和标准库函数" class="headerlink" title="库函数和标准库函数"></a>库函数和标准库函数</h2><p>库函数和函数库的理解</p>
+<blockquote>
+<p>库函数是指提供特定功能的函数，这些函数可以由编程人员编写或者由第三方库提供。不同的函数库一般是用来针对特定任务，如数学库、图形库、网络库等。</p>
+</blockquote>
+<p>标准库函数和标准库</p>
+<blockquote>
+<p>标准库函数,是C++编程语言为了方便程序员编程，预先编制的函数，<br>用户不用定义也不用声明就可以直接使用。不同功能标准库函数，被分类放在不同的标准库中（头文件）。</p>
+</blockquote>
+<p>标准库函数和库函数的区别</p>
+<blockquote>
+<p>标准库函数也可以被称为库函数，但库函数并不一定是指标准库函数。它们是两个不同的概念，一个是特定功能的函数库，另一个是编程语言提供的函数库。</p>
+</blockquote>
+<p>库函数的使用</p>
+<blockquote>
+<p>由于C++软件包将不同功能的库函数的函数声明分别写在不同的头文件中,因此用户在使用某一库函数前,必须用include预处理指令给出该函数的原型所在头文件的文件名。<br>例如,欲使用库函数 sqrt ( ),由于该函数的原型声明在头文件cmath中,因此必须在程序中调用该函数前应加入以下语句:<br><code>#include &lt;cmath&gt;</code></p>
+</blockquote>
+<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>递归函数的理解</p>
+<blockquote>
+<p>如果一个函数直接或者间接的调用自身，那么这个函数就是递归函数。<br>递归函数分为直接递归函数，和间接递归函数。</p>
+</blockquote>
+<p>直接递归函数的理解</p>
+<blockquote>
+<p>也就是说,在定义一个函数时,如果在其函数体内直接包含了调用该函数本身的语句，则这种调用是直接递归调用方法,该函数是直接递归函数;</p>
+</blockquote>
+<p>间接递归函数的理解</p>
+<blockquote>
+<p>如果函数在其函数体中间接包含对自己的调用,例如函数A调用了函数B,函数B又调用了函数A,则函数A称为间接递归函数。</p>
+</blockquote>
+<p>递归函数的使用举例</p>
+<blockquote>
+<p><img src="/blog/fujian/9a9c98b8df1dfba002f67d6406dcef9e.png"><br><img src="/blog/fujian/31ac8c062f07dec10ef7b74d3746f6bf.png"></p>
+</blockquote>
+<h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2><p>函数重载的理解</p>
+<blockquote>
+<p>所谓函数重载,即一组参数和返回值不同的函数共用一个函数名。</p>
+</blockquote>
+<p>函数重载的作用</p>
+<blockquote>
+<p>在C++标准函数库中,有3个功能相似的函数:<br>intabs( int ) ;<br>double fabs( double) ;<br>long labs( long);<br>同是求某数的绝对值,要用不同的函数实现,不但增加了程序员的记忆难度,而且也容易出错。此时,C++中的函数重载可将求三个函数用同一函数名字调用。</p>
+</blockquote>
+<p>原理</p>
+<blockquote>
+<p>由函数的定义可知,函数具有两个要素:参数与返回值。很明显,如果同名函数仅仅是返回值类型不同,在进行函数的调用时,编译器根本无法区分不同的函数。因此,只能靠参数而不能靠返回值类型的不同来区分同名的重载函数。</p>
+<p>由此可知,编译器是根据函数参数的不同(包括类型，个数和顺序)来确定调用哪一个函数的。因此,重载函数之间必须在参数的类型或个数方面有所不同。只有返回值类型不同的几个函数不能重载。</p>
+</blockquote>
+<p>举例</p>
+<blockquote>
+<p><img src="/blog/fujian/0d8cd355ee04ae245b9cb6e49bb7b24a.png"><br><img src="/blog/fujian/0c55b178eefae4ea6faac987d13405e1.png"></p>
+<p>输出结果<br><img src="/blog/fujian/55481dea5ed69a1d1762ca42cf102be3.png"></p>
+<p>说明<br>本例中定义了3个同名的函数 abs( ) ,分别为求整型量:实型量和长整型量绝对值的函数。在 main( )函数中分别调用这3个函数求x1 ,x2、x3的绝对值。</p>
+</blockquote>
+<h2 id="static修饰函数（静态函数）"><a href="#static修饰函数（静态函数）" class="headerlink" title="static修饰函数（静态函数）"></a>static修饰函数（静态函数）</h2><p>static修饰函数的作用</p>
+<blockquote>
+<p><code>static</code>关键字的作用是将函数的作用域限定在当前文件内部，从而使函数对其他文件不可见，也就是说，它只能被同一文件内的其他函数所调用，而不能被其他文件所调用。<br>使用<code>static</code>关键字修饰函数还有一个作用，就是将函数变成静态函数，使得该函数的生命周期与程序运行期间相同，不会随着函数的调用而被创建和销毁。这样可以提高程序的执行效率，因为不需要频繁地创建和销毁函数所占用的栈空间。</p>
+</blockquote>
+<h2 id="内联函数（inline关键字）"><a href="#内联函数（inline关键字）" class="headerlink" title="内联函数（inline关键字）"></a>内联函数（inline关键字）</h2><p>内联函数的理解</p>
+<blockquote>
+<p>函数的定义开头用inline关键字修饰，该函数就变成内联函数。<br>如果一个函数是内联的，那么在编译时，编译器会把该函数的代码副本放置在每个调用该函数的地方。<br>将函数体的代码直接插入到函数调用处来节省调用函数的时间开销,这一过程叫做内联函数的扩展。<br>对内联函数进行任何修改，都需要重新编译函数的所有客户端，因为编译器需要重新更换一次所有的代码，否则将会继续使用旧的函数。<br>内联函数实际上是一种用空间换时间的方案</p>
+</blockquote>
+<p>内联函数和普通函数的区别</p>
+<blockquote>
+<p>普通函数的调用是要转去执行被调用函数的函数体，执行完成后再转回调用函数中，执行其后语句.</p>
+<p>内联函数的调用是在函数的调用点，用内联函数体的代码来替换，这样将会节省调用开销，提高运行速度。 </p>
+<p>内联函数与带参数的宏定义的代码效率是一样的，但是内联函数要优于宏定义，因为内联函数遵循函数的类型和作用域规则，它与一般函数更相近，在一些编译器中，一旦关上内联扩展，将与一般函数一样进行调用，调试比较方便。 </p>
+<p>内联函数的代码编译后会直接放在调用点的函数体内, 从而使得代码增大, 但是效率提高了(减少了跳转, 参数传递以及保存调用函数寄存器状态的过程).</p>
+<p>对外联函数的调用会在调用点生成一个调用指令(在X86中是call), 函数本身不会被放在调用者的函数体内, 所以代码减小, 但效率较低.<br>所以一般只有当函数体较小的情况下才声明为内联函数</p>
+</blockquote>
+<p>使用举例</p>
+<blockquote>
+<p><img src="/blog/fujian/9ef5cad0161f74541daafe014059cb65.png"><br><img src="/blog/fujian/0f1db28b430c6c8bcab2f1d47c042056.png"></p>
+</blockquote>
+<p><code>inline</code>关键字的理解</p>
+<blockquote>
+<p>用inline可以将一些函数声明为内联函数，<br>但是这些函数不一定会被编译器内联,仅当编译器的成本收益分析显示有价值时,它才会进行内联。<br>比如虚函数和递归函数就不会被正常内联. 通常, 递归函数不应该声明成内联函数.(递归调用堆栈的展开并不像循环那么简单, 比如递归层数在编译时可能是未知的, 大多数编译器都不支持内联递归函数).</p>
+</blockquote>
+<p><code>_forceinline</code>关键字的理解</p>
+<blockquote>
+<p>用inline声明函数为内联函数的时候，这些函数不一定会被编译器内联，编译器会判断情况来进行内联。 而如果使用<code>_forceinline</code>关键字来声明函数，则是可以强制让函数为内联，这时候判断函数是否内联，则不是编译器，而是程序员自己。<br>不过有些情况下，哪怕使用<code>_forceinline关</code>键字，也无法对某些函数进行内联。</p>
+</blockquote>
+<p>使用内联函数的注意事项</p>
+<blockquote>
+<p><img src="/blog/fujian/d451f9061226396bb0460d43c6f7e681.png"></p>
+</blockquote>
+<h2 id="带参数的main函数"><a href="#带参数的main函数" class="headerlink" title="带参数的main函数"></a>带参数的main函数</h2><p>带参数的main函数的理解</p>
+<blockquote>
+<p>在本书前面出现过的所有例子中 , main()函数都是不带参数的。而实际上, main()函数也是可以带参数的,其函数原型声明为:<br><code>int main( int argc,char * argv[ ])</code></p>
+<p>其中,第一个整型参数指明在以命令行方式执行本程序时所带的参数个数(包括程序名本身,故arge的值至少为1);<br>第二个参数为一个字符型指针数组,其中第一个下标变量<code>argv[0]</code>指向本程序名,下标变量<code>argv[1 ] </code>,<code> argv[2]</code>…等分别指向命令行传递给程序的各个参数的字符串。</p>
+<p>注意<br>其中main函数的形参不一定命名为argc和argc，可以是其他名字，只不过人们习惯用这两个名字。</p>
+</blockquote>
+<p>使用带参数的main函数的举例</p>
+<blockquote>
+<p>编写的test.cpp文件<br><img src="/blog/fujian/7690f8a04a064feb5ec85646b423265e.png"><br>假设本例生成的执行程序文件名为test.exe,且存放在C盘根目录下,则可在命令行方式下输入<br><code>C: \&gt; test Zhang3</code><br>test为可执行文件名（可执行文件名包括盘符路径，但是在C盘根目录下，可直接用test） zhang3为传给main函数的参数， 此时main函数a&#x3D;2，<code>ar[0]</code>指向test字符串首字符地址，<code>ar[1]</code>指向zhang3字符串首字符地址<br>来运行这个程序,程序的输出结果为:<br><code>Hello，Zhang3. Welcome to the world of C ++ !</code></p>
+</blockquote>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><p>地址的理解</p>
+<blockquote>
+<p>从拓扑结构上来说,计算机的内存储器(简称内存)就像一个巨大的一维数组,每个数组元素就是一个存储单元。就像数组中的每个元素都有一个下标一样,每个内存单元都有一个编号,称为地址,它可用一个无符号整数来表示。计算机就是通过这种地址编号的方式来管理内存数据读&#x2F;写定位的。</p>
+</blockquote>
+<p>运行程序的存放位置</p>
+<blockquote>
+<p>内存是程序活动的基本场地。在运行一个程序时,程序本身及其所用到的数据都要放在内存中,例如程序、函数、变量、常数﹑数组和对象等。</p>
+</blockquote>
+<p>数据的地址表示</p>
+<blockquote>
+<p>凡是存放在内存中的程序和数据都有一个地址,一般用它们所占用的存储单元中的第一个存储单元的地址表示。<br>可以理解为，数据的存储可能需要多个存储单元来存储（不一定只用一个存储单元，），但是数据地址的表示只需要一个存储单元的地址表示。</p>
+</blockquote>
+<p>数据的访问方式</p>
+<blockquote>
+<p>在编写程序时,一般是通过名字来使用一个变量或者调用某个函数,而变量和函数的名字与其实际存储地址之间的转换由编译程序自动完成这种方式称为直接存取访问方式。<br>同时,C++也允许采用间接访问方式,即编程者通过操作变量、数组或者函数的地址来达到处理数据的目的。在很多情况下用这种方法可以提高程序的运行效率。</p>
+</blockquote>
+<p>数据的访问原理</p>
+<blockquote>
+<p>访问数据，就得知道数据的首地址和地址的长度。通过首地址和地址长度，就能得到数据所占用的所有存储单元，然后就可以访问这个数据。<br>当我们去访问数据的时候，我们只给了系统数据的首地址，那么系统是怎么判断要获取的数据的地址长度？系统会通过我们给的数据地址的类型，得知存储的数据的地址长度，再通过我们给的数据的首地址，从而得知数据的所在的整个存储单元，然后就可以访问整个数据。</p>
+</blockquote>
+<p>数据的地址获取</p>
+<blockquote>
+<ol>
+<li>变量的地址可以使用地址运算符&amp;求得。例如,&amp;x表示变量x的地址。</li>
+<li>数组的地址,即数组第一个元素的地址,可以直接用数组名表示。</li>
+<li>函数的地址用函数名表示。（实际上，函数名只是表示函数的首地址，而不是真正的函数的地址。函数名和函数地址两者的值都是函数的首地址，但是类型不一样。真正的函数地址得用&amp;+函数名获得）</li>
+</ol>
+</blockquote>
+<h2 id="指针-1"><a href="#指针-1" class="headerlink" title="指针"></a>指针</h2><p>指针的理解</p>
+<blockquote>
+<p>指针有两种理解。<br>一，某个变量的内存地址称为该变量的指针。<br>二，用以表示(或存储)不同指针值(亦即内存单元地址值)的变量就是指针变量,简称指针。指针也是一种数据类型。</p>
+</blockquote>
+<p>指针变量的定义形式</p>
+<blockquote>
+<p>定义的形式<br>数据形式 *指针变量名</p>
+<p>定义形式的说明</p>
+<ol>
+<li>&quot;*“不是指针变量名,表示这里说明的是一个指针类型的变量。</li>
+<li>数据形式 ,它是指针要指向的变量的类型。（ 可以把&quot;*“和数据形式看成是一个整体，比如int *i,指针i的数据类型是int*类型。）</li>
+<li>指针变量的值是指针所指向的变量在内存中所处的地址。</li>
+<li>指针的变量名是标识指针变量的名称,其命名规则与一般变量相同。</li>
+</ol>
+</blockquote>
+<p>举例</p>
+<blockquote>
+<p>int * ptr ;<br>定义了一个指向 int类型的指针变量,其名称为ptr,专门用来存放整型数据的地址</p>
+</blockquote>
+<p>悬挂指针的理解</p>
+<blockquote>
+<p>悬挂指针（Dangling Pointer）是指指向已被释放或无效的内存地址的指针。</p>
+</blockquote>
+<p>野指针的理解</p>
+<blockquote>
+<p>野指针（Wild Pointer）是指没有被正确初始化或者指向无效对象的指针。野指针可能包含任意值，指向任意的内存地址，包括已经被释放的内存、未分配的内存区域或者无效的对象。</p>
+</blockquote>
+<h2 id="指针运算"><a href="#指针运算" class="headerlink" title="指针运算"></a>指针运算</h2><h3 id="运算符和-amp-运算符"><a href="#运算符和-amp-运算符" class="headerlink" title="*运算符和&amp;运算符"></a><code>*</code>运算符和<code>&amp;</code>运算符</h3><p><code>*</code>运算符的理解</p>
+<blockquote>
+<p><code>*</code>称为指针运算符,<code>*</code>出现在说明语句中和执行语句中时其含义是不同的。</p>
+<p><code>*</code>出现在说明语句中,在被说明的变量之前时,表示说明的是指针,例如:<br><code>int * ptr ;</code>&#x2F;&#x2F;说明ptr是一个int型指针<br><code>ptr = &amp;x </code>;&#x2F;&#x2F;取变量x的地址</p>
+<p><code>*</code>出现在执行语句中或说明语句的初值表达式中时，表示访问指针所指向变量的值,例如:<br><code>y=* ptr;</code>&#x2F;&#x2F;将指针ptr所指向的值赋给变量y</p>
+</blockquote>
+<p><code>&amp;</code>运算符的理解</p>
+<blockquote>
+<p><code>&amp;</code>称为取地址运算符。<code>&amp;</code>出现在说明语句中和执行语句中时其含义是不同的。</p>
+<p><code>&amp;</code>在给变量赋初值时出现在赋值号右边或在执行语句中作为一元运算符出现时，表示取变量的地址，如：<br><code>ptr = &amp;x </code>;&#x2F;&#x2F;取变量x的地址</p>
+<p><code>&amp;</code>出现在变量说明语句中,位于被说明变量左边时,表示说明的是引用,例如:<br><code>int &amp;ref ;</code>&#x2F;&#x2F;说明一个int型的引用ref</p>
+</blockquote>
+<h3 id="指针变量的算术运算"><a href="#指针变量的算术运算" class="headerlink" title="指针变量的算术运算"></a>指针变量的算术运算</h3><p>指针变量算术运算分类</p>
+<blockquote>
+<p>指针变量只有和加减法相关的算术运算,大概有三种<br>1自增++、自减–运算。<br>2加、减整型数据。<br>3指向同一个数组的不同数组元素的指针之间的减法。</p>
+</blockquote>
+<p>不同类型的指针的加减法的区别</p>
+<blockquote>
+<p>指针变量的加、减法运算可以完成指针移动。对不同的指针变量类型,移动的单位长度有所不同。移动单位长度的大小取决于指针变量的类型和指向的数据类型的大小。<br>指针变量的值存储的是它所指向的数据的首地址，而不是整个数据所占的内存空间。因此，对于不同类型的指针变量，它们的值都只是所指向数据的首地址，不过他们的移动单位不同。<br>例如，对于整型指针，移动单位长度为整型数据类型的大小，即4个字节。而对于双精度指针，移动单位长度为双精度数据类型的大小，即8个字节。</p>
+<p>因此，对于整型指针p而言，p–操作会使指针p的值减去整型数据类型的大小，即4个字节，指向前一个整型数据单元的首地址。同理，p++操作会使指针p的值加上整型数据类型的大小，指向后一个整型数据单元的首地址。</p>
+</blockquote>
+<p>使用指针变量的算术运算的注意事项</p>
+<blockquote>
+<p>1.对于指向单个变量和函数的指针进行算术运算是没有意义的。<br>因为指针的加减操作的本质是在指针的基础上移动一定的步长，而这个步长的大小取决于指针所指向的数据类型的大小。对于单个变量或函数来说，它们在内存中只占有一个固定的地址，没有其他的元素需要移动，因此对指向它们的指针进行算术运算没有意义。<br>但是对于数组来说，一个数组内的各元素的相对位置总是固定的,因此对指向数组元素的指针使用算术运算是有意义的可以根据指针移动的距离来访问数组中的不同元素。</p>
+<p>2.对指针变量进行下列算术运算毫无意义:指针间相乘或相除、两个指针相加、指针与浮点型数的加、减等。</p>
+</blockquote>
+<h3 id="指针变量的比较运算"><a href="#指针变量的比较运算" class="headerlink" title="指针变量的比较运算"></a>指针变量的比较运算</h3><p>指针变量的比较运算的意义</p>
+<blockquote>
+<p>在关系表达式中允许指针的比较运算,但要注意这种运算对程序设计是否有意义。<br>1.一般来说,指针的比较常用于两个或两个以上指针变量都指向同一个公共数据对象的情况,例如同一个数组中各数组元素的指针之间的比较等。<br>2.任何指针与空指针(NULL)的比较在程序设计中都是必要的,但类型不同的指针之间的比较一般没有意义。</p>
+</blockquote>
+<h3 id="指针变量的下标运算"><a href="#指针变量的下标运算" class="headerlink" title="指针变量的下标运算"></a>指针变量的下标运算</h3><p>指针变量下标运算的理解</p>
+<blockquote>
+<p>C++提供了指针变量的下标运算<code>[]</code>,其形式类似于一维数组元素的下标访问形式。例在声明了指针变量<br><code>double x,a[100],*ptr = a;</code><br>之后，也可以使用<br><code>x= ptr[10];</code>&#x2F;&#x2F;此时就是把a数组的第十个元素，赋值给x。<br>但是注意ptr本质不是数组，而是指向数组首元素的指针，<code>ptr[10];</code>这个语句就相当于<code>( ptr +10 ) ;</code>语句一样。</p>
+</blockquote>
+<h2 id="指针初始化"><a href="#指针初始化" class="headerlink" title="指针初始化"></a>指针初始化</h2><p>指针初始化的原因</p>
+<blockquote>
+<p>声明一个指针变量后,如果没有对其赋初值,则它的值(即它所指向的内存位置)是不确定的。<br>此时,指针所指向的内存单元有可能存放着重要的数据或代码,如果盲目地访问,就可能会破坏数据或导致系统出现故障,因此不赋值而直接对指针所指向的内存写人数据是极其危险的。<br>为避免上述错误,需要在声明后对指针变量进行“初始化”。</p>
+</blockquote>
+<p>普通指针的初始化</p>
+<blockquote>
+<p>定义指针变量的同时,赋予该指针变量初值,其一般形式如下:<br><code>数据类型标识符*指针变量名=初始地址值;</code><br>例如：<br><code>int i ;</code><br><code>int*ptr = &amp;i ;</code></p>
+</blockquote>
+<h2 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h2><p>空指针的理解</p>
+<blockquote>
+<p>实际上,在编程实践中,程序员经常使用以下的初始化语句:<br><code>int *ptr = NULL;</code><br>在此,指针 ptr被初始化为NULL,即空指针。NULL是一个在头文件iostream中定义的符号化常量,将指针初始化为NULL就等于将指针初始化为0。值为NULL的指针不指向任何变量。<br>在定义指针时将指针初始化为NULL是一个很好的编程习惯,这样做可以防止该指针变量指向某一个未知的内存区域而产生难以预料的错误。</p>
+</blockquote>
+<h2 id="指向数组的指针"><a href="#指向数组的指针" class="headerlink" title="指向数组的指针"></a>指向数组的指针</h2><p>指向数组的创建指针的举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a[10];</span><br><span class="line">int (*p)[10] = &amp;a;</span><br><span class="line">//则p是指针，指向a数组，类型为int (*)[10]。这里的括号是必要的，因为[]运算符的优先级比*运算符高。</span><br><span class="line">如果不加括号，编译器会将上面的声明解释为int *p[10]，此时p是指针数组，数组的每一个元素都是指针。</span><br><span class="line">由于数组中的元素在内存中是连续排列存放的,因此任何能由数组下标完成的操作都可由指针来实现，比如a[0]表示数组的第一个元素，而(*p)[0]也表示数组的第一个元素</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>指向数组的指针和指向数组名的指针的区别</p>
+<blockquote>
+<p>以下面代码为例<br><code>int a[10];</code><br><code>int (*p1)[10] = &amp;a; </code><br><code>int *p2=a</code><br><code>p1</code>是指针，指向<code>a</code>数组，类型为<code>int (*)[10]</code>。<br>可以使用<code>(*p1)[i]</code>来访问数组元素，其中<code>i</code>表示元素的下标。而<code>p1++</code>将指向下一个数组，因为一个<code>int (*)[10]</code>类型的指针移动时会跨越整个数组。<br>(对指向数组的指针进行解引用，就可以看成是数组名)</p>
+<p><code>p2</code>是指针，指向<code>a[0]</code>元素，类型为<code>int *</code>。<br>可以使用<code>p2[i]</code>来访问数组元素，其中<code>i</code>表示元素的下标。而<code>p2++</code>将指向数组中的下一个元素，因为一个<code>int *</code>类型的指针移动时只会跨越一个元素。</p>
+</blockquote>
+<h2 id="指向字符串的指针"><a href="#指向字符串的指针" class="headerlink" title="指向字符串的指针"></a>指向字符串的指针</h2><p>指向C风格字符串的指针</p>
+<blockquote>
+<p>我们知道C风格字符串本质就是以空字符<code>&#39;\0&#39;（NULL）</code>结尾的字符数组。而编译器只需要知道字符数组的数组名，也就是字符数组的首个元素的地址，就可以获取整个字符串，这是因为，编译器在处理字符串时，会从字符数组的首地址开始逐个读取字符，直到读到 <code>&#39;\0&#39;</code> 字符为止，就可以确定字符串的长度。<br>那么当我们要用指针就指向整个字符串，只需定义一个字符指针即可，让字符指针去指向数组首元素的地址。</p>
+</blockquote>
+<p>使用指向C风格字符串的指针的注意事项</p>
+<blockquote>
+<p>在C++中，给一个指针变量赋值一个字符串常量，例如<code>char *c = &quot;ABC&quot;;</code>是不安全的。实际上是将指针 <code>c</code> 指向了一个字符串常量<code>&quot;ABC&quot;</code>所在的内存空间。这个字符串常量是存储在只读内存区域（例如代码段或全局数据区）的，因此我们不能通过指针 <code>c</code> 来修改这个字符串的内容。<br>因此在 C++ 中，这段代码可以被编译通过，但是在 C++11 标准之后，这样的代码被视为不安全的</p>
+</blockquote>
+<p>指向字符数组的指针的使用</p>
+<blockquote>
+<p>设有指针ptr . qtr以及字符型数组 string,代码如下<br><code>char * ptr，*. qtr;</code><br><code>char string[6] = &quot;Big&quot; ;</code><br><code>int len = strlen( string) ;</code><br><code>ptr = string;</code><br><code>qtr = ptr + len;</code><br>他们在内存中的关系如下图</p>
+<p><img src="/blog/fujian/93981238e375c42f9c40b1f5f97080e3.png"><br>从图中可以看出,指针ptr 指向数组string 的第一个元素,其内容就是该元素的地址0x0012EF70。<br>现在,如果执行运算<br><code>ptr ++ ;</code><br>即在指针变量ptr原来的值上再加1,使其变为0x0012EF71。可以看出,这正是数组中第二个元素的地址,即指针现在改为指向数组中的第二个元素。</p>
+<p>如果执行运算<br><code>ptr += 3;</code><br>则ptr的值由0x0012EF70变为0x0012EF73,即指向数组string的第四个元素。由此可以看出,在指针变量上加上一个常数,相当于改变了其中存储的地址值,即改变了指针指向的数组元素。同样,也可以从指针变量存储的地址值上减去一个常数,此时指针向前移动若干个元素</p>
+<p>在图中，令指针变量qtr指向字符串的结束标志为0(即数组string 的第四个元素)。以下语句可求出这两个指针的差:<br>3 &#x3D; qtr - ptr;<br>可以看出,这正是字符串string的长度（不含字符串结束符)。</p>
+<p>由于在C++中每个变量﹑数组和函数的具体地址和相对顺序是由编译连接程序确定的(局部变量是动态分配的) 。<br>在编写程序时无法知道其确切的地址和相对顺序,因此对于指向单个变量和函数的指针进行这样的运算是没有意义的。<br>但是无论怎样分配，一个数组内的各元素的相对位置总是固定的,因此对数组元素的引用除了使用下标以外,还可以通过使用指针运算来实现,这是C程序设计的一大特点。</p>
+</blockquote>
+<h2 id="指向指针的指针"><a href="#指向指针的指针" class="headerlink" title="指向指针的指针"></a>指向指针的指针</h2><p>指向指针的指针的理解</p>
+<blockquote>
+<p>指针也是变量，当然也有地址。指针的地址也可以使用地址运算符“&amp;”求出,也可以存储在某种变量中。能够存放指针地址的变量当然也是指针，是“指向指针的指针”。</p>
+</blockquote>
+<p>指向指针的指针的声明形式</p>
+<blockquote>
+<p><code>&lt;数据类型&gt; **&lt;指针变量名&gt;;</code></p>
+</blockquote>
+<p>指向指针的使用举例</p>
+<blockquote>
+<p><code>int x = 2 ;</code><br><code>int* xp，**xpp;</code><br><code>xp = &amp;x;</code><br><code>xpp = &amp;xp;</code></p>
+<p>内存分配图<br><img src="/blog/fujian/d1fb77025d41259a2fcd9bafde0b09d7.png"><br><code>xpp</code>是指向<code>xp</code>的指针，即存储着<code>xp</code>的地址，则<code>*xpp</code>则表示<code>xpp</code>所指向的存储空间的值，也就是说<code>*xpp</code>表示<code>xpp</code>所存储的地址所存储的值，即<code>xp</code>的值。</p>
+<p><code>xp</code>是指向<code>x</code>的指针，即存储着<code>x</code>的地址，<code>*xp</code>表示xp所指向的存储空间的值，也就是说<code>*xp</code>表示<code>xp</code>所存储的地址所存储的的值，即<code>x</code>的值2。</p>
+<p><code>*xpp</code>表示所指向的存储空间<code>xp</code>的值，<code>xp</code>存储着<code>x</code>的地址，<code>**xpp</code>就表示所存储的<code>x</code>的地址的值，也就是2</p>
+</blockquote>
+<h2 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h2><p>指针数组的理解</p>
+<blockquote>
+<p>指针数组也是数组,但它和一般数组不同,其数组元素不是一般的数据类型,而是指针,即内存单元的地址。这些指针必须指向同一种数据类型的变量。</p>
+</blockquote>
+<p>指针数组的声明方式</p>
+<blockquote>
+<p>指针数组的声明方式和普通数组的声明方式类似,在数组名后加上维长说明即可。<br>声明一维指针数组的语法形式如下:<br><code>数据类型 *数组名[常量表达式];</code><br>其中，<code>常量表达式</code>指出数组元素的个数，<code>数据类型</code>确定每个元素指针的类型，<code>数组名</code>是指针数组的名称,同时也是这个数组首元素的首地址。</p>
+</blockquote>
+<p>指针数组的声明举例</p>
+<blockquote>
+<p>声明一个一维指针数组，10个数组元素,均为指向字符类型的指针:<br><code>char * ptr[10];</code></p>
+<p>当然,也可以声明二维以至多维指针数组,例如:<br><code>int * index[10][ 2];</code></p>
+</blockquote>
+<p>指针数组的初始化</p>
+<blockquote>
+<p><img src="/blog/fujian/214c6483c29bc6c2cff00867edbf23d4.png"></p>
+</blockquote>
+<h2 id="动态存储（new语句）"><a href="#动态存储（new语句）" class="headerlink" title="动态存储（new语句）"></a>动态存储（new语句）</h2><p>静态存储的理解</p>
+<blockquote>
+<p>一般来说,程序中使用的变量和数组的类型、数目和大小是在编写程序时由程序员来确定的,因此在程序运行时这些数据占用的存储空间数也是一定的,这种存储分配方法被称为静态存储分配。<br>静态存储分配的缺点是程序无法在运行时根据具体情况(如用户的输人)灵活调整存储分配情况。<br>例如,无法根据用户的输入决定程序能够处理的数组的大小,如下的代码是错误的。<br><code>int a;</code><br><code>cin&gt;&gt;a;</code><br><code>int b[a];</code></p>
+</blockquote>
+<p>动态存储的理解</p>
+<blockquote>
+<p>C++的动态存储就可以解决静态存储问题。<br>C++中的动态存储是一种在程序运行时动态分配内存的方法，这种内存分配方式不需要在程序编写时预先知道所需内存大小。动态存储允许程序根据需要分配和释放内存，可以使程序更加灵活和高效。</p>
+<p>就是一般情况下，我们的数组大小是在我们编程的时候设置好的。而动态存储，可以让我们在运行程序的时候，根据不同的情况，随意调整数组的大小</p>
+<p>在C++中，使用<code>new</code>运算符可以动态分配内存，返回指向新分配的内存的指针。</p>
+</blockquote>
+<p>用<code>new</code>动态申请内存的语法</p>
+<blockquote>
+<p>申请变量的语法<br><code>&lt;指针&gt; = new&lt;类型&gt;;</code><br>或者<br><code>&lt;指针&gt; = new&lt;类型&gt;(初值);</code><br>new运算符从堆(管理内存中的空闲存储块)中分配一块与“类型”相适应的存储空间,如果分配成功,则将其首地址存入“指针”,否则置“指针”的值为NULL(空指针值,即0)。“初值”用于为分配好的变量置初值。</p>
+<p>申请数组的语法<br><code>&lt;指针&gt; = new&lt;类型&gt;[&lt;元素数&gt;];</code></p>
+</blockquote>
+<p>用<code>delete</code>释放先前申请到的存储块语法</p>
+<blockquote>
+<p>释放申请到的变量<br><code>delete&lt;指针&gt;;</code><br>其中,“指针”中应为先前分配的存储块的地址。</p>
+<p>释放申请到的数组<br><code>delete []&lt;指针&gt;;</code></p>
+</blockquote>
+<p>基础使用举例1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//分配了一个大小为10个整数的数组</span><br><span class="line">int* myArray = new int[10];</span><br><span class="line"></span><br><span class="line">//使用“delete”运算符释放该内存。</span><br><span class="line">delete[] myArray;</span><br><span class="line"></span><br><span class="line">//使用new申请int类型内存，并在内存里赋予初值5</span><br><span class="line">int x，*ptr = new int( 5 );</span><br><span class="line">//x的值为5</span><br><span class="line">x=* ptr;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>二维数组动态存储和释放使用举例</p>
+<blockquote>
+<p><img src="/blog/fujian/67229460cbc80961ad6f6496f8bcc952.png"></p>
+</blockquote>
+<p>使用动态存储创建一维数组，并且让数组里的元素都为0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 方法三：使用花括号初始化列表(C++11特性)将数组所有元素初始化为0</span><br><span class="line">int* myArray = new int[N](); // 注意：这里必须加上括号</span><br></pre></td></tr></table></figure>
+
+
+<p>在使用动态存储时，需要注意以下几点：</p>
+<blockquote>
+<ol>
+<li>动态分配的内存不会像栈内存一样自动释放，需要手动释放，否则会导致内存泄漏。  </li>
+<li>内存分配失败可能会导致“bad_alloc”异常，需要在代码中进行异常处理。</li>
+<li>动态分配的内存可以使用指针进行访问，但需要注意指针的生命周期和有效性。</li>
+<li>用这种方法创建的动态数组，在C++没有对应的函数来求其数组长度。比如sizeof只能求静态数组的长度，不能求动态数组的长度。</li>
+</ol>
+</blockquote>
+<h2 id="函数的地址和指针"><a href="#函数的地址和指针" class="headerlink" title="函数的地址和指针"></a>函数的地址和指针</h2><p>函数地址的理解</p>
+<blockquote>
+<p>程序只有装人内存以后才能运行。函数本身作为一段程序,其代码也在内存中占有一片存储区域,这些代码中的第一个代码所在的内存地址称为首地址。<br>函数的地址就是用函数的首地址表示，但是注意函数的首地址不代表就是函数的地址，两者的值一样，但是类型不一样。<br>首地址是函数的入口地址。主函数在调用子函数时,就是让程序转移到函数的入口地址开始执行。</p>
+</blockquote>
+<p>指向函数的指针的理解</p>
+<blockquote>
+<p>所谓指向函数的指针,就是指针的值为该函数的入口地址，指针的类型，与函数地址的类型一致。</p>
+</blockquote>
+<p>指向函数的指针变量的定义形式</p>
+<blockquote>
+<p>&lt;函数返回值类型说明符&gt;(*&lt;指针变量名&gt;)(&lt;参数说明表&gt;);</p>
+</blockquote>
+<p>指向函数指针定义举例</p>
+<blockquote>
+<p>int(*p)( );                    &#x2F;&#x2F;p为指向返回值为整型的函数的指针<br>float(*q)( float , int );  &#x2F;&#x2F;q为指向返回值为浮点型,且有两个参数的函数的指针</p>
+</blockquote>
+<p>函数的赋值</p>
+<blockquote>
+<p>由于函数名与数组名类似,都表示该函数的入口地址,因此可以直接把函数名赋给指向函数的指针变量。</p>
+<p>注意，函数名虽然表示的是函数的首地址，但函数名不是函数的地址，函数的地址则是&amp;函数名。<br>函数名和函数的地址两者的值是一样的，但是意义不一样，类型也不一样。假设有一个函数 void test()。test是函数的首地址，它的类型是void ()，&amp;test表示一个指向函数test这个对象的地址， 它的类型是void (*)(),他们所代表的值一样，都是函数的首地址。但类型不一样。（指向函数的指针，和函数的地址两者的数据类型是一样的）<br>赋值的时候，可以用函数名赋值给函数的指针，是因为赋值的时候，C++会自动进行类型的转换，函数名所表示的数据地址会转换为函数地址的数据类型。</p>
+</blockquote>
+<p>指针变量调用函数举例</p>
+<blockquote>
+<p>double ( *func)(double) &#x3D; cos ;<br>double y,x;<br>x&#x3D; 3.14159;<br>y&#x3D;(* func ) ( x ) ;</p>
+</blockquote>
+<p>注意</p>
+<blockquote>
+<ol>
+<li>在定义指向函数的指针变量时,指针变量名前后的圆括号不能缺少。例如:<br>int* func( );    &#x2F;&#x2F;返回地址的函数<br>int (*func)( ) ; &#x2F;&#x2F;指向函数的指针</li>
+<li>前者定义了一个函数,其返回值为指向整型的指针;而后者定义了一个指向返回值为整型的函数的指针变量,意义完全不同。</li>
+</ol>
+</blockquote>
+<h2 id="void类型的指针"><a href="#void类型的指针" class="headerlink" title="void类型的指针"></a>void类型的指针</h2><p>void类型指针的理解</p>
+<blockquote>
+<p>C+＋规定,可以说明指向void类型的指针。指向void类型的指针是通用型的指针,可以指向任何类型的变量。可以直接对void型指针赋值或将其与NULL进行比较,但是在求指针变量的内容,或者进行指针运算之前必须对其进行强制类型转换。</p>
+</blockquote>
+<p>举例</p>
+<blockquote>
+<p><img src="/blog/fujian/43892aa1320b651930cb2990abeb8804.png"></p>
+</blockquote>
+<h2 id="指针常量和常量指针"><a href="#指针常量和常量指针" class="headerlink" title="指针常量和常量指针"></a>指针常量和常量指针</h2><p>指针常量的理解</p>
+<blockquote>
+<p>指针常量是指指针本身是常量，即指针变量的值（内存地址）不能被改变，但是可以通过该指针访问和修改所指向的数据。</p>
+</blockquote>
+<p>指针常量的举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int value = 10;</span><br><span class="line">int* const ptr = &amp;value;  // ptr 是指针常量，指向 value</span><br><span class="line">*ptr = 20;  // 通过指针修改 value 的值</span><br><span class="line"></span><br><span class="line">在上面的例子中，ptr 是一个指针常量，它的值，即所存储的地址不能被改变，但是可以通过 *ptr 来修改所指向的 value 的值。</span><br></pre></td></tr></table></figure>
+
+
+<p>指针常量的举例2</p>
+<blockquote>
+<p><code>char str2[ ] = &quot; A constant pointer&quot; ;</code><br><code>char * const qtr = str2 ;</code><br>定义了一个指针常量qtr。在这种情况下,指针本身不能修改,但其指向的对象并非常量,允许修改。</p>
+</blockquote>
+<p>常量指针的理解</p>
+<blockquote>
+<p>常量指针是指指针所指向的数据是常量，即指针指向的数据不能被修改，但是指针本身可以指向其他的数据。</p>
+</blockquote>
+<p>常量指针的举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const int value = 10;</span><br><span class="line">const int* ptr = &amp;value;  // ptr 是常量指针，指向常量 value</span><br><span class="line">在上面的例子中，ptr 是一个常量指针，它指向一个常量 value，因此不能通过 *ptr 来修改所指向的数据。</span><br></pre></td></tr></table></figure>
+
+<p>常量指针的举例2</p>
+<blockquote>
+<p><code>char str1 [ ] = &quot;Point to constant string&quot; ;</code><br><code>const char * ptr = str1 ;</code><br>表示定义了一个指针ptr,它指向一个常数字符串。</p>
+<p>因此,运算<br><code>*ptr = &#39;Q&#39;;</code><br>是非法的,因为该字符串为常量。</p>
+<p>但指针ptr本身为变量,可以修改。例如<br><code>ptr ++ ;</code><br>合法.</p>
+</blockquote>
+<p>总结</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const int* A；//此时A所指向的对象可以看成是常量，因此*A不能修改，而A可以变。</span><br><span class="line">int* const A; //地址A可以看成是常量，A不可变，A所指向的对象是可以变的。</span><br></pre></td></tr></table></figure>
+
+
+<p>const修饰符的常用用法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">实际上,修饰符const多用于修饰函数的指针或引用参数,以防止在编程中无意识地改变其值。例如:</span><br><span class="line">double func1 ( const double * x );</span><br><span class="line">double func2 ( const double &amp;x );</span><br><span class="line">如果在编写以上函数的代码时不小心改变了指针对象或引用对象的值,则会引起编译错误。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="结构体类型"><a href="#结构体类型" class="headerlink" title="结构体类型"></a>结构体类型</h1><h2 id="结构体的基础知识"><a href="#结构体的基础知识" class="headerlink" title="结构体的基础知识"></a>结构体的基础知识</h2><p>结构体的理解</p>
+<blockquote>
+<p>结构体是由不同类型的数据组成的集合体,它包含多种成员。在使用结构体之前得先定义结构体</p>
+</blockquote>
+<p>结构体的定义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct &lt;结构体类型名&gt;</span><br><span class="line">&#123;</span><br><span class="line">&lt;结构体类型的成员变量说明语句表&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>C的结构体和C++结构体的区别</p>
+<blockquote>
+<p>实际上,结构体类型是C++从C语言中继承下来的内容。C语言的结构体类型比较简单，只有成员变量。而C++的结构体类型和类(将在第9章介绍)一样,可以有数据成员,也可以有成员函数﹑构造函数和析构函数。<br>C+＋中,使用结构体类型主要是为了兼容一些从C语言继承下来的函数厍。<br>虽然C++的结构体与类十分相似,但大多数程序员还是习惯于使用类似于C语言的结构,即结构体中成员的定义只包含数据,而不包含成员函数。</p>
+</blockquote>
+<p>C++的结构体和类的区别</p>
+<blockquote>
+<p>C+＋的结构体类型的定义和使用方法与类非常相似。在C++中,结构体类型与类的唯一区别是,如果不明确说明,则类的成员均为私有,而结构体类型的成员均为公有。</p>
+</blockquote>
+<p>结构体的使用举例</p>
+<blockquote>
+<p><img src="/blog/fujian/aae942a296faab693707d29e57d2e7b9.png"></p>
+<p>即一个日期类型的变量有3个成员变量:年份( da_year)、月份( da_mon)和日(da_day)。<br>在定义了结构体类型之后,就可以声明该类型的变量,结构体变量的声明方法和其他类型的变量一样,例如变量说明语句:<br><code>Date yesterday, today, tomorrow ;</code><br>就定义了3个日期类型的变量:yesterday,today 和 tomorrow ,这些变量具有数据处理对象包含的所有数据,可以与简单类型的变量一样作为函数的参数或返回值,或构造结构体类型的数组。</p>
+</blockquote>
+<h2 id="typdef声明结构体"><a href="#typdef声明结构体" class="headerlink" title="typdef声明结构体"></a>typdef声明结构体</h2><p>在结构体定义中，用typedef和不用的区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">struct Student</span><br><span class="line">&#123;</span><br><span class="line">   int no;</span><br><span class="line">   char name[12];</span><br><span class="line">&#125;stu1;//stu1是一个变量</span><br><span class="line"></span><br><span class="line">typedef struct Student2</span><br><span class="line">&#123;</span><br><span class="line">   int no;</span><br><span class="line">   char name[12];</span><br><span class="line">&#125;stu2;//stu2是一个结构体类型，即stu2是Student2的别名</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="结构体变量初始化和使用"><a href="#结构体变量初始化和使用" class="headerlink" title="结构体变量初始化和使用"></a>结构体变量初始化和使用</h2><p>定义结构体变量时赋值</p>
+<blockquote>
+<p>例如<br><code>Date yesterday = &#123;2008,1,28&#125; ;</code><br>两个相同类型的结构体变量之间可以互相赋值。</p>
+</blockquote>
+<p>对结构体类型变量的成员变量的引用方法为</p>
+<blockquote>
+<p><code>&lt;结构体类型变量名&gt;.&lt;成员变量名&gt;</code><br>例如:<br><code>today. da_year = 2008 ;</code><br><code>today. da_mon = 1 ;</code><br><code>today. da_day = 29;</code></p>
+</blockquote>
+<p>结构体的输入输出</p>
+<blockquote>
+<p>和数组一样,不能将结构体变量作为一个整体输入或者输出。<br>只能以结构体的成员作为基本变量，一次输入或输出结构变量中的一个成员。例<br>如，下面语句将输出结构体变量today 的内容:<br><code>cout &lt;&lt; today. da_year &lt;&lt;&quot;年&quot;&lt;&lt;today. da_mon &lt;&lt; &quot;月&quot;&lt;&lt;today. da_day &lt;&lt;&quot;日&quot;&lt;&lt;endl;</code></p>
+</blockquote>
+<p>注意</p>
+<blockquote>
+<p>每次定义一个结构体变量，他都会开辟好内存了，只不过没有初始化，也就是说，结构体里面的变量已经开辟好对应的空间了，有了地址了，只是里面还没赋值。</p>
+</blockquote>
+<p>结构体的初始化和使用举例</p>
+<blockquote>
+<p><img src="/blog/fujian/5ebe2699cd67673e1ed21d0f3e13ada3.png"><br><img src="/blog/fujian/669f80e22d4cd2d10b3b1478029ceed6.png"><br><img src="/blog/fujian/35dd5b4c51f4d949b6a42f26a520902b.png"></p>
+</blockquote>
+<h2 id="结构体与数组"><a href="#结构体与数组" class="headerlink" title="结构体与数组"></a>结构体与数组</h2><p>结构体中的数组举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">结构体的成员可以是数组,其使用方法和简单变量相同。</span><br><span class="line"></span><br><span class="line">struct StudentType</span><br><span class="line">&#123;</span><br><span class="line">	int id;//学号</span><br><span class="line">	char name[ 20];//姓名</span><br><span class="line">	int score[ 5 ];//五门课程成绩</span><br><span class="line">	int GPA;//平均分</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">StudentType xjtuStudent ;</span><br><span class="line"></span><br><span class="line">//如果要访问结构变量xjtuStudent的第二门课程成绩,可以用如下方法:</span><br><span class="line">xjtuStudent.score[1]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>结构体数组举例</p>
+<blockquote>
+<p>如果某个班有30名学生,需要对这个班所有的学生的成绩情况进行处理,在定义完上面的结构体后,因为这些学生的数据类型都是相同的,所以可以用一个有30个元素的数组来处理学生的数据。即进行如下变量声明:<br><code>StudentType xjtuStudent[ 30];</code><br>这样,每一个数组元素都是一个结构体。</p>
+</blockquote>
+<h2 id="结构体与指针"><a href="#结构体与指针" class="headerlink" title="结构体与指针"></a>结构体与指针</h2><p>指向结构体指针的使用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct StudentType</span><br><span class="line">&#123;</span><br><span class="line">	char id[10];//学号</span><br><span class="line">	double score[5];//五门课程成绩double GPA;</span><br><span class="line">	double GPA;//平均分</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">StudentType xjtuStudent ;</span><br><span class="line"></span><br><span class="line">//这里就定义了一个指向结构体的指针ptr,并将xjtuStudent的地址赋给它。</span><br><span class="line">StudentType *ptr = &amp;xjtuStudent;</span><br><span class="line"></span><br><span class="line">//通过指针访问结构的成员要用箭头操作符-&gt;</span><br><span class="line">ptr-&gt;score[1] = 90 ;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>指向结构体的指针的图示</p>
+<blockquote>
+<p><img src="/blog/fujian/a24002f0e3975d15609d4e461615189b.png"></p>
+</blockquote>
+<p>结构体的地址理解（我自己的理解）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">结构体的地址理解（我自己的理解）</span><br><span class="line">有一个结构体</span><br><span class="line">Struct T</span><br><span class="line">&#123;</span><br><span class="line">	A a;</span><br><span class="line">	B b;</span><br><span class="line">	C c;</span><br><span class="line">&#125;</span><br><span class="line">里面有三个数据类型ABC，创建一个结构体对象，这个对象会在内存划一个连续的存储空间来存储abc三个数据，这个存储空间的的大小=存储数据类型A的大小+B的大小+C的大小，</span><br><span class="line">假设创建一个结构体对象t，</span><br><span class="line">a的空间地址为d1d2，地址长度为2。</span><br><span class="line">b的空间地址为d3d4d5，地址长度为3。</span><br><span class="line">c的空间地址为d6d7d8d9，地址长度为4。</span><br><span class="line">t的地址就等于d1d2d3d4d5d6d7d8d9,地址长度为9。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h1 id="enum枚举类型"><a href="#enum枚举类型" class="headerlink" title="enum枚举类型"></a>enum枚举类型</h1><h2 id="枚举类型的基础知识"><a href="#枚举类型的基础知识" class="headerlink" title="枚举类型的基础知识"></a>枚举类型的基础知识</h2><p>枚举类型的理解</p>
+<blockquote>
+<p>如果某个数据项的取值范围仅限于少数几种可能的值(如星期几的取值只能是从星期一~星期日7种可能,比赛结果只能是输﹑赢、平3种),则可以将该数据项定义为枚举类型数据。<br>所谓枚举就是指在定义某个类型的时候，时就将其可能的取值都一一列举出来,这样,这个类型的变量的值就只限于列举出来的值的范围内,不能再取其他值。采用枚举类型可提高程序的可读性。</p>
+</blockquote>
+<p>枚举定义举例</p>
+<blockquote>
+<p>定义星期类型<br><img src="/blog/fujian/7e451dbafe39346b74d8d620c4980d50.png"></p>
+<p>定义了枚举数据类型后,就可以声明该类型的变量,在如下语句中<br><code>WeekdayType workday ;</code><br>变量workday只能取枚举类型中列出的符号值,可以是从SUNDAY ~ SATURDAY中的任何一个，不能再取没有列出的值。例如<br>workday &#x3D; MONDAY;</p>
+</blockquote>
+<p>枚举类型元素值说明</p>
+<blockquote>
+<p>1.每个枚举元素实际上是一个以其所在位置顺序为值的常量。编译器会按照其定义时的顺序为它们取值为0、1、2、…、n -1。例如,对于枚举类型WeekdayType来说,MONDAY的值为1。<br>如果要打印变量workday 的值,可使用常规的输出方法,打印出的值只会是0、1、2、…、6这样的序号值。因此,枚举类型无法进行直接的输人和输出,要想获得变量的符号值,必须采用间接的方法。</p>
+<p>2一般情况下，一个枚举类型中的各枚举值从0开始顺序取值。在前面的例子中,从SUNDAY ~SATURDAY分别取值0、1、…,6。但是,在定义枚举类型时,也可以对各枚举符号进行初始化,改变其对应的顺序值。例如:<br><img src="/blog/fujian/869024d30566a5af6843fb7b6f491522.png"><br>从SUNDAY ~SATURDAY 所对应的值分别为7、1、2、…,6。<br>3.枚举变量可以直接输出，但不能直接输入。<br>4.不能直接将常量赋给枚举变量。</p>
+</blockquote>
+<p>程序例子</p>
+<blockquote>
+<p>主函数<br><img src="/blog/fujian/29fcb1c0349db90a96bb55e83d6cf2c1.png"><br><img src="/blog/fujian/21deaef74fe4d90a21e1e15d559fe6c0.png"><br><img src="/blog/fujian/dcd187d7595da1f0cda5fd3a1d38e822.png"></p>
+<p>输入<br>bl</p>
+<p>输出<br>The color you ‘ve chosen is blue</p>
+</blockquote>
+<h2 id="强枚举类型的基础知识"><a href="#强枚举类型的基础知识" class="headerlink" title="强枚举类型的基础知识"></a>强枚举类型的基础知识</h2><p>强枚举类型的理解</p>
+<blockquote>
+<p>C++11中的enum class是一种强类型枚举，与普通的枚举类型相比它可以避免枚举值之间的隐式转换。</p>
+</blockquote>
+<p>强枚举类型定义举例</p>
+<blockquote>
+<p>enum class EGameState :short { EWait; EPlaying; };<br>这段代码定义了一个枚举类型EGameState，它有两个成员：EWait和EPlaying。<br>其中，使用了short关键字来指定枚举类型的底层数据类型为short。枚举类型的底层类型为short，表示枚举类型中的元素的值都是short类型。</p>
+</blockquote>
+<p>强枚举类型地特性</p>
+<blockquote>
+<p>与旧版C++中的“非域内枚举”（unscoped enums）相比，enum class有以下优点</p>
+<ol>
+<li>防止命名空间污染</li>
+<li>不允许隐式转换为int</li>
+<li>不允许不同枚举类型之间的比较</li>
+</ol>
+</blockquote>
+<p>枚举类型和强枚举类型的区别</p>
+<blockquote>
+<p>在C++中，枚举类型的元素是整数常量，它们之间可以进行隐式转换。例如，以下代码演示了如何使用旧版C++定义一个颜色枚举类型：</p>
+<p>enum Color { red, green, blue };<br>这里，red、green和blue是枚举类型中的元素，它们分别被赋值为0、1和2。在这种情况下，枚举类型的元素可以隐式转换为int类型。</p>
+<p>而在C++11中，enum class是一种强类型枚举，它可以避免枚举值之间的隐式转换。例如，以下代码演示了如何使用enum class定义一个颜色枚举类型：<br>enum class Color { red, green, blue };<br>这里，red、green和blue是枚举类型中的元素，它们不会被赋予任何整数值。在这种情况下，枚举类型的元素不能隐式转换为int类型。</p>
+</blockquote>
+<p>强枚举类型不允许不同枚举类型之间的比较的理解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">在C++中，强类型枚举是一种类型安全的枚举，它可以避免枚举值之间的隐式转换。例如，以下代码演示了如何使用enum class定义一个颜色枚举类型：</span><br><span class="line"></span><br><span class="line">enum class Color &#123; red, green, blue &#125;;</span><br><span class="line">这里，red、green和blue是枚举类型中的元素，它们不会被赋予任何整数值。在这种情况下，枚举类型的元素不能隐式转换为int类型。</span><br><span class="line"></span><br><span class="line">因此，如果你尝试将一个强类型枚举类型的元素与另一个强类型枚举类型的元素进行比较，编译器会发出错误。例如，以下代码演示了如何使用enum class定义一个颜色枚举类型，并尝试将其元素与int类型进行比较：</span><br><span class="line"></span><br><span class="line">enum class Color &#123; red, green, blue &#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    Color c = Color::red;</span><br><span class="line">    if (c == 0) </span><br><span class="line">    &#123;</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">在这种情况下，编译器会发出错误，因为不能将Color类型的元素与int类型进行比较。</span><br></pre></td></tr></table></figure>
+
+
+<p>强枚举类型防止命名空间污染的理解</p>
+<blockquote>
+<p>C++11中的强类型枚举类（enum class）是为了解决C++98中的枚举类型（enum）在使用时可能会造成命名空间污染的问题。在C++98中，枚举类型是不限定作用域的，枚举中的成员可不加命名空间限定符随意使用，但是不限定作用域的会造成命名空间污染。<br>如果你在程序中使用了多个枚举类型，而这些枚举类型中有相同的成员名称，那么这些成员名称就会互相冲突，从而导致程序出现错误。这种情况就叫做“命名空间染”。</p>
+<p>举个例子你有两个枚举类型，分别是“颜色”和“水果”，它们都有一个成员名称叫做“红色”。在C++98中的定义中<br>enum 颜色{红色,黄色,蓝色};<br>enum 水果{苹果,橙子,红色};<br>在这种情况下，使用枚举中的成员可不加命名空间限定符，那么就会出现相同成员名称互相冲突的问题，当你使用“红色”的这个元素时，编译器就不知道“红色”的这个值到底是哪个枚举类型的。</p>
+<p>而当你使用C++11中的强类型枚举类去定义，<br>enum class 颜色{红色,黄色,蓝色};<br>enum class 水果{苹果,橙子,红色};<br>在这种情况下强类型枚举类是限定作用域的，即可视为一个 class，那么你使用元素的时候需要加命名空间限定符，标示元素是属于哪个枚举类型，比如我要用水果这个枚举类型的红色的元素值，就得这样使用 “水果::红色”,不会出现命名空间污染</p>
+</blockquote>
+<h1 id="union共用体类型"><a href="#union共用体类型" class="headerlink" title="union共用体类型"></a>union共用体类型</h1><h2 id="union共用体的基础知识"><a href="#union共用体的基础知识" class="headerlink" title="union共用体的基础知识"></a>union共用体的基础知识</h2><p>union共用体的理解</p>
+<blockquote>
+<p>例如：在某一个学校信息管理系统中有以下数据:<br>1.姓名name。<br>2.年龄age。<br>3.职业 job:取值可有两种,即student 或teacher。<br>4.职位postion :<br>对学生( student)而言,采用的是年级 grand分级,取值为1,2,3,4等。<br>对教师( teacher)而言,采用的是职称title分级,取值为Professor , AssociateProfessor 、 Lector等。<br>可见，name ,age , job等三项对学生和教师职员是一样的,但postion 的取值会因为不同人员的身份不同而采用不同的序列。对于某一个人来说,他不可能同时具备两种身份,所以grand和title不用同时存储。这样,就可以在编程时用同一内存段来存放两种不同类型的成员,但每一瞬间只有一个成员起作用。这种特殊的数据类型就是共用体（或称联合体)</p>
+</blockquote>
+<p>共用体的定义形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">union &lt;共用体类型名&gt;</span><br><span class="line">&#123;</span><br><span class="line">	&lt;共用体类型的成员变量说明语句表&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>共用体和结构体之间的区别</p>
+<blockquote>
+<p>在结构体中,每一个数据成员都要单独占用一个存储空间,结构体类型的变量的长度等于其所有成员的长度之和。<br>共用体类型的变量的各个成员共享内存的同一段空间,其总长度等于其最大的成员的长度。</p>
+</blockquote>
+<p>共用体的使用举例</p>
+<blockquote>
+<p><img src="/blog/fujian/9027cae11596a140c925dfd15251af1f.png"><br><img src="/blog/fujian/a8e5a2265c6a81f0f67d38d7235182a3.png"><br><img src="/blog/fujian/375dd7966ae7f0d6163913af8be0e193.png"><br><img src="/blog/fujian/977ea7de77d0d8bf143d679730d1ad35.png"><br><img src="/blog/fujian/afd5d8f67f6e7c0270d6cf8f6d3f3813.png"></p>
+</blockquote>
+<h1 id="作用域运算符"><a href="#作用域运算符" class="headerlink" title="作用域运算符::"></a>作用域运算符::</h1><h2 id="作用域运算符基础知识"><a href="#作用域运算符基础知识" class="headerlink" title="作用域运算符基础知识"></a>作用域运算符基础知识</h2><p>作用域</p>
+<blockquote>
+<p>每一个变量都有其有效的作用域和生命周期，那么，一个变量只能够在它的作用域内使用。<br>范围简单分为：全局作用域，局部作用域，语句作用域。</p>
+</blockquote>
+<p>作用域优先级</p>
+<blockquote>
+<p>范围越小，优先级越高。</p>
+</blockquote>
+<p>同名变量的问题</p>
+<blockquote>
+<p>通常情况下，如果有两个同名变量，一个是全局变量，另一个是局部变量，那么局部变量在其作用域内具有较高的优先权，它将屏蔽全局变量。</p>
+<p>程序举例<br><img src="/blog/fujian/a7f4a3c66e03b509bc579cb1f7557e43.png"></p>
+<p>程序的输出结果<br>a:20</p>
+<p>结果的说明<br>在test函数的输出语句中，使用的变量a是test函数内定义的局部变量，因此输出的结果为局部变量a的值。</p>
+</blockquote>
+<p>作用域运算符的作用</p>
+<blockquote>
+<p>作用域运算符的作用就是跟编辑器说明变量所属的领域。<br>这可以用来解决局部变量与全局变量这类的重名问题(不只是局限于变量)。</p>
+</blockquote>
+<h2 id="作用域运算符的使用"><a href="#作用域运算符的使用" class="headerlink" title="作用域运算符的使用"></a>作用域运算符的使用</h2><p>全局变量的使用</p>
+<blockquote>
+<p>使用方式<br>如果希望在局部变量的作用域内使用同名的全局变量，可以在该变量前加上作用域运算符，此时这个变量就是全局领域的变量。</p>
+<p>举例的程序<br><img src="/blog/fujian/f71f2eabdc2099cb0149858cc5b1a74d.png"></p>
+<p>程序结果<br>局部变量a:20<br>全局变量a:10</p>
+</blockquote>
+<p>类的成员函数使用</p>
+<blockquote>
+<p>使用的方式<br>如果声明了一个类A，类A里声明了一个成员函数void f()，但没有在类的声明里给出f的定义，那么在类外定义f时，就要写成void A::f()，表示这个f()函数是类A领域的成员函数。</p>
+<p>举例的程序<br><img src="/blog/fujian/620b3de65cca06d80f9e0206874d5b2b.png"></p>
+</blockquote>
+<p>命名空间的使用</p>
+<blockquote>
+<p>使用方式<br>如果你在命名空间A里定义了一个变量a（也可以是其他数据），那么要想使用命名空间A里的变量a，就得写成A::a，说明变量a是属于A空间领域。</p>
+</blockquote>
+<h1 id="命名空间-namespace"><a href="#命名空间-namespace" class="headerlink" title="命名空间 namespace"></a>命名空间 namespace</h1><h2 id="命名空间的基础知识"><a href="#命名空间的基础知识" class="headerlink" title="命名空间的基础知识"></a>命名空间的基础知识</h2><p>命名空间的理解</p>
+<blockquote>
+<p>在c++中，符号常量、变量、函数、结构、枚举、类和对象等都是要有名称。工程越大，名称互相冲突性的可能性越大。<br>其次，C语言规定我们所命名的数据的名称不能与关键字冲突，但是并没有规定，<strong>这些名称</strong>不能与<strong>库中的数据的名称</strong>有冲突，而这在实际的操作的过程中就会产生错误<br>例如，在main函数中定义一个time，根据<strong>局部优先</strong>的原则，time变量就会被理解为一个局部变量。但当time作为一个全局变量出现的时候，由于time库中也含有一个名叫time的函数名，头文件被展开后，此time被理解为变量名还是函数名就会产生歧义。</p>
+<p>为了避免，在大规模程序的设计中，以及在程序员使用各种各样的C++库时，这些标识符的命名发生冲突，标准C++引入关键字namespace(命名空间)，可以更好地控制标识符的作用域。</p>
+</blockquote>
+<p>命名空间的语法</p>
+<blockquote>
+<p>以一个程序举例<br><img src="/blog/fujian/ddd01fb6ba8342c2af78a4521dd021ff.png"></p>
+</blockquote>
+<p>命名空间的嵌套使用</p>
+<blockquote>
+<p>以一个程序举例<br><img src="/blog/fujian/f7e788388e2c313f6b16893039bfc17c.png"></p>
+</blockquote>
+<p>命名空间别名</p>
+<blockquote>
+<p>以一个程序举例<br><img src="/blog/fujian/b3ffc5716519cac3664098184f4edfdf.png"></p>
+</blockquote>
+<p>注意</p>
+<blockquote>
+<ol>
+<li><p>命名空间只能全局范围内定义（<strong>以下错误写法</strong>）<br><img src="/blog/fujian/c534629734673d291b82935334a2d4cf.png"></p>
+</li>
+<li><p>命名空间是开放的，即可以随时把新的成员加入已有的命名空间中<br><img src="/blog/fujian/295b6c86aac257c6470ad7f26ed90d40.png"></p>
+</li>
+<li><p>声明和实现可分离<br><img src="/blog/fujian/597adc37c7f6e579fb47ef289505bed5.png"><br><img src="/blog/fujian/4c7f79c8ecc40916696a77a03f0c6bed.png"></p>
+</li>
+<li><p>无名命名空间，意味着命名空间中的标识符只能在本文件内访问，相当于给这个标识符加上了static，使得其可以作为内部连接<br><img src="/blog/fujian/d05d9af9bb6d0027cd7ad55522ade5f4.png"></p>
+</li>
+</ol>
+</blockquote>
+<h2 id="using语句的基础知识"><a href="#using语句的基础知识" class="headerlink" title="using语句的基础知识"></a>using语句的基础知识</h2><p>using 的理解</p>
+<blockquote>
+<p>每次要使用命名空间中的变量都需要写很多额外的内容,using语句可以简化操作。using声明指令可使得指定的标识符可用。using编译指令使整个命名空间标识符可用。</p>
+</blockquote>
+<p>using声明使用举例</p>
+<blockquote>
+<p>using声明指令可使得指定的标识符可用。<br><img src="/blog/fujian/e2d3c1b5e7130809511f7c275d7ffa35.png"></p>
+</blockquote>
+<p>using声明重载的函数</p>
+<blockquote>
+<p>如果命名空间包含一组用相同名字重载的函数，using声明这个函数名，就声明了这个重载函数的所有集合<br>举例<br><img src="/blog/fujian/76e1606ce494ab46756f97094bd55c34.png"></p>
+</blockquote>
+<p> using编译指令的使用举例</p>
+<blockquote>
+<p>using编译整个命名空间,使整个命名空间的标识符可用。<br><img src="/blog/fujian/d46117856ebc82f23cf236352c796ad0.png"><br>使A的整个命名空间的标识符可用，也被称作A命名空间的完全展开。</p>
+</blockquote>
+<p>using指令的二义性问题</p>
+<blockquote>
+<p>使用using声明或using编译指令会增加命名冲突的可能性。也就是说，如果有名称空间，并在代码中使用作用域解析运算符，则不会出现二义性。</p>
+<p><img src="/blog/fujian/97d049d7cd14cb873c7883d7b86cb990.png"><br><img src="/blog/fujian/63c3cb442e848127a4f38ace82ba4212.png"></p>
+</blockquote>
+<h2 id="using-namespace-std的理解"><a href="#using-namespace-std的理解" class="headerlink" title="using namespace std的理解"></a>using namespace std的理解</h2><p>using namespace std的理解</p>
+<blockquote>
+<p>using namespace std就是将std命名空间完全展开。我们可以直接的使用std命名空间里的数据。<br>而std是C++标准库（iostream）的命名空间，标准库的所有标识符都是在std的命名空间中定义的，或者说标准头文件中函数、类、对象和类模板是在命名空间std中定义的。因此，当引入标准库头文件之后，需要执行using namespace std，这样才能使用std命名空间中的标识符。</p>
+</blockquote>
+<h1 id="编译预处理"><a href="#编译预处理" class="headerlink" title="编译预处理"></a>编译预处理</h1><h2 id="编译预处理的基础知识"><a href="#编译预处理的基础知识" class="headerlink" title="编译预处理的基础知识"></a>编译预处理的基础知识</h2><p>编译预处理的理解</p>
+<blockquote>
+<p>将程序编译的过程分为预处理和正式编译两个步骤是C++的一大特点。在编译C++程序时,编译器中的预处理模块首先根据预处理命令对源程序进行适当的加工,然后才进行正式编译。<br>所有的预处理命令均以符号“<code>#</code>”开头,且在一行中只能书写一条预处理命令(过长的预处理命令可以使用续行标志“<code>\</code>”续写在下一行上)。预处理命令不是C++语句,所以结束时不能使用语句结束符(分号“<code>;</code>”)。</p>
+</blockquote>
+<p>预处理的分类</p>
+<blockquote>
+<p>C++中有3种主要编译预处理命令:文件包含、宏定义和条件编译。</p>
+</blockquote>
+<h2 id="文件包含指令-include"><a href="#文件包含指令-include" class="headerlink" title="文件包含指令 #include"></a>文件包含指令<code> #include</code></h2><h3 id="文件包含指令-include的基础知识"><a href="#文件包含指令-include的基础知识" class="headerlink" title="文件包含指令#include的基础知识"></a>文件包含指令<code>#include</code>的基础知识</h3><p>文件包含的理解</p>
+<blockquote>
+</blockquote>
+<p>文件包含是编译预处理命令中的一种,它是指一个程序将另一个指定文件的内容包含进来，即将另一个程序文件在编译时嵌入到本文件中。</p>
+<blockquote>
+<p>举例，某个源程序文件a.cpp，程序里面用了文件包含指令 #include &lt;b.h&gt;，作用就是把b.h这个头文件里的代码内容，搬到到a里面来，也就是说使用文件包含指令就可以把将各个文件拼接起来</p>
+</blockquote>
+<p>命令格式</p>
+<blockquote>
+<p><code>#include&lt;文件名&gt;</code>和<code>#include&quot;文件名&quot;</code></p>
+<p>如果使用了尖括号,则预处理程序在系统规定的目录(通常是在系统的include子目录)中查找该文件。</p>
+<p>如果用双引号,则编译预处理程序会在双引号里面的路径去找到该文件，路径可以是相对路径，也可以是绝对路径。<br>比如 <code>#include &quot;F:\test.h&quot;</code>, <code>F:\test.h</code>是绝对路径，该指令就会去F盘去查找<code>test.h</code>头文件，查找到则嵌入进来。<br>而如果是<code> #include&quot;test.h&quot;</code>,<code>test.h</code>等同于<code>.\test.h</code>，是相对路径，该指令就会在当前写了<code> #include&quot;test.h&quot;</code>指令的源文件目录去找<code>test.h</code>头文件查找到则嵌入进来。<br>如果找不到则再去由操作系统的path命令所设置的各个目录中去查找。如果仍然没有查找到,最后再去上述规定的目录( include子目录)中查找。</p>
+</blockquote>
+<p>绝对路径</p>
+<blockquote>
+<p>从根盘符开始的路径，比如<code>F:\test\test.h</code>,表示F盘里的<code>test</code>文件夹，<code>test</code>文件夹里的<code>test.h</code></p>
+</blockquote>
+<p>相对路径</p>
+<blockquote>
+<p>从自身所在的文件夹开始的路径，比如<code>.\</code>表示当前文件所在的文件夹里</p>
+</blockquote>
+<p>路径表示</p>
+<blockquote>
+<p>一般用反斜杠<code>/</code>或者双斜杠<code>\\</code></p>
+</blockquote>
+<h3 id="文件包含指令的原理"><a href="#文件包含指令的原理" class="headerlink" title="文件包含指令的原理"></a>文件包含指令的原理</h3><p>[[文件包含原理 1.mp4]]</p>
+<p><code>#include</code>指令的运行原理</p>
+<blockquote>
+<p>源程序文件执行include了头文件<code>b.h</code>，那么其作用效果就是等同于把include头文件b的这条指令，换成头文件b里的代码内容。也就是说include头文件<code>b.h</code>指令的位置已经没有了include头文件b.h这条指令，而是存放头文件b里的代码内容。</p>
+</blockquote>
+<p>用include指令拼接代码的举例</p>
+<blockquote>
+<p>假如有一个源程序文件（我们称为编译单位），include了一个头文件<code>b.h</code>，而<code>b.h</code>的头文件里面include了一个头文件<code>a.h</code>，最终编译单位在进行编译预处理时，就会把include头文件b的指令，换成头文件b里的代码内容。</p>
+<p>而头文件b的代码内容，本身最开始的时候也include了一个头文件a.h，那么在头文件b的代码里，include头文件a.h的这个指令就会被换成头文件a里的代码内容，最终头文件里b的代码内容，就是由头文件a的代码内容和头文件b自身的内容组成，然后都一起被拼接到编译单位里。最终编译单位的代码内容，就是头文件a代码内容+头文件b自身代码内容+编译单位自身代码内容。</p>
+<p>（文件的代码内容&#x3D;头文件的代码内容+自身代码内容）<br>如下图<br><img src="/blog/fujian/358a53390c4158a66fa07b56d0bee1d1.png"></p>
+</blockquote>
+<p>编译器头文件检测链接功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//编译器会有一个功能，用来检测链接的头文件。</span><br><span class="line">//我写了一个头文件A.h,内容如下</span><br><span class="line">struct A</span><br><span class="line">&#123;</span><br><span class="line">    void ptf()</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;testOK&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//这时候头文件A.h里面因为没有头文件stdio.h，所以编译器会报printf报错</span><br><span class="line">//这时候我写了一个test.cpp文件内容如下</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &quot;A.h&quot;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    A a;</span><br><span class="line">    a.ptf();</span><br><span class="line">&#125;</span><br><span class="line">//在test.cpp里，我用文件包含指令，include了stdio.h和A.h，将这三个文件拼接在test里。这时候编译器就检测include了A.h的test，再include了A.h之前已经经先include了stdio.h，A.h里的printf函数就不会报错了。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="重复include问题的解决"><a href="#重复include问题的解决" class="headerlink" title="重复include问题的解决"></a>重复include问题的解决</h3><p>重复include的错误</p>
+<blockquote>
+<p>假如编译单位先include头文件a,然后include头文件b，而头文件b本身也include头文件a，根据include的运行原理，我们就知道最终编译单位的代码内容&#x3D;头文件a代码内容+头文件a代码内容+头文件b自身代码内容+编译单位自身代码内容。这样就是重复include头文件a，编译器就会报错，而用pragam once指令就可以解决该问题。</p>
+</blockquote>
+<p>pragam once指令解决重复include问题</p>
+<blockquote>
+<p>在头文件a的最开头，编写 <code>#pragam once</code>，该指令就会让这个头文件，在同一次拼接代码的过程中，只参与一次编译预处理。<br>还是用上面的例子编译单位先include头文件a,然后include头文件b，而头文件b本身也include头文件a。<br>在编译预处理阶段，编译单位先执行include头文件a指令，而头文件b本身虽然也有include头文件a的这条指令，但是头文件a已经了参与一次编译预处理了，那么在这次拼接过程中，头文件b就不会在执行include头文件a。最终编译单位的代码内容&#x3D;头文件a代码内容+头文件b自身代码内容+编译单位自身代码内容，这样就不会重复include</p>
+</blockquote>
+<p>条件编译解决问题</p>
+<blockquote>
+<p>每次在编写xxx.h的头文件时，编程书上都会让我们在代码的前后加上如下的三句代码：<br><code>#ifndef XXX_H</code><br><code>#define XXX_H</code><br>……<br><code>#endif</code><br>其中……代表中间具体的功能语句。<br>这三句代码中，<code>XXX_H</code>是预处理指令中符号化常量名。编写这些语句时，预处理指令中符号化常量名使用的规则是将头文件名全部使用相应的大写字母，然后把.改成<code>_</code>。当然,这只是一种约定俗成的方法,如果使用其他的名字,只要不产生名字冲突,也都是合法的。<br>通过这种方法，也可以避免重复include的问题</p>
+</blockquote>
+<p>条件编译解决问题的原理</p>
+<blockquote>
+<p>当执行<code> #ifndef XXX_H</code>语句时，编译器首先检查宏<code>XXX_H</code>是否已经定义过，如果已经定义过，那么就说明<code>xxx.h</code>头文件已经被引入，就可以把<code>#ifndef XXX_H</code>一直到 <code>#endif</code>之间的代码段跳过，继续编译下面的代码。</p>
+<p>如果没有定义过，那么就会执行<code>#define XXX_H</code>语句来定义宏<code>XXX_H</code>，然后<code> #ifndef XXX_H</code>一直到 <code>#endif</code>之间的代码段也就不会被跳过，而是会被编译器编译。</p>
+<p>文件引入该头文件之后，如果再次引入该头文件时，编译器虽然会将这部分代码引入到文件里，但是编译器发现<code>XXX_H</code>已经被定义过，编译器就会跳过<code>#ifndef XXX_H</code>一直到 <code>#endif</code>之间的代码段。避免重复定义和编译。</p>
+</blockquote>
+<h3 id="交叉include问题"><a href="#交叉include问题" class="headerlink" title="交叉include问题"></a>交叉include问题</h3><p>交叉include问题举例</p>
+<blockquote>
+<p>头文件B<br><img src="/blog/fujian/c92a2b6c71844a0e2d9912c0a71d3259.png"></p>
+<p>头文件A<br><img src="/blog/fujian/113651e1c6cc142b1821fcd77a91cc2d.png"></p>
+<p>test文件<br><img src="/blog/fujian/93d8ca353655eb74420d05460c8b8aa3.png"><br>此时程序编译就会报错</p>
+</blockquote>
+<p>分离h和CPP文件的解决办法</p>
+<blockquote>
+<p>[[文件包含原理.mp4#t&#x3D;26:00,32:18]]<br>解决办法1∶分离基础类型，避免交叉依赖<br><img src="/blog/fujian/b1d34f0da92cd8c935e541c025d74631.png"></p>
+<p>解决办法2:分离h和cpp文件，包括使用指针对细节的使用体现在cpp文件中，cpp文件不被交叉包含。</p>
+</blockquote>
+<h3 id="头文件的编写"><a href="#头文件的编写" class="headerlink" title="头文件的编写"></a>头文件的编写</h3><p>编写的步骤</p>
+<blockquote>
+<p>1创建.h文件<br>2在文件的第一行写明， <code>#program once</code>，主要是为了防止头文件被重复引用，也可以用条件编译的方法来解决重复include问题<br>3引入在本文件要用的头文件<br>4在头文件里写上你的代码（一般声明写入头文件中）</p>
+</blockquote>
+<p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#pragma once</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;Point.h&quot;    // include写好的点类头文件</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">class Circle    // 定义一个圆的类</span><br><span class="line">&#123;</span><br><span class="line">	Point Cir_cen;    // (点类)圆心</span><br><span class="line">	int Cir_R;    // 半径</span><br><span class="line">public:</span><br><span class="line">	void setCir(int x, int y, int r);    // 初始化圆的属性</span><br><span class="line"> </span><br><span class="line">	int Get_R();    // 得到圆的半径</span><br><span class="line">	double Distance(Point&amp; p);    // 判断一个点和圆的关系</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="多文件的编译执行"><a href="#多文件的编译执行" class="headerlink" title="多文件的编译执行"></a>多文件的编译执行</h3><p>普通的多文件编译执行的方法（调用其他文件的函数的方法）</p>
+<blockquote>
+<p>方法1，直接在头文件中声明和定义类和函数，然后在要调用的文件里加上这个头文件，既可以调用这个头文件类和函数。</p>
+<p>方法2，首先 把函数或者类的声明写在头文件(A.h)里，然后源文件(A.cpp)里引入头文件A.h，并且写上函数的定义（源文件和头文件不必同名），然后然后在要调用的文件里加上这个头文件A，既可以调用头文件A的函数。</p>
+</blockquote>
+<p>类模板的多文件编译问题</p>
+<blockquote>
+<p>C++在编写类模板时，是不能让类模板声明写在一个头文件A.h里，然后实现写在一个源文件A.cpp，最后让main去include A.h。而这种行为是不允许的，最后编译链接就会出错。具体原因编译器在实例化一个类时，需要知道该类的所有确定的信息，如果是普通的类这是完全由头文件（.h）中类的声明决定的。但是对于模版类，此信息不确定，于是编译器只是存放一个符号，而把这一个步骤放到最后链接时来完成。而编译器在编译模版类的实现文件（.cpp）时没有发现其他地方有这个类的实例化。最终，到链接阶段找不到类模版的实例，出错</p>
+</blockquote>
+<p>类模板的多文件编写方法</p>
+<blockquote>
+<p>方法1<br>就是让类模板的声明和实现放在同一个文件中,并命名为.hpp文件，这样只需要在main函数所在文件头文件加上”<code>***.hpp</code>“就可以了<br>（注意hpp是约定的名称，并不是强制，命名为.h文件，也是一样的效果。）</p>
+<p>方法2<br>首先 把函数或者类的声明写在头文件(A.h)里，然后实现文件A.cpp里引入头文件A.h并对其实现。最后最后让main去include A.cpp</p>
+</blockquote>
+<p>第二种方法举例</p>
+<blockquote>
+<p><img src="/blog/fujian/fd36f5ff414d85fb4df1d3459a073b8a.png"><br><img src="/blog/fujian/290ed7951b2fb57eab35b7fc8c92edc0.png"><br><img src="/blog/fujian/9b72d0cd014ecb99172639237e083be2.png"><br><img src="/blog/fujian/12e46b93f2664d4265ef296d73a69310.png"></p>
+</blockquote>
+<h2 id="宏定义-define"><a href="#宏定义-define" class="headerlink" title="宏定义 #define"></a>宏定义 <code>#define</code></h2><h3 id="宏定义基础知识"><a href="#宏定义基础知识" class="headerlink" title="宏定义基础知识"></a>宏定义基础知识</h3><p>宏定义的理解</p>
+<blockquote>
+<p>宏定义是预处理指令的一种，就是用<code>#define</code>指令去定义宏 ,</p>
+<p>如 <code>#define MAX_NUMBER 1000</code>，真正含义是要求在正式编译程序前，对源程序进行预处理时,将源程序中，所有的符号名<code>MAX_NUMBER</code>(但不包括出现在注释或字符串中的MAX_NUMBER)，分别替换为字符序列“1000”。因此,在正式编译时,符号名<code>MAX _NUMBER</code>已经不存在。<br>若程序中再出现这样的语句MAX_NUMBER &#x3D; 70;则是错误的，因为会变为“70 &#x3D; 1000 ;”,显然这是一个错误的赋值表达式语句</p>
+<p>实际上,宏定义更适合于C语言编程而不是C++编程。学习宏定义的目的是为了读懂C语言的遗留代码。</p>
+</blockquote>
+<h3 id="无参数宏定义"><a href="#无参数宏定义" class="headerlink" title="无参数宏定义"></a>无参数宏定义</h3><p>无参数宏定义格式</p>
+<blockquote>
+<p><code>#define  &lt;宏名&gt;  &lt;替换序列&gt;</code><br>其中“宏名”是一个标识符。为了和变量有所区别,习惯上在为无参数宏起名时只使用大写字母。</p>
+</blockquote>
+<p>举例</p>
+<blockquote>
+<p><code>#define PI 3.14159</code><br>该宏定义命令为常量3.14159起了一个符号化的名字PI。这样,在该宏定义命令之后的程序中，均可以使用符号常数PI表示数值3.14159。<br>例如:<code>s = Pl*r * r ;</code>使用符号常量的程序可读性好,易于阅读理解。</p>
+</blockquote>
+<p>取消宏定义指令<code> #undef</code></p>
+<blockquote>
+<p>取消宏定义命令<code>#undef</code> 用于撤销对一个符号名的定义。</p>
+</blockquote>
+<p>取消宏定义指令<code> #undef</code>的使用举例</p>
+<blockquote>
+<p><code>#define DEBUG 1</code><br><code>//在本程序段落中定义了一个值为1的符号常数DEBUG</code><br><code>#undef DEBUG</code></p>
+<p>在<code>#undef DEBUG</code>指令之后，DEBUG这个标识符就不会被替换成常数1<br>如果没有<code>#undef</code> 命令 ,则宏定义起作用的范围为自 <code>#define</code> 命令起至该源程序文件末尾 。</p>
+</blockquote>
+<p>宏定义和const的区别</p>
+<blockquote>
+<p>宏定义是在预处理阶段执行的。<br>宏定义的作用只是对代码中出现的宏名替换成我们定义好的文本或数值，不进行任何类型检查和编译器检查。</p>
+<p>const是在编译阶段使用。<br>const的作用是将某个数据类型的变量声明为常量。<br>使用 <code>const</code> 修饰的变量具有类型，可以进行类型检查和编译器检查。<br>所谓的类型检查，就是如果使用错误的类型来操作常量，编译器将会发出错误提示。比如const int a&#x3D;”abc”<br>所谓的编译检查，就是const修饰的变量，编译器会检查在定义时否被赋值，以及赋值后是否被修改。使用<code>const</code>修饰的变量在定义时没有赋值，或者在赋值后被试图修改，编译器就会报错</p>
+</blockquote>
+<h3 id="带参数的宏定义"><a href="#带参数的宏定义" class="headerlink" title="带参数的宏定义"></a>带参数的宏定义</h3><p>带参数宏定义格式</p>
+<blockquote>
+<p><code>#define &lt;宏名&gt; (&lt;参数表&gt;) &lt;带有参数的替换序列&gt;</code></p>
+</blockquote>
+<p>举例</p>
+<blockquote>
+<p><code>#define max(a,b) ((a)&gt;(b)?(a):(b))</code><br>带参数的宏的用法很像函数，此时在程序里写上x&#x3D;max(x,10);<br>这个带参数的宏的确切含义为:通知编译程序中的预处理模块在对应用程序进行处理的过程中,一旦遇到形如max()的串时就要进行转换,在转换时还要对参数进行替换处理。上述宏定义经过转换后成为:<br><code>x=((x)&gt;(10)?(x):(10));</code><br>在利用宏命令定义带参数的宏时,要注意宏名与括号之间不能有空格,所有的参数都要用逗号分开,并且均应出现于右边的替换序列中。</p>
+</blockquote>
+<p>带参数的宏定义和函数的区别</p>
+<blockquote>
+<p>虽然带参数的宏很像函数,但这两者之间的区别是很明显的。编译程序在处理带参数的宏时,并不是用实参的值进行代入计算,而只是简单地将替换序列中替换原本宏，在替换过程中，还要对参数进行替换处理。</p>
+</blockquote>
+<p>带参数的宏定义容易出现的错误</p>
+<blockquote>
+<p>在书写带参数的宏时,要防止由于使用表达式参数带来的错误。<br>例如,定义了一个用于计算圆面积的宏:<br><code>#define circle_area(r)  r * r * 3.14159</code><br>在计算<br><code>s = circle_area( x +16)</code><br>时就会出问题。将参数x +16代入上述宏定义中,即<br><code>s = x + 16* x + 16* 3.14159</code><br><code>#define circle_area( r) (( r) * ( r) * 3.14159)</code><br>就没有问题。因此,在定义带参数的宏时应将每个参数和整个替换序列都用括号括起来,以防止可能出现的计算错误。</p>
+</blockquote>
+<h2 id="条件编译"><a href="#条件编译" class="headerlink" title="条件编译"></a>条件编译</h2><p>条件编译的理解</p>
+<blockquote>
+<p>在调试程序期间,经常希望输出一些调试用的信息,而在调试完成后,就不再需要这些输出信息。要解决这个问题,一种方法是逐一从源程序中删去输出这些调试信息的程序段落,或者将这些程序段落用注释标记括起来。显然,这样做要花费相当大的工作量，而且今后再要进行调试时,恢复这些调试程序段也非常麻烦。另一种方法就是使用编译预处理中的条件编译命令。</p>
+</blockquote>
+<p><code>#if</code>条件编译语句的格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#if &lt;条件1 &gt;</span><br><span class="line">&lt;程序段落1&gt;</span><br><span class="line">#elif &lt;条件2&gt;</span><br><span class="line">&lt;程序段落2&gt;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">#elif &lt;条件n &gt;</span><br><span class="line">&lt;程序段落n &gt; </span><br><span class="line">#else</span><br><span class="line">&lt;默认程序段落&gt;</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line">//条件编译中所使用的条件只能是由常数构成的表达式。如果该常数表达式的值不为0，表示条件成立,否则表示条件不成立。一般情况下,在#if中都是使用由#define 指令产生的符号常数进行测试。</span><br><span class="line">#if指令和#elif指令是用于对一个或多个预处理符号进行比较的，如果符号的值为非零（true），则执行程序段落；否则，忽略该程序段落，继续判断下一个程序段落。#else指令表示程序段落的默认值，即如果前面的所有条件都不满足，则执行这个程序段落。#endif指令表示条件编译的结束。</span><br><span class="line">在预处理阶段，编译器会根据条件表达式，的结果来判断是否编译 #if里的程序段落，如果结果为真，则编译该代码段，否则忽略该代码段，不会对其进行编译。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>条件编译的举例</p>
+<blockquote>
+<p>编译预处理命令的一个常见的用途是将调试代码插入应用程序中。例如,程序员可以足义一个叫做DEBUG 的符号常数,其值可以定义为1或者0。在程序中的任何地方,都可用以下方式插入调试信息:<br><code>#if DEBUG==1</code><br><code>&lt;此处为调试代码&gt; </code><br><code>#endif</code><br>在开发程序时,先将DEBUG定义为1,则插入的调试代码被编译进目标程序,可以输出一些帮助跟踪错误的信息。<br>一旦程序工作正常，就可以将DEBUG重新定义为0后，再次编译程序,即可从目标程序中去掉调试代码。<br>在预处理阶段，编译器会根据条件表达式 <code>DEBUG==1</code> 的结果来判断是否编译 <code>#if</code> 到 <code>#endif</code> 之间的代码，如果结果为真，则编译该代码段，否则忽略该代码段，不会对其进行编译。</p>
+</blockquote>
+<p>if语句与条件编译的区别</p>
+<blockquote>
+<p>可以看到,条件编译的用法和C++的if语句的用法非常相似。那么能否用if语句去代替<code>#if</code>条件编译，去实现调试代码的选择输出呢?<br><code>int DEBUG = 1 ;</code><br><code>if(DEBUG)</code><br><code>&lt;调试代码&gt;</code><br>在调试时,全局变量DEBUG被赋值1,这时“调试代码”起作用,输出调试信息。<br>待调试结束后,将赋给DEBUG的值改为0,则不再输出调试信息。</p>
+<p>初看起来,这种用法与使用条件编译差不多，但实际上这两种结构有着本质的区别:if 语句控制着某些语句是否执行,而 <code>#if </code>指令控制着某个程序段落是否被编译。<br>因此,上述使用C++条件语句的结构在调试成功后仍然被编译成目标代码,只是不再执行,成了一段废码;<br>而使用条件编译的调试结构在正式编译时根本不会被编译，目标程序中也没有废码,所以目标码占用的存储空间较少。</p>
+</blockquote>
+<p><code>#ifdef</code>和 <code>#ifndef</code> 条件语句的理解</p>
+<blockquote>
+<p>此外,C++中还提供了另外两个和 <code>#if</code> 类似的条件编译命令 <code>#ifdef</code>和 <code>#ifndef</code>。<br>例如:<br><code>#ifdef DEBUG</code><br><code>xxxx</code><br><code>#endif</code><br>只要前面定义了DEBUG(无论将DEBUG定义为什么值,包括0 ,甚至什么具体值也不是)，则上述条件就成立。</p>
+<p><code>#ifndef DEBUG</code><br><code>xxxx</code><br><code>#endif </code><br>在前面没有定义DEBUG时成立。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://xingwumo.github.io/blog">wumo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://xingwumo.github.io/blog/2023/07/01/B1.C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">http://xingwumo.github.io/blog/2023/07/01/B1.C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://xingwumo.github.io/blog" target="_blank">wumo学习分享仓库</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/blog/fujian/7f6aba31b4c37b3ff37eeec6dea1eb08.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blog/2023/07/01/B1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.计算机网络基础知识"><img class="cover" src="/blog/fujian/1086f6027eb51154d19ef8a1e3b3aa21.jpg" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">B1.计算机网络基础知识</div></div></a></div><div class="next-post pull-right"><a href="/blog/2023/07/01/B2.C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" title="B2.C++类和对象"><img class="cover" src="/blog/fujian/c18a5aebdee3f6a9262f3536aece0d16.jpg" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">B2.C++类和对象</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wumo</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">C++编程基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">C++的概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E5%9F%BA%E7%A1%80%E7%9A%84%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">C++基础的程序结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E7%9A%84%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C"><span class="toc-number">1.3.</span> <span class="toc-text">C++的编译执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA"><span class="toc-number">1.4.</span> <span class="toc-text">C++输入与输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">1.5.</span> <span class="toc-text">标识符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text">编程思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8%E5%92%8C%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-number">1.7.</span> <span class="toc-text">左值引用和右值引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#extern-%E2%80%9CC%E2%80%9D"><span class="toc-number">1.8.</span> <span class="toc-text">extern “C”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">1.9.</span> <span class="toc-text">内存泄漏</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">常量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.1.</span> <span class="toc-text">常量的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E5%90%8E%E7%BC%80"><span class="toc-number">2.2.</span> <span class="toc-text">常量的后缀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6const"><span class="toc-number">2.3.</span> <span class="toc-text">常量修饰符const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6constexpr"><span class="toc-number">2.4.</span> <span class="toc-text">常量表达式的修饰符constexpr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E8%BF%9B%E5%88%B6%E5%B8%B8%E9%87%8F"><span class="toc-number">2.5.</span> <span class="toc-text">八进制常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E5%B8%B8%E9%87%8F"><span class="toc-number">2.6.</span> <span class="toc-text">十六进制常量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">3.1.</span> <span class="toc-text">变量的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E%E3%80%81%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">变量的声明、定义和初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">3.3.</span> <span class="toc-text">变量的作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">3.3.1.</span> <span class="toc-text">作用域的基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">3.3.2.</span> <span class="toc-text">局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">3.3.3.</span> <span class="toc-text">全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB"><span class="toc-number">3.4.</span> <span class="toc-text">变量的存储类别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%AD%98%E5%82%A8%E7%B1%BB%E5%88%AB%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">3.4.1.</span> <span class="toc-text">变量存储类别的基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8F%98%E9%87%8F%EF%BC%88auto%E4%BF%AE%E9%A5%B0%E7%9A%84%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-number">3.4.2.</span> <span class="toc-text">自动变量（auto修饰的变量）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%88static%E4%BF%AE%E9%A5%B0%E7%9A%84%E5%8F%98%E9%87%8F%EF%BC%89"><span class="toc-number">3.4.3.</span> <span class="toc-text">静态变量（static修饰的变量）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%8F%98%E9%87%8F"><span class="toc-number">3.4.4.</span> <span class="toc-text">寄存器变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">3.4.5.</span> <span class="toc-text">外部变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#auto%E8%87%AA%E5%8A%A8%E6%8E%A8%E5%AF%BC%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.5.</span> <span class="toc-text">auto自动推导变量的类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">4.1.</span> <span class="toc-text">数据类型的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%8F%82%E4%B8%8E%E8%BF%90%E7%AE%97"><span class="toc-number">4.2.</span> <span class="toc-text">不同类型数据参与运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E4%BF%AE%E9%A5%B0%E7%AC%A6signed%E5%92%8Cunsigned"><span class="toc-number">4.3.</span> <span class="toc-text">类型修饰符signed和unsigned</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E9%A3%8E%E6%A0%BC%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">4.4.</span> <span class="toc-text">C风格强制类型转换操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.5.</span> <span class="toc-text">C++的四种强制类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.5.1.</span> <span class="toc-text">静态转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.5.2.</span> <span class="toc-text">动态转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.5.3.</span> <span class="toc-text">常量转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E8%A7%A3%E9%87%8A%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.5.4.</span> <span class="toc-text">重新解释转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E9%97%B4%E7%9A%84%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.6.</span> <span class="toc-text">地址间的强制转换类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">5.</span> <span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">5.1.</span> <span class="toc-text">位运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">5.2.</span> <span class="toc-text">自增运算符和自减运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x3D-%E7%9B%B8%E5%85%B3%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">5.3.</span> <span class="toc-text">&#x3D;相关的运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sizeof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">5.4.</span> <span class="toc-text">Sizeof运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E7%BB%93%E5%90%88%E4%BC%98%E5%85%88%E6%80%A7"><span class="toc-number">5.5.</span> <span class="toc-text">运算符的结合优先性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.</span> <span class="toc-text">语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.1.</span> <span class="toc-text">表达式语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.2.</span> <span class="toc-text">条件表达式语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%97%E5%8F%B7%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.3.</span> <span class="toc-text">逗号表达式语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typedef%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.4.</span> <span class="toc-text">typedef语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.5.</span> <span class="toc-text">if语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.6.</span> <span class="toc-text">switch语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while-%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.7.</span> <span class="toc-text">while 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.8.</span> <span class="toc-text">for语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#break%E8%AF%AD%E5%8F%A5%E5%92%8Ccontinue%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.9.</span> <span class="toc-text">break语句和continue语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#goto%E8%AF%AD%E5%8F%A5"><span class="toc-number">6.10.</span> <span class="toc-text">goto语句</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">7.</span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">7.1.</span> <span class="toc-text">数组的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">7.2.</span> <span class="toc-text">二维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">7.3.</span> <span class="toc-text">多维数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84"><span class="toc-number">7.4.</span> <span class="toc-text">字符数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-number">7.5.</span> <span class="toc-text">数组与指针</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">8.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">8.1.</span> <span class="toc-text">字符串的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">8.2.</span> <span class="toc-text">字符串的输入输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="toc-number">8.3.</span> <span class="toc-text">string类的基础使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mystrcpy%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.4.</span> <span class="toc-text">mystrcpy的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">9.1.</span> <span class="toc-text">函数的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="toc-number">9.2.</span> <span class="toc-text">函数的声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">9.3.</span> <span class="toc-text">函数的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="toc-number">9.4.</span> <span class="toc-text">函数调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">9.4.1.</span> <span class="toc-text">函数调用的基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%BC%E8%B0%83%E7%94%A8"><span class="toc-number">9.4.2.</span> <span class="toc-text">值调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%B0%83%E7%94%A8"><span class="toc-number">9.4.3.</span> <span class="toc-text">引用调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%B0%83%E7%94%A8"><span class="toc-number">9.4.4.</span> <span class="toc-text">地址调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">9.4.5.</span> <span class="toc-text">带有默认参数的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%8F%82%E5%87%BD%E6%95%B0"><span class="toc-number">9.4.6.</span> <span class="toc-text">无参函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">9.5.</span> <span class="toc-text">函数返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%93%E5%87%BD%E6%95%B0%E5%92%8C%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0"><span class="toc-number">9.6.</span> <span class="toc-text">库函数和标准库函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0"><span class="toc-number">9.7.</span> <span class="toc-text">递归函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD"><span class="toc-number">9.8.</span> <span class="toc-text">函数重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#static%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%EF%BC%88%E9%9D%99%E6%80%81%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-number">9.9.</span> <span class="toc-text">static修饰函数（静态函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%EF%BC%88inline%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%89"><span class="toc-number">9.10.</span> <span class="toc-text">内联函数（inline关键字）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84main%E5%87%BD%E6%95%B0"><span class="toc-number">9.11.</span> <span class="toc-text">带参数的main函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-number">10.</span> <span class="toc-text">指针</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80"><span class="toc-number">10.1.</span> <span class="toc-text">地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88-1"><span class="toc-number">10.2.</span> <span class="toc-text">指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97"><span class="toc-number">10.3.</span> <span class="toc-text">指针运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C-amp-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">10.3.1.</span> <span class="toc-text">*运算符和&amp;运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E7%9A%84%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97"><span class="toc-number">10.3.2.</span> <span class="toc-text">指针变量的算术运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E7%9A%84%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97"><span class="toc-number">10.3.3.</span> <span class="toc-text">指针变量的比较运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F%E7%9A%84%E4%B8%8B%E6%A0%87%E8%BF%90%E7%AE%97"><span class="toc-number">10.3.4.</span> <span class="toc-text">指针变量的下标运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">10.4.</span> <span class="toc-text">指针初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-number">10.5.</span> <span class="toc-text">空指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%90%91%E6%95%B0%E7%BB%84%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-number">10.6.</span> <span class="toc-text">指向数组的指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%90%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-number">10.7.</span> <span class="toc-text">指向字符串的指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%90%91%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-number">10.8.</span> <span class="toc-text">指向指针的指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84"><span class="toc-number">10.9.</span> <span class="toc-text">指针数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%EF%BC%88new%E8%AF%AD%E5%8F%A5%EF%BC%89"><span class="toc-number">10.10.</span> <span class="toc-text">动态存储（new语句）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%9C%B0%E5%9D%80%E5%92%8C%E6%8C%87%E9%92%88"><span class="toc-number">10.11.</span> <span class="toc-text">函数的地址和指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#void%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-number">10.12.</span> <span class="toc-text">void类型的指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="toc-number">10.13.</span> <span class="toc-text">指针常量和常量指针</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="toc-number">11.</span> <span class="toc-text">结构体类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">11.1.</span> <span class="toc-text">结构体的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typdef%E5%A3%B0%E6%98%8E%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">11.2.</span> <span class="toc-text">typdef声明结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">11.3.</span> <span class="toc-text">结构体变量初始化和使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%95%B0%E7%BB%84"><span class="toc-number">11.4.</span> <span class="toc-text">结构体与数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E6%8C%87%E9%92%88"><span class="toc-number">11.5.</span> <span class="toc-text">结构体与指针</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#enum%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="toc-number">12.</span> <span class="toc-text">enum枚举类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">12.1.</span> <span class="toc-text">枚举类型的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">12.2.</span> <span class="toc-text">强枚举类型的基础知识</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#union%E5%85%B1%E7%94%A8%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="toc-number">13.</span> <span class="toc-text">union共用体类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#union%E5%85%B1%E7%94%A8%E4%BD%93%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">13.1.</span> <span class="toc-text">union共用体的基础知识</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">14.</span> <span class="toc-text">作用域运算符::</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%BF%90%E7%AE%97%E7%AC%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">14.1.</span> <span class="toc-text">作用域运算符基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">14.2.</span> <span class="toc-text">作用域运算符的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-namespace"><span class="toc-number">15.</span> <span class="toc-text">命名空间 namespace</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">15.1.</span> <span class="toc-text">命名空间的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">15.2.</span> <span class="toc-text">using语句的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-namespace-std%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">15.3.</span> <span class="toc-text">using namespace std的理解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">16.</span> <span class="toc-text">编译预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">16.1.</span> <span class="toc-text">编译预处理的基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%8C%87%E4%BB%A4-include"><span class="toc-number">16.2.</span> <span class="toc-text">文件包含指令 #include</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%8C%87%E4%BB%A4-include%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">16.2.1.</span> <span class="toc-text">文件包含指令#include的基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%8C%87%E4%BB%A4%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">16.2.2.</span> <span class="toc-text">文件包含指令的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%A4%8Dinclude%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3"><span class="toc-number">16.2.3.</span> <span class="toc-text">重复include问题的解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89include%E9%97%AE%E9%A2%98"><span class="toc-number">16.2.4.</span> <span class="toc-text">交叉include问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E5%86%99"><span class="toc-number">16.2.5.</span> <span class="toc-text">头文件的编写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C"><span class="toc-number">16.2.6.</span> <span class="toc-text">多文件的编译执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8F%E5%AE%9A%E4%B9%89-define"><span class="toc-number">16.3.</span> <span class="toc-text">宏定义 #define</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8F%E5%AE%9A%E4%B9%89%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">16.3.1.</span> <span class="toc-text">宏定义基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%8F%82%E6%95%B0%E5%AE%8F%E5%AE%9A%E4%B9%89"><span class="toc-number">16.3.2.</span> <span class="toc-text">无参数宏定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%8F%E5%AE%9A%E4%B9%89"><span class="toc-number">16.3.3.</span> <span class="toc-text">带参数的宏定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91"><span class="toc-number">16.4.</span> <span class="toc-text">条件编译</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B1.Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E8%A8%80%E8%A7%84%E5%88%99/" title="B1.Markdown的常用语言规则"><img src="/blog/fujian/86f423ffed4a9a1c33ff8db747ba24b2.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B1.Markdown的常用语言规则"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B1.Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E8%A8%80%E8%A7%84%E5%88%99/" title="B1.Markdown的常用语言规则">B1.Markdown的常用语言规则</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.计算机网络基础知识"><img src="/blog/fujian/1086f6027eb51154d19ef8a1e3b3aa21.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B1.计算机网络基础知识"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.计算机网络基础知识">B1.计算机网络基础知识</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B1.C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.C++基础知识"><img src="/blog/fujian/7f6aba31b4c37b3ff37eeec6dea1eb08.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B1.C++基础知识"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B1.C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.C++基础知识">B1.C++基础知识</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B2.C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" title="B2.C++类和对象"><img src="/blog/fujian/c18a5aebdee3f6a9262f3536aece0d16.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B2.C++类和对象"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B2.C++%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/" title="B2.C++类和对象">B2.C++类和对象</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B3.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" title="B3.基础算法"><img src="/blog/fujian/6d7cd2992339f0ba0bbea74deef77b43.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B3.基础算法"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B3.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" title="B3.基础算法">B3.基础算法</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/blog/fujian/7f6aba31b4c37b3ff37eeec6dea1eb08.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wumo</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
