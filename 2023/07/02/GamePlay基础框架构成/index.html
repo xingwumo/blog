@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>GamePlay基础框架构成 | wumo学习分享仓库</title><meta name="author" content="wumo"><meta name="copyright" content="wumo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="GamePlay的理解GamePlay框架的理解  UE4的Gameplay框架是一套用于构建游戏逻辑和玩法的框架和工具集合。  UObjectUObject类的理解  UObject是所有其他类的基类它提供了一些基本的功能，支持对象的生命周期、内存管理、属性管理和事件系统。继承他的类，都拥有这些功能。它提供了一套反射系统，对于参与反射系统的数据，我们可以动态调用这些数据。它提供了GC垃圾回收，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GamePlay基础框架构成">
+<meta property="og:url" content="http://xingwumo.github.io/blog/2023/07/02/GamePlay%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6%E6%9E%84%E6%88%90/index.html">
+<meta property="og:site_name" content="wumo学习分享仓库">
+<meta property="og:description" content="GamePlay的理解GamePlay框架的理解  UE4的Gameplay框架是一套用于构建游戏逻辑和玩法的框架和工具集合。  UObjectUObject类的理解  UObject是所有其他类的基类它提供了一些基本的功能，支持对象的生命周期、内存管理、属性管理和事件系统。继承他的类，都拥有这些功能。它提供了一套反射系统，对于参与反射系统的数据，我们可以动态调用这些数据。它提供了GC垃圾回收，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://xingwumo.github.io/blog/fujian/c9e4acd4daeeff67236a5f9bfa0e57e6.jpg">
+<meta property="article:published_time" content="2023-07-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-02T06:57:23.472Z">
+<meta property="article:author" content="wumo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xingwumo.github.io/blog/fujian/c9e4acd4daeeff67236a5f9bfa0e57e6.jpg"><link rel="shortcut icon" href="/blog/img/favicon.png"><link rel="canonical" href="http://xingwumo.github.io/blog/2023/07/02/GamePlay%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6%E6%9E%84%E6%88%90/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'GamePlay基础框架构成',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-02 14:57:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/blog/img/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/blog/fujian/c9e4acd4daeeff67236a5f9bfa0e57e6.jpg')"><nav id="nav"><span id="blog-info"><a href="/blog/" title="wumo学习分享仓库"><span class="site-name">wumo学习分享仓库</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GamePlay基础框架构成</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-01T16:00:00.000Z" title="发表于 2023-07-02 00:00:00">2023-07-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-02T06:57:23.472Z" title="更新于 2023-07-02 14:57:23">2023-07-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/UE4/">UE4</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="GamePlay基础框架构成"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="/blog/fujian/c9e4acd4daeeff67236a5f9bfa0e57e6.jpg"></p>
+<h1 id="GamePlay的理解"><a href="#GamePlay的理解" class="headerlink" title="GamePlay的理解"></a>GamePlay的理解</h1><p>GamePlay框架的理解</p>
+<blockquote>
+<p><strong>UE4的Gameplay框架是一套用于构建游戏逻辑和玩法的框架和工具集合。</strong></p>
+</blockquote>
+<h1 id="UObject"><a href="#UObject" class="headerlink" title="UObject"></a>UObject</h1><p>UObject类的理解</p>
+<blockquote>
+<p><strong>UObject是所有其他类的基类</strong><br><strong>它提供了一些基本的功能</strong>，支持对象的生命周期、内存管理、属性管理和事件系统。继承他的类，都拥有这些功能。<br><strong>它提供了一套反射系统</strong>，对于参与反射系统的数据，我们可以动态调用这些数据。<br><strong>它提供了GC垃圾回收</strong>，程序运行时自动释放不再使用的内存资源，以便重用和回收内存空间。<br><strong>它支持蓝图脚本编程</strong>。</p>
+</blockquote>
+<h1 id="Actor"><a href="#Actor" class="headerlink" title="Actor"></a>Actor</h1><p>Actor类的理解</p>
+<blockquote>
+<p><strong>Actor类是Object的派生类。<br>其对象是可以被放置到场景(Level)中。<br>它是组件的容器。</strong><br><img src="/blog/fujian/fe1b48a0c10ca76d1dc925e6120dd87b.png"></p>
+<p>我们所创建Actor的派生类（无论是蓝图派生类还是C++派生类），只要是Actor的派生类对象，都可以被放入关卡中。</p>
+</blockquote>
+<p>口头所说的Actor的含义</p>
+<blockquote>
+<p>口头所说的Actor有三种含义<br>第一种，是Actor类本身，Actor类是Object的派生类。所有想放入关卡中的对象，对象所在的类都必须继承Actor类。</p>
+<p>第二种理解，就是Actor派生类，我们把这些Actor的派生类也称为Actor。</p>
+<p>第三种理解，我们也把这些被放入关卡中的Actor派生类的对象，直接称作<strong>Actor</strong>。<br>当我们提到Actor的时候，得根据情况区分是哪种含义。</p>
+</blockquote>
+<p>Actor的继承结构</p>
+<blockquote>
+<p><img src="/blog/fujian/39b88ee70d1f10bbda0b0788c7048f49.png"></p>
+</blockquote>
+<h1 id="Component组件"><a href="#Component组件" class="headerlink" title="Component组件"></a>Component组件</h1><p>Component的理解</p>
+<blockquote>
+<p><strong>Component类可以被添加到Actor中，作为Actor的一部分，为Actor提供能力。</strong><br>一般与业务逻辑无关<br>可跨游戏使用</p>
+<p>以汽车蓝图为例，汽车蓝图里的引擎、车轮这些基本单元，就是蓝图的组件，每一个组件都为汽车提供了一定的功能</p>
+</blockquote>
+<p>Component的分类</p>
+<blockquote>
+<p><img src="/blog/fujian/6374d644314262796459b1e9b10959e4.png"><br><strong>Component可以分为两种，一种是SceneComponent,一种是ActorComponent.</strong></p>
+<p><strong>SceneComponent是拥有Transform的Component，除了给actor提供功能，还能在游戏世界中存在</strong>。拥有Transform意思是它在游戏世界中有自己的位置，旋转，以及缩放，表明它一种在可以在场景中存在的组件。<br><strong>SceneComponent可以互相嵌套</strong></p>
+<p><strong>ActorComponent，只是给actor提供功能的模块，扩展Actor的功能</strong><br><strong>它没有ransform</strong>它通常在世界中是没有自己的位置和位置和变换信息的，只是作为Actor的一部分存在。<br><strong>ActorComponent不可以互相嵌套的。</strong></p>
+</blockquote>
+<p>Component的举例</p>
+<blockquote>
+<p><img src="/blog/fujian/ed0e4782125a4b9ef94d5673bcb1ad1e.png"></p>
+</blockquote>
+<h1 id="APawn"><a href="#APawn" class="headerlink" title="APawn"></a>APawn</h1><p>Apawn类的理解</p>
+<blockquote>
+<p><strong>Pawn类是Actor的派生类</strong><br><strong>Pawn类是具有控制器Actor类，其对象不仅可以放到场景中，也可以被控制器操控。</strong> 也就是说，Pawn可以接受外界的输入，并且做出一定的响应。<br>Pawn的派生类也是pawn</p>
+<p><img src="/blog/fujian/2534ec6915d4af09b6d554ba17860cce.png"></p>
+</blockquote>
+<p>APawn的继承结构</p>
+<blockquote>
+<p><img src="/blog/fujian/6a377d4766b2b2d8ad9f9fdffe7ba8ea.png"></p>
+<p>ADefaultPawn的理解<br><strong>是pawn的派生类。</strong><br><strong>是默认的带了DefaultPawnMovementComponent,<br>spherical CollisionComponent(球形碰撞组件),<br>StaticMeshComponent,这三个组件的pawn类</strong><br>我们每次想自己搞Pawn都得从Pawn派生过来，然后再一个个添加组件。UE知道我们大家都很懒，所以提供了一个默认的Pawn</p>
+<p>SpectatorPawn的理解<br><strong>是ADefaultPawn的派生类</strong><br><strong>在ADefaultPawn类的基础上USpectatorPawnMovement（不带重力漫游组件）</strong><br><strong>关闭了StaticMesh的显示</strong>，碰撞也设置到了“Spectator”通道。<br><strong>是一种观赛的pawn，玩家可以操控他进行观赛</strong></p>
+</blockquote>
+<h1 id="ACharacter"><a href="#ACharacter" class="headerlink" title="ACharacter"></a>ACharacter</h1><p>ACharacter类的理解</p>
+<blockquote>
+<p><strong>ACharacter类是APawn的派生类</strong><br><strong>他是具有人形角色移动组件的Pawn</strong>，人形角色移动组件封装与人形角色移动相关的功能和数据。<br>其对象不仅可以放到场景中被控制器操控,<strong>通过角色移动组件，ACharacter对象还可以模拟人形角色的移动行为，包括行走、奔跑、跳跃等。</strong></p>
+<p>总的来说ACharacter类是继承自APawn类的派生类，里面封装着一些人形角色相关的属性和行为。开发者可以用ACharacter类创建各种游戏中的人形角色。</p>
+</blockquote>
+<h1 id="Controller控制器"><a href="#Controller控制器" class="headerlink" title="Controller控制器"></a>Controller控制器</h1><p>Controller类的理解</p>
+<blockquote>
+<p><strong>Controller类是Actor的派生类</strong><br><strong>是用于控制角色的类。</strong><br><strong>它负责接玩家收输入、解析输入，然后根据输入去控制角色的移动、旋转和其他操作，来实现玩家与游戏世界的交互。</strong></p>
+</blockquote>
+<p>AController继承结构</p>
+<blockquote>
+<p><img src="/blog/fujian/8758776022159c1c6f83e0f4b477d618.png"><br>APlayerController类的理解<br><strong>是AController类的派生类。<br>APlayerController主要是接收玩家的输入，控制玩家角色</strong></p>
+<p>AAIController类的理解<br><strong>AAIController主要接收AI输入，控制AI角色</strong></p>
+</blockquote>
+<h1 id="APlayerState玩家状态"><a href="#APlayerState玩家状态" class="headerlink" title="APlayerState玩家状态"></a>APlayerState玩家状态</h1><p>APlayerState类的理解</p>
+<blockquote>
+<p><strong>APlayerState类是AInfo的派生类</strong><br><strong>用于记录与玩家相关的状态和信息。</strong><br><strong>每个玩家在游戏中都会有一个对应的PlayerState对象与之关联，用于跟踪和存储该玩家的个人信息和游戏状态。</strong></p>
+</blockquote>
+<p>跟APlayerState相关的继承机构</p>
+<blockquote>
+<p><img src="/blog/fujian/7ddc3b1597924988de41f3d03ec27dee.png"><br>APlayerState是生成在Level中的，跟Pawn和Controller是平级的关系。<br>Controller只是保存了APlayerState的指针</p>
+</blockquote>
+<h1 id="AGameState"><a href="#AGameState" class="headerlink" title="AGameState"></a>AGameState</h1><p>AGameState的理解</p>
+<blockquote>
+<p><strong>AGameState类是AInfo的派生类。<br>主要是用来存储当前游戏的全局状态数据，包括关卡信息、玩家得分、时间等与游戏状态相关的数据。</strong></p>
+</blockquote>
+<p>继承结构</p>
+<blockquote>
+<p><img src="/blog/fujian/b42b40de590aeb7d25e50d02584b8739.png"></p>
+</blockquote>
+<h1 id="AGameMode"><a href="#AGameMode" class="headerlink" title="AGameMode"></a>AGameMode</h1><p>GameMode的理解</p>
+<blockquote>
+<p><strong>GameMode类是AIofo的派生类</strong><br><strong>是UE4的游戏规则类，主要是用来定义一些游戏规则和游戏玩法。</strong> 比如当前游戏游戏的胜利条件等。</p>
+</blockquote>
+<p>GameMode和Level Blueprint的区别</p>
+<blockquote>
+<p>GameMode应该专注于游戏玩法的逻辑的实现<br>LevelScriptActor应该专注于本Level的逻辑，比如改变Level内某些Actor的运动轨迹，或者某一个区域的重力，或者触发一段特效或动画。</p>
+</blockquote>
+<h1 id="ULevel"><a href="#ULevel" class="headerlink" title="ULevel"></a>ULevel</h1><p>ULevel的理解</p>
+<blockquote>
+<p><strong>是UObject的派生类</strong><br><strong>它是Actor的容器</strong><br><strong>Level是指游戏中的一个独立场景或地图</strong>,这个独立场景可以包含各种场景元素、地形、静态和动态物体、灯光、粒子效果等。<br><strong>他是构成World的版块</strong><br><em><em>资源上对应</em>.umap,</em>*</p>
+</blockquote>
+<p>ALevelScriptActor类的理解</p>
+<blockquote>
+<p><strong>是Actor的派生类</strong><br><strong>每个Level都可以包含一个ALevelScriptActor</strong><br><strong>ALevelScriptActor主要是用来实现Level的逻辑</strong><br><strong>ALevelScriptActor可以理解为是Level的蓝图脚本</strong>,正如每个Actor可以支持蓝图脚本编写，ALevelScriptActor就是level的蓝图脚本</p>
+</blockquote>
+<h1 id="UWorld"><a href="#UWorld" class="headerlink" title="UWorld"></a>UWorld</h1><p>UWorld的理解</p>
+<blockquote>
+<p><strong>World是指整个游戏世界的容器</strong><br>它是一个高级别的容器，用于管理和组织游戏中的各个关卡、角色、物体、碰撞检测、事件处理等。<br><strong>它包含了所有的关卡（Level）</strong><br>通过UWorld，开发者可以管理游戏中的所有关卡，进行关卡的切换、加载和卸载。<br><strong>还包含了其他一些全局游戏相关数据。</strong><br><strong>World还负责管理全局性的操作。</strong> 包括时间流逝、物理模拟、碰撞检测等。</p>
+</blockquote>
+<p>Persistent Level的理解</p>
+<blockquote>
+<p><strong>每个World支持一个PersistentLevel和多个其他Level</strong><br><strong>Persistent Level可以被看作是整个世界的主要关卡，它在整个游戏过程中保持存在</strong>，它通常包含了游戏中的常驻元素，比如地形、主要角色、重要的游戏逻辑等。<br><strong>其他的关卡，例如过渡关卡或临时关卡，可以在游戏过程中被加载和卸载。</strong></p>
+</blockquote>
+<h1 id="WorldContext"><a href="#WorldContext" class="headerlink" title="WorldContext"></a>WorldContext</h1><p>world的类型</p>
+<blockquote>
+<p>World就不是只有一种类型，比如编辑器本身就也是一个World，里面显示的游戏场景也是一个World，这两个World互相协作构成了我们的编辑体验。然后点播放的时候，引擎又可以生成新的类型World来让我们测试。</p>
+</blockquote>
+<p>WorldContext的理解</p>
+<blockquote>
+<p><strong>它是存储着当前世界的上下文信息的结构体</strong>，例如当前世界的引用、游戏模式、游戏状态等。<br><strong>切换世界时，它会保存切换过程中的信息和目标世界的上下文信息。</strong> 当需要从一个World切换到另一个World的时候，比如说当点击播放时，就是从Preview切换到PIE。，FWorldContext保存切换过程信息和目标World上下文信息。<br><strong>FWorldContext还保存着World里Level切换的上下文信息，</strong> 以确保在切换关卡时能够正确处理相关的上下文状态和数据。</p>
+</blockquote>
+<p><img src="/blog/fujian/7f8f65e2ee70bfb49e6b73ddf4540757.png"></p>
+<h1 id="player"><a href="#player" class="headerlink" title="player"></a>player</h1><p>UPlayer类的理解</p>
+<blockquote>
+<p><strong>UPlayer类是UObject类的派生类</strong><br><strong>UPlayer类代表了一个玩家</strong><br><strong>每个玩家在游戏中都有一个对应的UPlayer实例</strong>，用于跟踪和管理该玩家的状态和行为。<br><strong>它用于管理玩家的输入、控制器、角色</strong><br>管理玩家的输入：UPlayer负责接收和处理玩家的输入，并将其传递给相关的控制器和角色。<br>管理玩家的控制器：每个玩家都有一个控制器，UPlayer负责管理控制器的创建、绑定和切换。<br>管理玩家的角色：UPlayer负责管理玩家的角色（Character），包括创建角色、切换角色、销毁角色等操作.</p>
+</blockquote>
+<p>ULocalPlayer的理解</p>
+<blockquote>
+<p><strong>它是UPlayer的派生类</strong><br><strong>ULocalPlayer类表示一个本地玩家</strong><br><strong>用于管理与本地玩家相关的输入、控制器、角色</strong></p>
+</blockquote>
+<p>UNetConnection的理解</p>
+<blockquote>
+<p><strong>它是UPlayer的派生类</strong><br><strong>用于管理网络的连接和数据传输</strong><br><strong>每个玩家都有一个唯一的网络连接</strong><br><strong>玩家通过网络连接与游戏服务器进行通信和交互</strong>,它用于发送玩家的输入、同步游戏状态。从这个角度看，一个网络连接也是个Player,它发送玩家的输入到服务器,控制着服务器那边的角色</p>
+</blockquote>
+<p>Player的继承结构</p>
+<blockquote>
+<p><img src="/blog/fujian/db605971d4a3675f4cea283d60742839.png"><br><img src="/blog/fujian/4fa78285f9d30aed88fdaf84890ece63.png"><br><img src="/blog/fujian/0471d538f282024eab4239d227769630.png"></p>
+</blockquote>
+<h1 id="GameInstance"><a href="#GameInstance" class="headerlink" title="GameInstance"></a>GameInstance</h1><p>GameInstance类的理解</p>
+<blockquote>
+<p><strong>是UObject的派生类</strong><br><strong>GameInstance类是UE4中用于管理游戏实例的类</strong>,当我们打开游戏的时，一个游戏实例被创建，而GameInstance就是用来管理这个游戏实例。<br><strong>GameInstance实例在游戏开始时创建，并在整个游戏过程中存在</strong><br><strong>它保存与游戏实例相关的全局数据</strong>，例如玩家配置、游戏设置、存档数据等。<br><strong>它可以跨关卡的数据传递</strong></p>
+</blockquote>
+<p>继承结构</p>
+<blockquote>
+<p><img src="/blog/fujian/1ad4dd2cea8b052c8594254ecc2e89ec.png"></p>
+</blockquote>
+<h1 id="UEngine"><a href="#UEngine" class="headerlink" title="UEngine"></a>UEngine</h1><p>UEngine类的理解</p>
+<blockquote>
+<p><strong>UEngine是一个抽象基类</strong><br><strong>它负责协调和管理游戏的运行过程、渲染、物理模拟、输入处理、资源管理等核心功能。</strong></p>
+</blockquote>
+<p>UGameEngine类的理解</p>
+<blockquote>
+<p><strong>UGameEngine是UEngine的派生类。</strong><br><strong>UGameEngine是用于游戏运行时的引擎类。</strong><br><strong>UGameEngine通常在游戏开始时创建，负责初始化游戏所需的各种系统和资源、渲染场景、处理游戏逻辑等功能。</strong></p>
+</blockquote>
+<p>UEditorEngine类的理解</p>
+<blockquote>
+<p><strong>UEditorEngine是UEngine的派生类。</strong><br><strong>UEditorEngine是用于编辑器环境的引擎类。</strong><br><strong>它提供了在编辑器中创建、编辑游戏内容的功能,</strong> UEditorEngine允许开发者在编辑器中实时预览内容，以及构建和修改游戏世界</p>
+</blockquote>
+<p>继承结构</p>
+<blockquote>
+<p><img src="/blog/fujian/edb4b39d478092276a318b362f83489e.png"></p>
+</blockquote>
+<h1 id="SaveGame类"><a href="#SaveGame类" class="headerlink" title="SaveGame类"></a>SaveGame类</h1><p>SaveGame类的理解</p>
+<blockquote>
+<p><strong>SaveGame类是的UObject派生类</strong><br><strong>SaveGame是UE4的存档类，用于实现游戏的存档功能。</strong> 它可以把将游戏的数据，比如玩家的的数据信息生成存档文件保存起来，在需要时进行加载和恢复。</p>
+</blockquote>
+<h1 id="Subsystem"><a href="#Subsystem" class="headerlink" title="Subsystem"></a>Subsystem</h1><p>Subsystem的理解</p>
+<blockquote>
+<p><strong>Subsystems是一套可以自动实例化和释放的类的框架。</strong><br><strong>Subsystem有五类生命周期</strong>,Subsystem类派生出五个派生类，选择不同的Subsystem类作为父类会决定新的类的对象生命周期。</p>
+</blockquote>
+<p>五类生命周期的理解</p>
+<blockquote>
+<p>Subsystem有五个派生类，<br>1.UEngineSubsystem<br>2.UEditorSubsystem<br>3.UGameInstanceSubsystem<br>4.UWorldSubsystem<br>5.ULocalPlayerSubsystem<br>你可以在这五个类中，选择一个为父类，派生出一个新的类。<br>比如你选择了UGameInstanceSubsystem作为父类，那么这个新的类的对象生命周期就取决于GameInstance对象的生命周期，随着GameInstance对象的创建而创建，随着GameInstance对象的销毁而销毁。选择哪个Subsystem类作为父类，就选择了哪种生命周期。</p>
+</blockquote>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>GamePlay框架图</p>
+<blockquote>
+<p><img src="/blog/fujian/63b92841c1b8e3588e634e547a69a251.png"></p>
+</blockquote>
+<p>整体类图</p>
+<blockquote>
+<p><img src="/blog/fujian/d24ce226369b9305635dd9629576dff6.png"></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://xingwumo.github.io/blog">wumo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://xingwumo.github.io/blog/2023/07/02/GamePlay%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6%E6%9E%84%E6%88%90/">http://xingwumo.github.io/blog/2023/07/02/GamePlay%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6%E6%9E%84%E6%88%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://xingwumo.github.io/blog" target="_blank">wumo学习分享仓库</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/blog/fujian/c9e4acd4daeeff67236a5f9bfa0e57e6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/blog/2023/07/01/B1.Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E8%A8%80%E8%A7%84%E5%88%99/" title="B1.Markdown的常用语言规则"><img class="cover" src="/blog/fujian/86f423ffed4a9a1c33ff8db747ba24b2.jpg" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">B1.Markdown的常用语言规则</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/blog/img/favicon.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wumo</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GamePlay%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">GamePlay的理解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UObject"><span class="toc-number">2.</span> <span class="toc-text">UObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Actor"><span class="toc-number">3.</span> <span class="toc-text">Actor</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Component%E7%BB%84%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">Component组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#APawn"><span class="toc-number">5.</span> <span class="toc-text">APawn</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACharacter"><span class="toc-number">6.</span> <span class="toc-text">ACharacter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Controller%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">Controller控制器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#APlayerState%E7%8E%A9%E5%AE%B6%E7%8A%B6%E6%80%81"><span class="toc-number">8.</span> <span class="toc-text">APlayerState玩家状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AGameState"><span class="toc-number">9.</span> <span class="toc-text">AGameState</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AGameMode"><span class="toc-number">10.</span> <span class="toc-text">AGameMode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ULevel"><span class="toc-number">11.</span> <span class="toc-text">ULevel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UWorld"><span class="toc-number">12.</span> <span class="toc-text">UWorld</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WorldContext"><span class="toc-number">13.</span> <span class="toc-text">WorldContext</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#player"><span class="toc-number">14.</span> <span class="toc-text">player</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GameInstance"><span class="toc-number">15.</span> <span class="toc-text">GameInstance</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UEngine"><span class="toc-number">16.</span> <span class="toc-text">UEngine</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SaveGame%E7%B1%BB"><span class="toc-number">17.</span> <span class="toc-text">SaveGame类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Subsystem"><span class="toc-number">18.</span> <span class="toc-text">Subsystem</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">19.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/02/GamePlay%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6%E6%9E%84%E6%88%90/" title="GamePlay基础框架构成"><img src="/blog/fujian/c9e4acd4daeeff67236a5f9bfa0e57e6.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="GamePlay基础框架构成"/></a><div class="content"><a class="title" href="/blog/2023/07/02/GamePlay%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6%E6%9E%84%E6%88%90/" title="GamePlay基础框架构成">GamePlay基础框架构成</a><time datetime="2023-07-01T16:00:00.000Z" title="发表于 2023-07-02 00:00:00">2023-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B1.Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E8%A8%80%E8%A7%84%E5%88%99/" title="B1.Markdown的常用语言规则"><img src="/blog/fujian/86f423ffed4a9a1c33ff8db747ba24b2.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B1.Markdown的常用语言规则"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B1.Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E8%A8%80%E8%A7%84%E5%88%99/" title="B1.Markdown的常用语言规则">B1.Markdown的常用语言规则</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B1.Git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.Git基础知识"><img src="/blog/fujian/b9a047b5abbc54c9f035ccdaab4e02e0.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B1.Git基础知识"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B1.Git%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.Git基础知识">B1.Git基础知识</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B1.C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.C++基础知识"><img src="/blog/fujian/7f6aba31b4c37b3ff37eeec6dea1eb08.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B1.C++基础知识"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B1.C++%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.C++基础知识">B1.C++基础知识</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/07/01/B1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.计算机网络基础知识"><img src="/blog/fujian/1086f6027eb51154d19ef8a1e3b3aa21.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="B1.计算机网络基础知识"/></a><div class="content"><a class="title" href="/blog/2023/07/01/B1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="B1.计算机网络基础知识">B1.计算机网络基础知识</a><time datetime="2023-06-30T16:00:00.000Z" title="发表于 2023-07-01 00:00:00">2023-07-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/blog/fujian/c9e4acd4daeeff67236a5f9bfa0e57e6.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By wumo</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
